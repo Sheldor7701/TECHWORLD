@@ -30,8 +30,22 @@ async function deleteUser(userid){
     `
     await database.execute(sql, [ userid ], database.options)
 }
+async function getCart(userid){
+    let sql= `
+    SELECT *
+    FROM CART, PRODUCTS
+    WHERE USERID= :USERID AND CART.PRODUCTID=PRODUCTS.PRODUCTID
+
+    `
+     let ppp=(await database.execute(sql, [userid], database.options)).rows;
+     console.log(ppp);
+     return ppp;
+
+}
+
 module.exports = {
     getUserInfoByUserId,
     updateUserInfo,
-    deleteUser
+    deleteUser,
+    getCart
 }
