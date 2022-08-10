@@ -1,0 +1,87 @@
+<style>
+
+    .card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+max-width: 300px;
+height: 450px;
+margin: auto;
+text-align: center;
+font-family: arial;
+font-size: 16px;
+overflow: hidden;
+
+}
+
+
+.price {
+color: grey;
+font-size: 16px;
+}
+
+.cartbutton {
+border: none;
+outline: 0;
+padding: 12px;
+color: white;
+background-color: #000;
+text-align: center;
+cursor: pointer;
+width: 100%;
+font-size: 18px;
+}
+
+.cartbutton:hover {
+opacity: 0.7;
+font-size: 22px;
+}
+
+.column {
+float: left;
+width: 30%;
+padding: 0 5px;
+font-size: 22px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+ 
+</style>
+<head>
+<title>My Product List</title>
+<!-- <link rel="icon" href="/img/icons/mal-logo-head.png"> -->
+
+</head>
+
+<body>
+<div class="main-content">
+    <%- include('../partials/header.ejs') %>
+    
+<h3> <%= pageTitle %> : </h3>
+<div class="row">
+<% for (let product of productlist){ %>
+
+    <div class="column">
+        <a class="listed" href=<%="/product/" + product.PRODUCTID %> >
+        <div class="card">
+            <img src=<%= product.IMAGE %> alt="IMAGE" style="width:100%">
+        <p><%= product.PRODUCT_NAME %></p>
+    <p class="price">TK <%= product.PRICE %></p>
+    
+    
+</div>
+<p><button class="cartbutton">Add to Cart</button></p>
+</a>
+</div>
+
+
+<% } %>
+</div>
+</div>
+</body>

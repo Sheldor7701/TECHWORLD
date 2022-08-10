@@ -1,0 +1,59 @@
+<header>
+    <h1 style="color: rgb(61, 39, 150); font-style: italic;">
+	<link rel="stylesheet" href="/css/styles.css">
+        <%= pageTitle %>
+
+    </h1>
+    <section id="nav">
+        <div class="shundor">
+            <ul>
+                <li><a href="/">Home</a></li>
+		<li><a href="/productlist/laptop">Laptop</a></li>
+                <li>PC components
+                    <ul>
+            <li><a href="/productlist/processor">Processor</a></li>
+			<li><a href="/productlist/motherboard">Motherboard</a></li>
+            <li><a href="/productlist/monitor">Monitor</a></li>
+			<li><a href="/productlist/gpu">Graphics Card</a></li>
+			<li><a href="/productlist/ram">Ram</a></li>
+			<li><a href="/productlist/hdd">HDD</a></li>
+			<li><a href="/productlist/ssd">SSD</a></li>
+			                     
+		     </ul>
+                </li>
+		<li>Accesories
+			<ul>
+			<li><a href="/productlist/mouse">Mouse</a></li>
+			<li><a href="/productlist/keyboard">Keyboard</a></li>
+			<li><a href="/productlist/headphone">Headphone</a></li>
+			<li><a href="/productlist/webcam">Webcam</a></li>
+			<li><a href="/productlist/speaker">Speaker</a></li>
+			<li><a href="/productlist/ups">UPS</a></li>	
+			</ul>			
+		</li>
+         <% if(isAuth) { %>
+                <li><a href="/user/" + <%=userid%> >Profile</a></li>
+                <% } %>
+                <span style="float: right;">
+                    <% if(!isAuth) { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <% } %>
+                    <% if(isAuth) { %>
+                    <li><a href="/logout">Logout</a></li>
+                    <% } %>
+                </span>
+            </ul>
+        </div>
+    </section>
+
+    <section id="search">
+        <!-- !SEARCH -->
+        <form class="search-bar" action="/searchresults" method="post">
+            <input class="search-bar" type="text" placeholder="Search for anything" name="search">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+
+</header>

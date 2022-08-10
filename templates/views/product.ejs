@@ -1,0 +1,109 @@
+<main class="container">
+
+    
+  <head>
+      <link rel="stylesheet" href="/css/product.css">
+  </head>
+  
+<body>
+
+   <%- include('../partials/header.ejs') %>
+  
+  
+
+<!-- Left Column / Headphones Image -->
+<div class="left-column">
+  <img height="600" width="600" src=<%= product.IMAGE %> >
+</div>
+
+
+<!-- Right Column -->
+<div class="right-column">
+
+  <!-- Product Description -->
+  <div class="product-description">
+    <span><%= product.PRODUCT_TYPE %></span>
+    <h1><%= product.PRODUCT_NAME %></h1>
+    <p><%= product.DETAILS %></p>
+  </div>
+
+  <!-- Product Configuration -->
+  <div class="product-configuration">
+
+  
+  <div class="product-price">
+    <span><%= product.PRODUCT_PRICE %></span>
+    <a href="#" class="cart-btn">Add to cart</a>
+  </div>
+</div>
+
+</body>
+
+<% if (product.TYPE=="LAPTOP"){ %>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<h3><b>DESCRIPTION</b></h3>
+<table class="tg">
+<tbody>
+<tr>
+  <td class="tg-0lax">Processor</td>
+  <td class="tg-0lax"><%= product.PROCESSOR %></td>
+</tr>
+<tr>
+  <td class="tg-0lax">Display</td>
+  <td class="tg-0lax"><%= product.DISPLAY %></td>
+</tr>
+<tr>
+  <td class="tg-0lax">Generation</td>
+  <td class="tg-0lax"><%= product.GENERATION %></td>
+</tr>
+<tr>
+  <td class="tg-0lax">Storage</td>
+  <td class="tg-0lax"><%= product.STORAGE %></td>
+</tr>
+<tr>
+  <td class="tg-0lax">Memory</td>
+  <td class="tg-0lax"><%= product.MEMORY %></td>
+</tr>
+</tbody>
+</table>
+<% } %>
+<% if (product.TYPE=="MONITOR"){ %>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<h3><b>DESCRIPTION</b></h3>
+<table class="tg">
+<tbody>
+<tr>
+  <td class="tg-0lax">SCREEN SIZE</td>
+  <td class="tg-0lax"><%= product.SCREEN_SIZE %></td>
+</tr>
+<tr>
+  <td class="tg-0lax">REFRESH RATE</td>
+  <td class="tg-0lax"><%= product.REFRESH_RATE %></td>
+</tr>
+<tr>
+  <td class="tg-0lax">DISPLAY TYPE</td>
+  <td class="tg-0lax"><%= product.MTYPE %></td>
+</tr>
+<tr>
+  <td class="tg-0lax">RESOLUTION</td>
+  <td class="tg-0lax"><%= product.RESOLUTION %></td>
+</tr>
+</tbody>
+</table>
+<% } %>
+<%- include('../partials/footer.ejs') %>
+</main>

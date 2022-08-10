@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<title>Users profile</title>
+		<link rel="icon" href="/img/icons/mal-logo-head.png">
+		<link rel="stylesheet" href="/css/styles.css">
+		<style>
+			.form-popup {
+				display: none;
+			}
+
+
+		</style>
+	</head>
+	<body><%- include('../partials/header.ejs') %> <div class="users profile">
+			<h3 style="font-size: larger; font-weight: 900; color: rgb(7, 7, 138);"><%= userInfo.NAME %> </h3>
+			<br>
+			<br>
+			<p style="color: rgb(37, 37, 87);font-size: larger; font-weight: 800;">Email : <span style="color: black;"><%= userInfo.EMAIL %> </span>
+			</p>
+
+			<p style="color: rgb(4, 4, 61);font-size: larger; font-weight: 600;">Address : <span style="color: black;"><%= userInfo.ADDRESS %> </span>
+			</p>
+			<br>
+
+		</div>
+		<br>
+		<div>
+			<button class="update-info-show" onclick="openForm()">Update Info</button>
+			<div class="form-popup" id="update-info-form">
+				<form action=<%="/user/" + userid + "/update" %> method="post" class="form-container">
+					<h3>User information update</h3>
+					<label for="username">
+						<b>Edit Username:</b>
+					</label>
+					<br>
+					<textarea id="username" name="username" rows="1" cols="100" placeholder="Edit username..."><%=userInfo.NAME %></textarea>
+					<br>
+					<br>
+					<label for="email">
+						<b>Edit Email</b>
+					</label>
+					<input type="text" placeholder="Edit Email" name="email" value=<%=userInfo.EMAIL %>>
+					<br>
+					<br>
+					<label for="password">
+						<b>Edit Password</b>
+					</label>
+					<input type="password" placeholder="Edit Password" id="password" name="password" value=<%=userInfo.PASSWORD %>>
+					<br>
+					<br>
+					<label for="address">
+						<b>Edit Address:</b>
+					</label>
+					<br>
+					<textarea id="address" name="address" rows="5" cols="50" placeholder="Edit address..."><%=userInfo.ADDRESS %></textarea>
+					<br>
+					<br>
+					<button type="submit" class="btn" style="background-color:rgb(53, 53, 104);"> Update</button>
+				</form>
+			</div>
+			<script>
+				var a = 0;
+
+				function openForm() {
+					if (a == 1) {
+						document.getElementById("update-info-form").style.display = "none";
+						return a = 0;
+					} else if (a == 0) {
+						document.getElementById("update-info-form").style.display = "block";
+						return a = 1;
+					}
+				}
+
+				function openAlert() {
+					if (a == 1) {
+						document.getElementById("delete-alert").style.display = "none";
+						return a = 0;
+					} else if (a == 0) {
+						document.getElementById("delete-alert").style.display = "block";
+						return a = 1;
+					}
+				}
+
+				function toggleform() {
+					return a = !a;
+				}
+			</script><br><br>
+
+		<button class="delete-account" onclick="openAlert()">Delete Account</button>
+
+        <div class="form-popup" id="delete-alert" role="alert">
+	        <div class="cd-popup-container">
+		        <p>Are you sure you want to delete this element?</p>
+				<a href =<%="/user/" + userid + "/delete" %>><button onclick="openAlert()"> YES </button></a>
+			        <button onclick="openAlert()">No</button>
+	        </div> <!-- cd-popup-container -->
+        </div> <!-- cd-popup -->
+
+
+		</div><%- include('../partials/footer.ejs') %>
+	</body>
+</html>
