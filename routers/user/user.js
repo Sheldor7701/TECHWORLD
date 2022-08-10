@@ -74,6 +74,23 @@ router.get('/:userid/delete', async (req, res) => {
     req.session.destroy();
     res.redirect('/');
 });
+router.get('/:userid/cart', async (req, res) => {
+    const userid = req.params.userid;
+    const loggedinAs = req.session.userid;
 
+    if (!req.session.isAuth) return res.redirect('/login');
+    if (userid != loggedinAs) return res.redirect('/error');
+    
+    //database query
+     const productlist= await DB_user.getCart(userid);
+     const data = {
+        pageTitle: 'USER CART',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        productlist
+    }
+    res.render('productlist', data);
+});
 
 module.exports = router
