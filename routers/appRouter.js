@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
-        cart= req.session.cart,
+        cart: req.session.cart,
         message: 'This is the Home Page',
 
         newlyReleased,
