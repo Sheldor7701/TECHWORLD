@@ -38,7 +38,7 @@ async function getCart(userid){
 
     `
      let ppp=(await database.execute(sql, [userid], database.options)).rows;
-     console.log(ppp);
+     //console.log(ppp);
      return ppp;
 
 }
