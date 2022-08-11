@@ -74,6 +74,7 @@ router.get('/error', (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        cart: req.session.cart,
         message: 'Requested page does not exist'
     }
     res.status(400).render('error', data)
