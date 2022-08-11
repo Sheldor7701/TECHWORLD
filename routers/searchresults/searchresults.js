@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
-
+        cart: req.session.cart,
         productlist
     }
     res.render('productlist', data);

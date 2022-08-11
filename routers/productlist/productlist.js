@@ -11,6 +11,7 @@ router.get('/laptop', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        cart: req.session.cart,
         productlist
     }
  
@@ -22,12 +23,14 @@ router.get('/laptop', async (req, res) => {
 })
 
 router.get('/monitor', async (req, res) => {
+    
     const productlist= await DB_product.getProductByType('MONITOR');
     const data = {
         pageTitle: 'Monitors',
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        cart: req.session.cart,
         productlist
     }
  
@@ -44,6 +47,7 @@ router.get('/new', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        cart: req.session.cart,
         productlist
     }
  
@@ -61,6 +65,7 @@ router.get('/top', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        cart: req.session.cart,
         productlist
     }
  

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true });
 const DB_homepage = require('../DB_codes/DB_homepage');
-
+//const DB_user = require('../DB_codes/DB_user');
 
 //!require all sub routers
 const loginRouter = require('./authentication/login')
@@ -21,15 +21,19 @@ router.get('/', async (req, res) => {
     const userid = req.session.userid;
     const newlyReleased = await DB_homepage.getNewlyReleasedProduct();
     const topProducts = await DB_homepage.getTopProducts();
+    
+    //const cart= await DB_user.getCart(userid);
     const data = {
         pageTitle: 'TechWorld',
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        cart= req.session.cart,
         message: 'This is the Home Page',
 
         newlyReleased,
         topProducts
+        
         // recommendation
     }
     res.render('index', data)
