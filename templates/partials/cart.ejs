@@ -1,0 +1,255 @@
+<cart>
+<style>
+
+.Cart-Container{
+ width: 80%;
+ height: relative;
+ background-color: #ffffff;
+ border-radius: 20px;
+ box-shadow: 0px 25px 40px #1687d933;
+ display:none;
+}
+
+.Header{
+ margin: auto;
+ width: 90%;
+ height: 15%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.Heading{
+ font-size: 20px;
+ font-family: �Open Sans�;
+ font-weight: 700;
+ color: #2F3841;
+}
+.Action{
+ font-size: 14px;
+ font-family: �Open Sans�;
+ font-weight: 600;
+ color: #E44C4C;
+ cursor: pointer;
+ border-bottom: 1px solid #E44C4C;
+}
+
+.Cart-Items{
+ margin: auto;
+ width: 90%;
+ height: 30%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.image-box{
+ width: 15%;
+ text-align: center;
+}
+.about{
+ height: 100%;
+ width: 70%;
+}
+.title{
+    width:200px; 
+    word-wrap:break-word; 
+    display:inline-block;
+ padding-top: 5px;
+ padding-left: 80px;
+ padding-right: 8px;
+ line-height: 20px;
+ font-size: 16px;
+ font-family: �Open Sans�;
+ font-weight: 600;
+ color: #202020;
+}
+
+.prices{
+ height: 100%;
+ text-align: right;
+}
+.amount{
+ padding-top: 20px;
+ font-size: 12px;
+ font-family: �Open Sans�;
+ font-weight: 800;
+ color: #909090;
+}
+.save{
+ padding-top: 5px;
+ font-size: 14px;
+ font-family: �Open Sans�;
+ font-weight: 600;
+ color: #1687d9;
+ cursor: pointer;
+}
+.remove{
+ padding-top: 5px;
+ padding-right: 5px;
+ font-size: 14px;
+ font-family: �Open Sans�;
+ font-weight: 600;
+ color: #E44C4C;
+ cursor: pointer;
+}
+
+.counter{
+ width: 15%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding-left: 10px;
+}
+.btn{
+ width: 40px;
+ height: 40px;
+ border-radius: 100%;
+ background-color: #d9d9d9;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 20px;
+ font-family: �Open Sans�;
+ font-weight: 900;
+ color: #202020;
+ cursor: pointer;
+}
+
+.count{
+ font-size: 20px;
+ font-family: �Open Sans�;
+ font-weight: 900;
+ color: #202020;
+}
+
+.checkout{
+text-align: center;
+ float: right;
+ margin-right: 5%;
+ margin-bottom: 5%;
+ width: 28%;
+}
+
+.items{
+ font-size: 16px;
+ font-family: �Open Sans�;
+ font-weight: 500;
+ color: #909090;
+ line-height: 10px;
+}
+.total-amount{
+ font-size: 36px;
+ font-family: �Open Sans�;
+ font-weight: 900;
+ color: #202020;
+}
+.button{
+ margin-top: 5px;
+ width: 100%;
+ height: 40px;
+ border: none;
+ background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+ border-radius: 20px;
+ cursor: pointer;
+ font-size: 16px;
+ font-family: �Open Sans�;
+ font-weight: 600;
+ color: #202020;
+}
+
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 30px;
+  width: 60px;
+}
+
+.open-button:hover {
+    padding: 6px;
+    width: 62px;
+}
+
+.open-button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<button class="open-button" onclick="openCART()"><img src="https://cdn.imgbin.com/19/22/3/imgbin-shopping-cart-icon-shopping-cart-aZxB9v23hRKuztjNENa8jA8HM.jpg" width=50px></button>
+    
+    
+ <div class="Cart-Container" id="user-cart">
+    <div class="Header">
+ <h3 class="Heading">Shopping Cart</h3>
+ <h5 class="Action">Remove all</h5>
+ </div>
+<% for (let product of cart){ %>
+        
+<% if(product.QUANTITY>0) { %>
+<script> 
+    var x=product.QUANTITY*product.PRICE;
+    totalPRICE(x);
+</script>
+<div class="Cart-Items">
+ <div class="image-box">
+ <img src="https://www.startech.com.bd/image/cache/catalog/laptop-cooler/fantech/nc20/nc20-01-228x228.jpg" width=150px height=150px>
+ </div>
+ <div class="about">
+ <span class="title"> 
+   <%= product.PRODUCT_NAME %>
+</span>
+ </div>
+ <div class="prices"><div class="amount">$<%= product.PRODUCT_PRICE %></div>
+ <div class="remove"><u>Remove</u></div>
+ </div>
+    <div class="counter">
+        <div class="btn">+</div>
+            <div class="count"><%= product.QUANTITY %></div>
+        <div class="btn">-</div>
+ </div>
+</div><% } %>
+<% } %>
+
+<div class="checkout">
+ <div class="total"></div>
+ <div class="items">2 items</div>
+ <div class="total-amount">$6.18</div>
+ <button class="button">Checkout</button><br>
+
+
+
+ </div>
+    
+</div>
+
+<script>
+		var a = 0;
+		var b = 0;
+        function totalPRICE(x){
+            a=a+x;
+            return a;
+        }
+        
+        function openCART() {
+            if(b==0){
+                document.getElementById("user-cart").style.display= "block";
+                return b=1;            
+            }
+            else if(b==1){
+                document.getElementById("user-cart").style.display= "none";
+                return b=0;            
+            }
+		}
+				
+</script></body></cart>
