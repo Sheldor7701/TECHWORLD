@@ -2,11 +2,15 @@
 <style>
 
 .Cart-Container{
- width: 80%;
+ width: 100%;
  height: relative;
  background-color: #ffffff;
  border-radius: 20px;
  box-shadow: 0px 25px 40px #1687d933;
+ position: fixed;
+ bottom: 88px;
+ right: 20px;
+ max-width: 550px;
  display:none;
 }
 
@@ -50,12 +54,13 @@
  width: 70%;
 }
 .title{
-    width:200px; 
-    word-wrap:break-word; 
-    display:inline-block;
- padding-top: 5px;
- padding-left: 80px;
+ width:70%; 
+ word-wrap:break-word; 
+ display:inline-block;
+ text-align: center;
+ padding-left: 85px;
  padding-right: 8px;
+ padding-top: 50px;
  line-height: 20px;
  font-size: 16px;
  font-family: �Open Sans�;
@@ -63,16 +68,18 @@
  color: #202020;
 }
 
-.prices{
- height: 100%;
- text-align: right;
+.amount-remove{
+    width:100%;
+    padding-left: 30px;
 }
+
 .amount{
- padding-top: 20px;
- font-size: 12px;
+ font-size: 20px;
+ text-align: center;
+ 
  font-family: �Open Sans�;
  font-weight: 800;
- color: #909090;
+ color: #141313;
 }
 .save{
  padding-top: 5px;
@@ -83,8 +90,8 @@
  cursor: pointer;
 }
 .remove{
- padding-top: 5px;
- padding-right: 5px;
+ text-align: right;
+ padding-bottom: 10px;
  font-size: 14px;
  font-family: �Open Sans�;
  font-weight: 600;
@@ -97,11 +104,11 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- padding-left: 10px;
+ 
 }
 .btn{
- width: 40px;
- height: 40px;
+ width: 25px;
+ height: 25px;
  border-radius: 100%;
  background-color: #d9d9d9;
  display: flex;
@@ -119,12 +126,12 @@
  font-family: �Open Sans�;
  font-weight: 900;
  color: #202020;
-}
+} 
 
 .checkout{
 text-align: center;
  float: right;
- margin-right: 5%;
+ margin-right: 3.7%;
  margin-bottom: 5%;
  width: 28%;
 }
@@ -137,7 +144,7 @@ text-align: center;
  line-height: 10px;
 }
 .total-amount{
- font-size: 36px;
+ font-size: 20px;
  font-family: �Open Sans�;
  font-weight: 900;
  color: #202020;
@@ -203,21 +210,22 @@ text-align: center;
 </script>
 <div class="Cart-Items">
  <div class="image-box">
- <img src="https://www.startech.com.bd/image/cache/catalog/laptop-cooler/fantech/nc20/nc20-01-228x228.jpg" width=150px height=150px>
+ <img src="<%= product.IMAGE %>" width=150px height=150px>
  </div>
  <div class="about">
- <span class="title"> 
+ <div class="title"> 
    <%= product.PRODUCT_NAME %>
-</span>
  </div>
- <div class="prices"><div class="amount">$<%= product.PRODUCT_PRICE %></div>
- <div class="remove"><u>Remove</u></div>
+<div class="amount-remove">
+<div class="amount">$<%= product.PRICE %></div>
+ <div class="remove"><u>Remove</u></div></div></div>
+
+<div class="counter">
+    <button class="btn">+</button>
+        <div class="count"><%= product.QUANTITY %></div>
+    <button class="btn">-</button>
  </div>
-    <div class="counter">
-        <div class="btn">+</div>
-            <div class="count"><%= product.QUANTITY %></div>
-        <div class="btn">-</div>
- </div>
+
 </div><% } %>
 <% } %>
 
@@ -225,13 +233,11 @@ text-align: center;
  <div class="total"></div>
  <div class="items">2 items</div>
  <div class="total-amount">$6.18</div>
- <button class="button">Checkout</button><br>
+ <button class="button">Checkout</button><br></div>
 
 
 
  </div>
-    
-</div>
 
 <script>
 		var a = 0;
