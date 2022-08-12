@@ -17,7 +17,7 @@ app.set('view engine', 'ejs')
 app.set('views', viewsPath) //looks into the 'templates/views' folder
 
 
-const oneDay = 1000 * 60 * 60 * 24;
+const oneDay = 1000 * 60 * 60;
 app.use(sessions({
     secret: "thisismysecrctekey789",
     saveUninitialized: true,
