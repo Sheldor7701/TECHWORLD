@@ -3,11 +3,10 @@
     <% if(!isAuth) { %>
         <p>Not logged in</p>
         <% } else { %>
+            <%- include('../partials/cart.ejs') %> 
             <p>
                 logged in as : <%= username %>
             </p>
             <% } %>
-            <% if(isAuth) { %>
-                <%- include('../partials/cart.ejs') %> 
-            <% } %>
+    
 </footer>
