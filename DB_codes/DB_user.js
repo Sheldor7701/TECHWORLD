@@ -33,8 +33,8 @@ async function deleteUser(userid){
 async function getCart(userid){
     let sql= `
     SELECT *
-    FROM CART, PRODUCTS
-    WHERE USERID= :USERID AND CART.PRODUCTID=PRODUCTS.PRODUCTID
+    FROM CART NATURAL JOIN PRODUCTS
+    WHERE USERID= :USERID 
 
     `
      let ppp=(await database.execute(sql, [userid], database.options)).rows;
