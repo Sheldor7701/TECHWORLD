@@ -222,7 +222,7 @@ text-align: center;
  <div class="remove"><u>Remove</u></div></div></div>
 
 <div class="counter">
-    <button class="btn">+</button>
+    <button class="btn" onclick="Increament(<%=product.PRODUCTID%>)">+</button>
         <div class="count"><%= product.QUANTITY %></div>
     <button class="btn">-</button>
  </div>
@@ -239,6 +239,20 @@ text-align: center;
 
 
  </div>
+<script >
+     
+     function Increament(productID){
+         let data = {
+             pid: productID,
+             
+         }
+         axios.post('cart/cartIncreament',data).then((da)=>{
+             console.log("-------------done-------------")
+            console.log(da.data.id);
+            //document.location.reload()
+         })
+     }
+ </script>
 
 <script>
 		var a = 0;
