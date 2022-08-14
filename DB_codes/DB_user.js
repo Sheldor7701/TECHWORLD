@@ -52,10 +52,20 @@ async function cartIncreament(userid, productid) {
     
     return (await database.execute(sql, [ userid,productid ], database.options))
 }
+async function cartDecreament(userid, productid) {
+    let sql = `
+    UPDATE CART
+    SET QUANTITY = QUANTITY-1
+    WHERE USERID = :USERID AND PRODUCTID= :PRODUCTID
+    `
+    
+    return (await database.execute(sql, [ userid,productid ], database.options))
+}
 module.exports = {
     getUserInfoByUserId,
     updateUserInfo,
     deleteUser,
     getCart,
-    cartIncreament
+    cartIncreament,
+    cartDecreament
 }

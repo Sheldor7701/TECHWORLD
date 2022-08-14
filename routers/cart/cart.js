@@ -23,5 +23,19 @@ router.post('/cartIncreament',async (req,res)=>{
     
     res.send(da);
 })
+router.post('/cartDecreament',async (req,res)=>{
+    
+    const pid= req.body.pid;
+    const uid= req.session.userid;
+    
+    await DB_user.cartDecreament(uid,pid);
+    req.session.cart= await DB_user.getCart(uid);
+    console.log("doneeeee");
+    let da = {
+        id:"hello"
+    }
+    
+    res.send(da);
+})
 
 module.exports = router
