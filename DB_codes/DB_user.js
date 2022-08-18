@@ -70,6 +70,17 @@ async function addToCart(userid, productid) {
     
     return (await database.execute(sql, [ userid,productid ], database.options))
 }
+async function checkCart(userid, productid) {
+    let sql = `
+    SELECT* 
+    FROM CART
+    WHERE USERID= :USEID AND PRODUCTID= :PRODUCTID
+    `
+    
+    let aa= (await database.execute(sql, [ userid,productid ], database.options));
+    if(aa.rows.length>0) return true;
+    return false;
+}
 module.exports = {
     getUserInfoByUserId,
     updateUserInfo,
@@ -77,5 +88,6 @@ module.exports = {
     getCart,
     cartIncreament,
     cartDecreament,
-    addToCart
+    addToCart,
+    checkCart
 }

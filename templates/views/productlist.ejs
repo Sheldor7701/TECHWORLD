@@ -75,17 +75,13 @@ clear: both;
     
     
 </div>
-<button class="cartbutton"  onclick="addHobe1(<%= product.PRODUCTID %>)">Add to Cart</button>
-<script>
-function addHobe1(productid){
-    addHobe(productid);
-}
+<button class="cartbutton"  onclick="addHobe(<%= product.PRODUCTID %>)">Add to Cart</button>
 
-</script>
 
 <script>
 
     function addHobe(productID){
+
         let data = {
                  pid: productID,
                  
@@ -93,24 +89,60 @@ function addHobe1(productid){
              axios.post(' http://localhost:3000/cart/cartAdd',data).then((da)=>{
                  console.log("-------------done-------------");
     
-                console.log(da.data);
-                // document.getElementById("abar-sheraa").innerHTML=da.data.PRODUCT_NAME;
-             let para = document.createElement("div");
-        para.innerHTML = document.getElementById("sheraa").innerHTML;
-        para.className="Cart-Items";
-        para.children[0].children[0].src=da.data.IMAGE;
-        para.children[1].children[0].innerHTML=da.data.PRODUCT_NAME;
-        para.children[1].children[1].children[0].innerHTML=da.data.PRICE;
-        para.children[2].children[1].value=1;
-        para.children[2].children[1].id="id "+da.data.PRODUCTID;
-        console.log(para.children[2].children[1].id);
-        para.children[2].children[0].attributes[1].nodeValue="Increament("+da.data.PRODUCTID+")";
-        para.children[2].children[2].attributes[1].nodeValue="Decreament("+da.data.PRODUCTID+")";
-
-                console.log(para.children);
-        // Append to body        
+                if(da.data.exists){
+                    Increament(productID);
+                    return;
+                }
+                const para = document.createElement("div");
+                para.className="Cart-Items";
+                para.id="sheraa";
+        para.innerHTML = "<div class=\"image-box\">"+
+     "<img src=\""+da.data.product.IMAGE+ "\" width=150px height=150px>"+
+     "</div>"+
+     "<div class=\"about\">"+
+     "<div class=\"title\">"+ 
+      da.data.product.PRODUCT_NAME+
+     "</div>"+
+    "<div class=\"amount-remove\">"+
+    "<div class=\"amount\">$ "+da.data.product.PRICE+" </div>"+
+     "<div class=\"remove\"><u>Remove</u></div></div></div>"+
+    "<div class=\"counter\">"+
+        "<button class=\"btn\" onclick=\"Increament("+da.data.product.PRODUCTID+")\">+</button>"+
+        "<input type=\"text\" class=\"quantity\" name=\"quantity\" id=\"id "+da.data.product.PRODUCTID+"\"  value=1 readonly>"+
+        "<button class=\"btn\" onclick=\"Decreament("+da.data.product.PRODUCTID+")\">-</button>"+
+     "</div>";
+        
+        // Append to body:
         document.getElementById("cart-list").appendChild(para);
              })
+        // let data = {
+        //          pid: productID,
+                 
+        //      }
+        //      axios.post(' http://localhost:3000/cart/cartAdd',data).then((da)=>{
+        //          console.log("-------------done-------------");
+    
+        //         if(da.data.exists){
+        //             Increament(productID);
+        //             return;
+        //         }
+                // document.getElementById("abar-sheraa").innerHTML=da.data.product.PRODUCT_NAME;
+        //      let para = document.createElement("div");
+        // para.innerHTML = document.getElementById("sheraa").innerHTML;
+        // para.className="Cart-Items";
+        // para.children[0].children[0].src=da.data.product.IMAGE;
+        // para.children[1].children[0].innerHTML=da.data.product.PRODUCT_NAME;
+        // para.children[1].children[1].children[0].innerHTML=da.data.product.PRICE;
+        // para.children[2].children[1].value=1;
+        // para.children[2].children[1].id="id "+da.data.product.PRODUCTID;
+        // console.log(para.children[2].children[1].id);
+        // para.children[2].children[0].attributes[1].nodeValue="Increament("+da.data.product.PRODUCTID+")";
+        // para.children[2].children[2].attributes[1].nodeValue="Decreament("+da.data.product.PRODUCTID+")";
+
+        //         console.log(para.children);
+        // Append to body        
+        // document.getElementById("cart-list").appendChild(para);
+        //      })
          }
        </script>
 </div>

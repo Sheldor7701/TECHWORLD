@@ -43,11 +43,16 @@ router.post('/cartAdd',async (req,res)=>{
     const pid= req.body.pid;
     const uid= req.session.userid;
     console.log(pid," hay re pid");
-     await DB_user.addToCart(uid,pid);
-     req.session.cart= await DB_user.getCart(uid);
+    const exists= await DB_user.checkCart(uid,pid);
+    if(!exists)
+     {await DB_user.addToCart(uid,pid);
+     req.session.cart= await DB_user.getCart(uid);}
      let product= await DB_product.getProductByID(pid);
      
-     const da= product;
+     const da={
+         exists,
+          product
+     };
      console.log(da);
      res.send(da);
     // let product="abcd";
