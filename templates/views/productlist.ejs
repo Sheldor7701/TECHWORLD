@@ -94,24 +94,21 @@ function addHobe1(productid){
                  console.log("-------------done-------------");
     
                 console.log(da.data);
-                const para = document.createElement("p");
-        para.innerHTML = "<div class=\"image-box\">"+
-     "<img src=\" <\%= da.data.IMAGE \%> \" width=150px height=150px>"+
-     "</div>"+
-     "<div class=\"about\">"+
-     "<div class=\"title\">"+ 
-      "  <\%=da.data.PRODUCT_NAME\%> "+
-     "</div>"+
-    "<div class=\"amount-remove\">"+
-    "<div class=\"amount\">$ <\%=da.data.PRICE\%> </div>"+
-     "<div class=\"remove\"><u>Remove</u></div></div></div>"+
-    "<div class=\"counter\">"+
-        "<button class=\"btn\" onclick=\"Increament(<\%=da.data.PRODUCTID\%>)\">+</button>"+
-        "<input type=\"text\" class=\"quantity\" name=\"quantity\" id=\"id <\%=da.data.PRODUCTID \% > \"  value=1 readonly>"+
-        "<button class=\"btn\" onclick=\"Decreament(<\%=da.data.PRODUCTID\%>)\">-</button>"+
-     "</div>";
-        
-        // Append to body:
+                // document.getElementById("abar-sheraa").innerHTML=da.data.PRODUCT_NAME;
+             let para = document.createElement("div");
+        para.innerHTML = document.getElementById("sheraa").innerHTML;
+        para.className="Cart-Items";
+        para.children[0].children[0].src=da.data.IMAGE;
+        para.children[1].children[0].innerHTML=da.data.PRODUCT_NAME;
+        para.children[1].children[1].children[0].innerHTML=da.data.PRICE;
+        para.children[2].children[1].value=1;
+        para.children[2].children[1].id="id "+da.data.PRODUCTID;
+        console.log(para.children[2].children[1].id);
+        para.children[2].children[0].attributes[1].nodeValue="Increament("+da.data.PRODUCTID+")";
+        para.children[2].children[2].attributes[1].nodeValue="Decreament("+da.data.PRODUCTID+")";
+
+                console.log(para.children);
+        // Append to body        
         document.getElementById("cart-list").appendChild(para);
              })
          }

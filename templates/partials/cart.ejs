@@ -213,19 +213,19 @@ text-align: center;
         
 <% if(product.QUANTITY>0) { %>
 
-<div class="Cart-Items">
- <div class="image-box">
- <img src="<%= product.IMAGE %>" width=150px height=150px>
+<div class="Cart-Items" id="sheraa">
+ <div class="image-box" id="image-box">
+ <img src="<%= product.IMAGE %>" id="chobi" width=150px height=150px>
  </div>
  <div class="about">
- <div class="title"> 
+ <div class="title" > 
    <%= product.PRODUCT_NAME %>
  </div>
 <div class="amount-remove">
 <div class="amount">$<%= product.PRICE %></div>
  <div class="remove"><u>Remove</u></div></div></div>
 
-<div class="counter">
+<div class="counter" id="counter">
     <button class="btn" onclick="Increament(<%=product.PRODUCTID%>)">+</button>
     <input type="text" class="quantity" name="quantity" id="id <%=product.PRODUCTID%>"  value=<%=product.QUANTITY%> readonly>
     <button class="btn" onclick="Decreament(<%=product.PRODUCTID%>)">-</button>
