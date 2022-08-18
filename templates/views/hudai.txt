@@ -1,0 +1,32 @@
+ const para = document.createElement("p");
+    para.innerHTML = "<div class=\"image-box\">"+
+ "<img src=\" product.IMAGE \" width=150px height=150px>"+
+ "</div>"+
+ "<div class=\"about\">"+
+ "<div class=\"title\">"+ 
+  "  product.PRODUCT_NAME "+
+ "</div>"+
+"<div class=\"amount-remove\">"+
+"<div class=\"amount\">$ product.PRICE </div>"+
+ "<div class=\"remove\"><u>Remove</u></div></div></div>"+
+"<div class=\"counter\">"+
+    "<button class=\"btn\" onclick=\"Increament(product.PRODUCTID)\">+</button>"+
+    "<input type=\"text\" class=\"quantity\" name=\"quantity\" id=\"id product.PRODUCTID\"  value=1 readonly>"+
+    "<button class=\"btn\" onclick=\"Decreament(product.PRODUCTID)\">-</button>"+
+ "</div>";
+    
+    // Append to body:
+    document.getElementById("cart-list").appendChild(para);
+   
+
+  
+<script>
+
+     function addHobe(productid){
+        console.log(productid);
+
+        axios.post(' http://localhost:3000/cart/cartAdd',productid).then((product)=>{
+    
+    });
+    }
+    </script>

@@ -2,6 +2,7 @@ const express = require('express');
 const validator = require('validator')
 const { redirect } = require('express/lib/response');
 const DB_user = require('../../DB_codes/DB_user');
+const DB_product = require('../../DB_codes/DB_product')
 const router = express.Router({ mergeParams: true });
 
 router.get('/update', async (req, res) => {
@@ -13,7 +14,7 @@ router.post('/cartIncreament',async (req,res)=>{
     
     const pid= req.body.pid;
     const uid= req.session.userid;
-    
+    console.log(pid," inc er vitor");
     await DB_user.cartIncreament(uid,pid);
     req.session.cart= await DB_user.getCart(uid);
     console.log("doneeeee");
@@ -27,7 +28,7 @@ router.post('/cartDecreament',async (req,res)=>{
     
     const pid= req.body.pid;
     const uid= req.session.userid;
-    
+
     await DB_user.cartDecreament(uid,pid);
     req.session.cart= await DB_user.getCart(uid);
     console.log("doneeeee");
@@ -36,6 +37,20 @@ router.post('/cartDecreament',async (req,res)=>{
     }
     
     res.send(da);
+})
+router.post('/cartAdd',async (req,res)=>{
+    
+    const pid= req.body.pid;
+    const uid= req.session.userid;
+    console.log(pid," hay re pid");
+     await DB_user.addToCart(uid,pid);
+     req.session.cart= await DB_user.getCart(uid);
+     let product= await DB_product.getProductByID(pid);
+     let da= product;
+     
+     res.send(da);
+    // let product="abcd";
+    // res.send(product);
 })
 
 module.exports = router

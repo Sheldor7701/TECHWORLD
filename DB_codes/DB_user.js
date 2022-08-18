@@ -61,11 +61,21 @@ async function cartDecreament(userid, productid) {
     
     return (await database.execute(sql, [ userid,productid ], database.options))
 }
+async function addToCart(userid, productid) {
+    let sql = `
+    BEGIN
+    ADD_TO_CART(:USERID,:PRODUCTID);
+    END;
+    `
+    
+    return (await database.execute(sql, [ userid,productid ], database.options))
+}
 module.exports = {
     getUserInfoByUserId,
     updateUserInfo,
     deleteUser,
     getCart,
     cartIncreament,
-    cartDecreament
+    cartDecreament,
+    addToCart
 }

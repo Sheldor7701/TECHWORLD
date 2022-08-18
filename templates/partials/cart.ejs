@@ -192,6 +192,10 @@ text-align: center;
  min-width: 20px;
 }
 
+[readonly] {
+  border: 1px solid #ccc;
+  background-color: #eee;
+}
 </style>
 
 </head>
@@ -202,6 +206,7 @@ text-align: center;
     
     
  <div class="Cart-Container" id="user-cart">
+     <div class="cart-list" id="cart-list">
     <div class="Header">
  <h3 class="Heading">Shopping Cart</h3>
  <h5 class="Action">Remove all</h5>
@@ -209,10 +214,7 @@ text-align: center;
 <% for (let product of cart){ %>
         
 <% if(product.QUANTITY>0) { %>
-<script> 
-    var x=product.QUANTITY*product.PRICE;
-    totalPRICE(x);
-</script>
+
 <div class="Cart-Items">
  <div class="image-box">
  <img src="<%= product.IMAGE %>" width=150px height=150px>
@@ -230,6 +232,7 @@ text-align: center;
     <input type="text" class="quantity" name="quantity" id="id <%=product.PRODUCTID%>"  value=<%=product.QUANTITY%> readonly>
     <button class="btn" onclick="Decreament(<%=product.PRODUCTID%>)">-</button>
  </div>
+
 
 </div><% } %>
 <% } %>
@@ -250,7 +253,7 @@ text-align: center;
              pid: productID,
              
          }
-         axios.post('cart/cartIncreament',data).then((da)=>{
+         axios.post(' http://localhost:3000/cart/cartIncreament',data).then((da)=>{
              console.log("-------------done-------------");
 
             console.log(productID);
@@ -259,7 +262,7 @@ text-align: center;
            // document.location.reload();
            let pp= "id "+productID;
            console.log(pp);
-           document.getElementById("id 00"+productID).value = parseInt(document.getElementById("id 00"+productID).value) + 1;
+           document.getElementById("id "+productID).value = parseInt(document.getElementById("id "+productID).value) + 1;
          })
      }
      function Decreament(productID){
@@ -267,7 +270,7 @@ text-align: center;
              pid: productID,
              
          }
-         axios.post('cart/cartDecreament',data).then((da)=>{
+         axios.post('http://localhost:3000/cart/cartDecreament',data).then((da)=>{
              console.log("-------------done-------------");
 
             console.log(productID);
@@ -276,7 +279,7 @@ text-align: center;
            // document.location.reload();
            let pp= "id "+productID;
            console.log(pp);
-           document.getElementById("id 00"+productID).value = parseInt(document.getElementById("id 00"+productID).value) - 1;
+           document.getElementById("id "+productID).value = parseInt(document.getElementById("id "+productID).value) - 1;
          })
      }
  </script>
