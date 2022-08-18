@@ -30,3 +30,33 @@
     });
     }
     </script>
+
+
+                 let data = {
+                 pid: productID,
+                 
+             }
+             axios.post(' http://localhost:3000/cart/cartAdd',data).then((da)=>{
+                 console.log("-------------done-------------");
+    
+                console.log(da.data.PRODUCTID);
+                const para = document.createElement("p");
+        para.innerHTML = "<div class=\"image-box\">"+
+     "<img src=\" <\%=da.data.IMAGE\%> \" width=150px height=150px>"+
+     "</div>"+
+     "<div class=\"about\">"+
+     "<div class=\"title\">"+ 
+      "  <\%=da.data.PRODUCT_NAME\%> "+
+     "</div>"+
+    "<div class=\"amount-remove\">"+
+    "<div class=\"amount\">$ <\%=da.data.PRICE\%> </div>"+
+     "<div class=\"remove\"><u>Remove</u></div></div></div>"+
+    "<div class=\"counter\">"+
+        "<button class=\"btn\" onclick=\"Increament(<\%=da.data.PRODUCTID\%>)\">+</button>"+
+        "<input type=\"text\" class=\"quantity\" name=\"quantity\" id=\"id <\%=da.data.PRODUCTID\%>\"  value=1 readonly>"+
+        "<button class=\"btn\" onclick=\"Decreament(<\%=da.data.PRODUCTID\%>)\">-</button>"+
+     "</div>";
+        
+        // Append to body:
+        document.getElementById("cart-list").appendChild(para);
+             })

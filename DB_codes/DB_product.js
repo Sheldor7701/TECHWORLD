@@ -8,13 +8,14 @@ async function getProductByID(productid) {
         WHERE PRODUCTID = :PRODUCTID
     `
     let typ= (await database.execute(sql1, [productid], database.options)).rows[0];
-    
+    console.log(typ);
     if(typ.TYPE=="LAPTOP"){
         let sql2 = `
         SELECT*
         FROM PRODUCTS NATURAL JOIN LAPTOP
         WHERE PRODUCTID = :PRODUCTID
     `
+    
     return (await database.execute(sql2, [productid], database.options)).rows[0];
     }
     else if(typ.TYPE=="MONITOR"){

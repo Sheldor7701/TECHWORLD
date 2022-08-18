@@ -46,8 +46,9 @@ router.post('/cartAdd',async (req,res)=>{
      await DB_user.addToCart(uid,pid);
      req.session.cart= await DB_user.getCart(uid);
      let product= await DB_product.getProductByID(pid);
-     let da= product;
      
+     const da= product;
+     console.log(da);
      res.send(da);
     // let product="abcd";
     // res.send(product);
