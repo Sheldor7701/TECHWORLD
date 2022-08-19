@@ -54,10 +54,11 @@ async function cartIncreament(userid, productid) {
 }
 async function cartDecreament(userid, productid) {
     let sql = `
-    UPDATE CART
-    SET QUANTITY = QUANTITY-1
-    WHERE USERID = :USERID AND PRODUCTID= :PRODUCTID
-    `
+    BEGIN
+    DECREASE_CART(:USERID,:PRODUCTID);
+    END;
+    
+    `;
     
     return (await database.execute(sql, [ userid,productid ], database.options))
 }
@@ -66,7 +67,7 @@ async function addToCart(userid, productid) {
     BEGIN
     ADD_TO_CART(:USERID,:PRODUCTID);
     END;
-    `
+    `;
     
     return (await database.execute(sql, [ userid,productid ], database.options))
 }
@@ -74,9 +75,9 @@ async function checkCart(userid, productid) {
     let sql = `
     SELECT* 
     FROM CART
-    WHERE USERID= :USEID AND PRODUCTID= :PRODUCTID
+    WHERE USERID= :USERID AND PRODUCTID= :PRODUCTID
     `
-    
+    ;
     let aa= (await database.execute(sql, [ userid,productid ], database.options));
     if(aa.rows.length>0) return true;
     return false;
