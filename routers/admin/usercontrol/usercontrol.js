@@ -1,8 +1,8 @@
 const express = require('express');
 const { redirect } = require('express/lib/response');
-const DB_admin = require('../../DB_codes/DB_admin');
-const DB_product = require('../../DB_codes/DB_product')
-const DB_user = require('../../DB_user/DB_user')
+const DB_product = require('../../../DB_codes/DB_product')
+const DB_user = require('../../../DB_codes/DB_user')
+const DB_admin = require('../../../DB_codes/DB_admin')
 
 const router = express.Router({ mergeParams: true });
 
@@ -21,13 +21,16 @@ router.get('/', async (req, res) => {
     res.render('userlist', data);
 });
 
-router.get('/remove/:userid', async (req, res) => {
+router.post('/remove/:userid', async (req, res) => {
     const userid = req.params.userid;
 
     //database query
      await DB_user.deleteUser(userid);
-     console.log("Successfully deleted");
-
+     let da={
+        userid
+     };
+     res.send(da);
+    
 });
 
 

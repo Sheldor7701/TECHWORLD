@@ -1,8 +1,8 @@
 const express = require('express');
 const { redirect } = require('express/lib/response');
-const DB_admin = require('../../DB_codes/DB_admin');
-const DB_product = require('../../DB_codes/DB_product');
-const DB_user = require('../../DB_user/DB_user');
+const DB_product = require('../../../DB_codes/DB_product')
+const DB_user = require('../../../DB_codes/DB_user')
+const DB_admin = require('../../../DB_codes/DB_admin')
 const router = express.Router({ mergeParams: true });
 
 router.get('/', async (req, res) => {
@@ -20,7 +20,42 @@ router.get('/', async (req, res) => {
     res.render('advertisement', data);
 });
 
+router.get('/remove/:adid', async (req, res) => {
+        
+    //database query
+    const adid= req.params.adid;
+    await DB_admin.deleteAd(adid);
+    const da = {
+        hello: "hello"
+    };
+    res.send(da);
+});
+router.post('/priorityIncreament',async (req,res)=>{
+    
+    const adid= req.body.adid;
+    await DB_admin.adPrioIncreament(adid);
+    let da = {
+        id:"hello"
+    }
+    
+    res.send(da);
+})
+router.post('/priorityDecreament',async (req,res)=>{
+    
+    const adid= req.body.adid;
+    await DB_admin.adPrioDecreament(adid);
+    let da = {
+        id:"hello"
+    }
+    
+    res.send(da);
+})
+router.post('/newAd',async (req,res)=>{
+    
+    await DB_admin.newAd(req.body.productid,req.body.image,req.body.priority, req.body.details, req.body.link);
+    return res.redirect('/admin/advertisement');
 
+})
 
 
 
