@@ -14,6 +14,7 @@ const searchResultsRouter = require('./searchresults/searchresults')
 
 const userRouter = require('./user/user')
 const cartRouter = require('./cart/cart')
+const adminRouter= require('./admin/admin')
 
 
 //!HOME PAGE
@@ -52,7 +53,7 @@ router.use('/logout', logoutRouter)
 router.use('/searchresults', searchResultsRouter)
 router.use('/user', userRouter)
 router.use('/cart',cartRouter)
-
+router.use('/admin', adminRouter);
 
 //!ERRORS
 
