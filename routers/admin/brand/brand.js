@@ -39,7 +39,7 @@ router.get('/:brandid', async (req, res) => {
 });
 router.post('/newBrand',async (req,res)=>{
     
-    await DB_admin.newAd(req.body.name,req.body.logo, req.body.country);
+    await DB_admin.newBrand(req.body.name,req.body.logo, req.body.country);
     return res.redirect('/admin/brand');
 
 })

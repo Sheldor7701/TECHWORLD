@@ -2,93 +2,151 @@
 const database = require('./database')
 
 
-async function getUserInfoByUserId(userid) {
+async function getAllUsers() {
     let sql = `
         SELECT* 
         FROM USERS
         WHERE USERID = :USERID
     `
-    return (await database.execute(sql, [userid], database.options)).rows[0]
+    return (await database.execute(sql, [userid], database.options)).rows
 }
-
-
-
-async function updateUserInfo(userid,username, email,password, address) {
+async function getAllAds() {
     let sql = `
-    UPDATE USERS
-    SET EMAIL = :EMAIL, ADDRESS = :ADDRESS, NAME= :USERNAME, PASSWORD= :PASSWORD
-    WHERE USERID = :USERID
-    `
+        SELECT* 
+        FROM ADVERTISEMENT
     
-    return (await database.execute(sql, [ email, address, username, password, userid ], database.options))
-}
-
-async function deleteUser(userid){
-    let sql = `
-    DELETE FROM USERS 
-    WHERE USERID = :USERID
     `
-    await database.execute(sql, [ userid ], database.options)
+    return (await database.execute(sql, [], database.options)).rows
 }
-async function getCart(userid){
-    let sql= `
-    SELECT *
-    FROM CART NATURAL JOIN PRODUCTS
-    WHERE USERID= :USERID 
-
-    `
-     let ppp=(await database.execute(sql, [userid], database.options)).rows;
-     //console.log(ppp);
-     return ppp;
-
-}
-
-async function cartIncreament(userid, productid) {
-    let sql = `
-    UPDATE CART
-    SET QUANTITY = QUANTITY+1
-    WHERE USERID = :USERID AND PRODUCTID= :PRODUCTID
-    `
-    
-    return (await database.execute(sql, [ userid,productid ], database.options))
-}
-async function cartDecreament(userid, productid) {
+async function deleteAd(adid) {
     let sql = `
     BEGIN
-    DECREASE_CART(:USERID,:PRODUCTID);
+    DELETE_AD(:ADID);
     END;
     
     `;
-    
-    return (await database.execute(sql, [ userid,productid ], database.options))
+     (await database.execute(sql, [adid], database.options));
+     return;
 }
-async function addToCart(userid, productid) {
+async function adPrioIncreament(adid) {
     let sql = `
     BEGIN
-    ADD_TO_CART(:USERID,:PRODUCTID);
+    PRIO_INC(:ADID);
     END;
-    `;
     
-    return (await database.execute(sql, [ userid,productid ], database.options))
+    `;
+     (await database.execute(sql, [adid], database.options));
+     return;
 }
-async function checkCart(userid, productid) {
+
+async function adPrioDecreament(adid) {
     let sql = `
-    SELECT* 
-    FROM CART
-    WHERE USERID= :USERID AND PRODUCTID= :PRODUCTID
-    `
-    ;
-    let aa= (await database.execute(sql, [ userid,productid ], database.options));
-    if(aa.rows.length>0) return true;
-    return false;
+    BEGIN
+    PRIO_DEC(:ADID);
+    END;
+    
+    `;
+     (await database.execute(sql, [adid], database.options));
+     return;
 }
+
+async function newAd(productid,image,priority, details, link) {
+    let sql = `
+    BEGIN
+    NEW_AD(:PRODUCTID,:IMAGE,:PRIORITY,:DETAILS,:LINK);
+    END;
+    
+    `;
+     (await database.execute(sql, [productid,image,priority, details, link], database.options));
+     return;
+}
+
+async function getAllBrands() {
+    let sql = `
+        SELECT* 
+        FROM BRANDS
+        ORDER BY BRANDNAME ASC
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+
+async function brandInfo(brandid) {
+    let sql = `
+        SELECT* 
+        FROM BRANDS
+        WHERE BRANDID = :BRANDID
+    `
+    return (await database.execute(sql, [brandid], database.options)).rows[0]
+}
+
+async function getAllFromBrand(brandid) {
+    let sql = `
+        SELECT* 
+        FROM PRODUCTS
+        WHERE BRANDID = :BRANDID
+        ORDER BY TYPE ASC
+    `
+    return (await database.execute(sql, [brandid], database.options)).rows
+}
+
+async function newBrand(name,logo, country) {
+    let sql = `
+    BEGIN
+    ADD_BRAND(:NAME,:LOGO,:COUNTRY);
+    END;
+    
+    `;
+     (await database.execute(sql, [name,logo, country], database.options));
+     return;
+}
+
+async function getAllNews() {
+    let sql = `
+        SELECT* 
+        FROM BREAKING_NEWS 
+        
+    `
+    return (await database.execute(sql, [], database.options)).rows
+}
+
+async function deleteBn(bnid) {
+    let sql = `
+    BEGIN
+    DELETE_NEWS(:BNID);
+    END;
+    
+    `;
+     (await database.execute(sql, [bnid], database.options));
+     return;
+}
+
+async function addNews(details) {
+    let sql = `
+    BEGIN
+    ADD_NEWS(:DETAILS);
+    END;
+    
+    `;
+     (await database.execute(sql, [details], database.options));
+     return;
+}
+
+
+
 module.exports = {
-    getUserInfoByUserId,
-    updateUserInfo,
-    deleteUser,
-    getCart,
-    cartIncreament,
-    cartDecreament,
-    addToCart,
-    checkCart
+    getAllUsers,
+    getAllAds,
+    deleteAd,
+    adPrioIncreament,
+    adPrioDecreament,
+    newAd,
+    getAllBrands,
+    brandInfo,
+    getAllFromBrand,
+    newBrand,
+    getAllNews,
+    deleteBn,
+    addNews
+
+
 }
