@@ -6,7 +6,7 @@ async function getAllUsers() {
     let sql = `
         SELECT* 
         FROM USERS
-        WHERE USERID = :USERID
+        
     `
     return (await database.execute(sql, [userid], database.options)).rows
 }
