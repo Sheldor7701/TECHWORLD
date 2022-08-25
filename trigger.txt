@@ -1,0 +1,4 @@
+1. rating
+2. brandAdd
+3. product chosen before
+4. remove er hazar hazar procedure

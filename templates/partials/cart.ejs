@@ -234,6 +234,7 @@ text-align: center;
 
 </div><% } %>
 <% } %>
+     </div>
 
 <div class="checkout">
  <div class="total"></div>
@@ -243,7 +244,7 @@ text-align: center;
 
 
 
- </div></div></cart>
+ </div>
 <script >
      
      function Increament(productID){
@@ -277,7 +278,13 @@ text-align: center;
            // document.location.reload();
            let pp= "id "+productID;
            console.log(pp);
-           document.getElementById("id "+productID).value = parseInt(document.getElementById("id "+productID).value) - 1;
+           let element=document.getElementById("id "+productID);
+           element.value = parseInt(element.value) - 1;
+           console.log(element.parentElement.parentElement);
+           if(element.value==0){
+            element.parentElement.parentElement.remove();
+           }
+           console.log("decreament done");
          })
      }
  </script>
@@ -301,4 +308,4 @@ text-align: center;
             }
 		}
 				
-</script>
+</script></cart>
