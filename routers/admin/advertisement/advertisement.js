@@ -52,7 +52,7 @@ router.post('/priorityDecreament',async (req,res)=>{
 })
 router.post('/newAd',async (req,res)=>{
     
-    await DB_admin.newAd(req.body.productid,req.body.image,req.body.priority, req.body.details, req.body.link);
+    await DB_admin.newAd(req.body.type,req.body.productid,req.body.brandid,req.body.productType,req.body.image, req.body.details, req.body.link);
     return res.redirect('/admin/advertisement');
 
 })

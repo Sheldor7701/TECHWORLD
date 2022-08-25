@@ -10,6 +10,26 @@ async function getAllUsers() {
     `
     return (await database.execute(sql, [userid], database.options)).rows
 }
+async function deleteUser(userid) {
+    let sql = `
+    BEGIN
+    DELETE_USER(:USERID);
+    END;
+    
+    `;
+     (await database.execute(sql, [userid], database.options));
+     return;
+}
+async function banUnbanUser(userid) {
+    let sql = `
+    BEGIN
+    BAN_UNBAN_USER(:USERID);
+    END;
+    
+    `;
+     (await database.execute(sql, [userid], database.options));
+     return;
+}
 async function getAllAds() {
     let sql = `
         SELECT* 
@@ -31,7 +51,7 @@ async function deleteAd(adid) {
 async function adPrioIncreament(adid) {
     let sql = `
     BEGIN
-    PRIO_INC(:ADID);
+    AD_PRIO_INC(:ADID);
     END;
     
     `;
@@ -42,7 +62,7 @@ async function adPrioIncreament(adid) {
 async function adPrioDecreament(adid) {
     let sql = `
     BEGIN
-    PRIO_DEC(:ADID);
+    AD_PRIO_DEC(:ADID);
     END;
     
     `;
@@ -50,14 +70,14 @@ async function adPrioDecreament(adid) {
      return;
 }
 
-async function newAd(productid,image,priority, details, link) {
+async function newAd(productid,image, details, link) {
     let sql = `
     BEGIN
-    NEW_AD(:PRODUCTID,:IMAGE,:PRIORITY,:DETAILS,:LINK);
+    NEW_AD(:PRODUCTID,:IMAGE,:DETAILS,:LINK);
     END;
     
     `;
-     (await database.execute(sql, [productid,image,priority, details, link], database.options));
+     (await database.execute(sql, [productid,image, details, link], database.options));
      return;
 }
 
@@ -92,11 +112,21 @@ async function getAllFromBrand(brandid) {
 async function newBrand(name,logo, country) {
     let sql = `
     BEGIN
-    ADD_BRAND(:NAME,:LOGO,:COUNTRY);
+    ADD_BRAND(:BRANDNAME,:LOGO,:COUNTRY);
     END;
     
     `;
      (await database.execute(sql, [name,logo, country], database.options));
+     return;
+}
+async function deleteBrand(brandid) {
+    let sql = `
+    BEGIN
+    DELETE_BRAND(:BRANDID);
+    END;
+    
+    `;
+     (await database.execute(sql, [brandid], database.options));
      return;
 }
 
@@ -130,11 +160,22 @@ async function addNews(details) {
      (await database.execute(sql, [details], database.options));
      return;
 }
-
+async function showHideNews(bnid) {
+    let sql = `
+    BEGIN
+    SHOW_HIDE_NEWS(:BNID);
+    END;
+    
+    `;
+     (await database.execute(sql, [bnid], database.options));
+     return;
+}
 
 
 module.exports = {
     getAllUsers,
+    deleteUser,
+    banUnbanUser,
     getAllAds,
     deleteAd,
     adPrioIncreament,
@@ -144,9 +185,11 @@ module.exports = {
     brandInfo,
     getAllFromBrand,
     newBrand,
+    deleteBrand,
     getAllNews,
     deleteBn,
-    addNews
+    addNews,
+    showHideNews
 
 
 }

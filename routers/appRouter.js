@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         message: 'This is the Home Page',
 
@@ -63,6 +64,7 @@ router.get('*', (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         message: 'Requested page does not exist'
     }
@@ -76,6 +78,7 @@ router.get('/error', (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         message: 'Requested page does not exist'
     }

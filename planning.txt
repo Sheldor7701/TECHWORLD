@@ -4,8 +4,13 @@
 4. breaking news
 5. brand info
 
-
-
+ja ja kora baki:
+1. admin(product)
+2. compare
+3. order confirmation
+4. homepage
+5. review rating
+6. pc builder
 
 
 
