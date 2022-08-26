@@ -61,5 +61,15 @@ router.post('/cartAdd',async (req,res)=>{
     // let product="abcd";
     // res.send(product);
 })
-
+router.get('/viewcart', async (req, res) => {
+    const data = {
+        pageTitle: 'VIEW CART',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+    }
+    return res.render('viewcart',data);
+})
 module.exports = router
