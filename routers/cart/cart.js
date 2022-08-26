@@ -86,4 +86,15 @@ router.get('/checkout', async (req, res) => {
     }
     return res.render('checkout',data);
 })
+router.get('/payment', async (req, res) => {
+    const data = {
+        pageTitle: 'PAYMENT',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin
+        
+    }
+    return res.render('payment',data);
+})
 module.exports = router
