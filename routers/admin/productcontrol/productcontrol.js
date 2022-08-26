@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
         cart: req.session.cart,
         products
     };
-    res.render('Adminproductlist',data);
+    res.render('Adminproductlist',data)
     //database query
 
    // await DB_admin.updateUserInfo(userid,username, email,password, address);
@@ -23,9 +23,18 @@ router.get('/', async (req, res) => {
 
     //res.redirect('/user');
 });
+
 router.post('/addProduct/:type', async (req, res) => {
-    const type = req.params.type;
-    
+    const type= (req.params.type).toLowerCase().trim();
+    const data = {
+        pageTitle:"ADD PRODUCTS",
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+    };
+    res.render('Add'+type,data)
     //database query
 
    // await DB_admin.updateUserInfo(userid,username, email,password, address);
