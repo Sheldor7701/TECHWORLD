@@ -43,14 +43,10 @@ router.post('/cartAdd',async (req,res)=>{
     
     const pid= req.body.pid;
     const uid= req.session.userid;
-    console.log(pid," hay re pid");
-    const exists= await DB_cart.checkCart(uid,pid);
-    if(!exists)
-     {await DB_cart.addToCart(uid,pid);
-     req.session.cart= await DB_cart.getCart(uid);}
-     else{
-         console.log("found");
-     }
+
+     await DB_cart.addToCart(uid,pid);
+     req.session.cart= await DB_cart.getCart(uid);
+
      let product= await DB_product.getProductByID(pid);
      
      const da={
@@ -97,4 +93,20 @@ router.post('/payment', async (req, res) => {
     }
     return res.render('payment',data);
 })
+
+router.post('/done', async (req, res) => {
+
+    await DB_cart.buyAll(req.session.userid);
+    const data = {
+        pageTitle: 'THANK YOU',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin
+        
+    }
+
+    return res.render('thankyou',data);
+})
+
 module.exports = router
