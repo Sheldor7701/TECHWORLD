@@ -4,7 +4,25 @@ const DB_product = require('../../../DB_codes/DB_product')
 const DB_user = require('../../../DB_codes/DB_user')
 const DB_admin = require('../../../DB_codes/DB_admin')
 const router = express.Router({ mergeParams: true });
+router.post('/', async (req, res) => {
+    const products = DB_product.allProduct();
+    const data = {
+        pageTitle:"ALL PRODUCTS",
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+        products
+    };
+    res.render('Adminproductlist',data);
+    //database query
 
+   // await DB_admin.updateUserInfo(userid,username, email,password, address);
+
+
+    //res.redirect('/user');
+});
 router.post('/addProduct/:type', async (req, res) => {
     const type = req.params.type;
     

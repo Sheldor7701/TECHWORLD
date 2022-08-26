@@ -1,6 +1,13 @@
 const database = require('./database')
 
+async function allProduct(){
+    let sql = `
+    SELECT *
+     FROM PRODUCTS
+       `
+    return (await database.execute(sql, [], database.options)).rows
 
+}
 async function getProductByID(productid) {
     let sql1 = `
         SELECT TYPE
@@ -41,7 +48,7 @@ async function getProductByType(type) {
 
 
 module.exports = {
-
+    allProduct,
     getProductByID,
     getProductBySearch,
     getProductByType
