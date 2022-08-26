@@ -3,7 +3,7 @@ const { redirect } = require('express/lib/response');
 const DB_product = require('../../../DB_codes/DB_product')
 const DB_user = require('../../../DB_codes/DB_user')
 const DB_admin = require('../../../DB_codes/DB_admin')
-const DB_brand = require('../../../DB_codes/DB_brand')
+const DB_brand = require('../../../DB_codes/DB_brands')
 
 const router = express.Router({ mergeParams: true });
 

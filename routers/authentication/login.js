@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const DB_auth = require('../../DB_codes/DB_auth')
 const router = express.Router({ mergeParams: true })
 const DB_user = require('../../DB_codes/DB_user');
+const DB_cart = require('../../DB_codes/DB_cart');
 
 
 router.get('/', async (req, res) => {
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
     req.session.username=user[0].NAME;
     req.session.isAuth = true;
     req.session.isAdmin= user[0].IS_ADMIN;
-    req.session.cart= await DB_user.getCart(user[0].USERID);
+    req.session.cart= await DB_cart.getCart(user[0].USERID);
     res.redirect('/');
 })
 

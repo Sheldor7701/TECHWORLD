@@ -23,7 +23,6 @@ router.get('/', async (req, res) => {
 
     
     //database query
-    const userInfo = await DB_user.getUserInfoByUserId(userid);
     //error checking
     const data = {
         pageTitle: 'Admin Info',
@@ -31,7 +30,7 @@ router.get('/', async (req, res) => {
         userid: req.session.userid,
         username: req.session.username,
         cart: req.session.cart,
-        userInfo
+        
     }
        res.render('admin', data);
         }
