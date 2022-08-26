@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     //res.redirect('/user');
 });
 
-router.post('/addProduct/:type', async (req, res) => {
+router.get('/addProduct/:type', async (req, res) => {
     const type= (req.params.type).toLowerCase().trim();
     const data = {
         pageTitle:"ADD PRODUCTS",
