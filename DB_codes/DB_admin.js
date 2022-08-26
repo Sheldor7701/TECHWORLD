@@ -8,7 +8,7 @@ async function getAllUsers() {
         FROM USERS
         
     `
-    return (await database.execute(sql, [userid], database.options)).rows
+    return (await database.execute(sql, [], database.options)).rows
 }
 async function deleteUser(userid) {
     let sql = `

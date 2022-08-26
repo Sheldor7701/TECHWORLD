@@ -46,12 +46,12 @@
     </style>
     
     <body>
-        /*for loop start*/
+    <% for (let user of users){ %>
         <div class="card">
             <img class="img" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png">
-            <div class="txt">USER NAME<br>USER LOCATION</div>
+            <div class="txt"><%= user.NAME %><br><%= user.EMAIL %><br><%= user.ADDRESS %></div>
             <button class="btn">BAN</button>
             <button class="btn">REMOVE BAN</button>
         </div>
-        /*for loop end*/
+    <% } %>
     </body>

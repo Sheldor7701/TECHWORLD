@@ -2,7 +2,7 @@
     .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 80vw;
-    height: 40vh;
+    height: 50vh;
     margin-bottom: 2vh;
     margin-left: 9vw;
     text-align: left;
@@ -15,20 +15,20 @@
     .img {
     float: left;
     width: 80vw;
-    max-height: 30vh;
+    max-height: 35vh;
     }
     
     .txt {
     float: left;
     margin-top:1vh;
-    max-width: 60vw;
+    max-width: 50vw;
     max-height: 20vh;
     padding-left: 2vw;
     font-size: 1rem;
     }
     .btn{
      float:right;
-     margin-top:4vh;
+     margin-top:8vh;
      margin-right: 1vw;
      width: 13vw;
      height: 5vh;
@@ -65,12 +65,12 @@
     
     <body>
         <div><button class="add-btn"><div class="plus">+</div> ADD ADVERTISE</button></div>
-        /*for loop start*/
+    <% for (let ad of ads){ %>    
         <div class="card">
-            <img class="img" src="https://thumbs.dreamstime.com/b/flat-isolated-vector-eps-illustration-icon-minimal-design-long-shadow-add-remove-shop-product-cart-118523592.jpg">
-            <div class="txt">ADVERTISE DETAILS</div>
+            <img class="img" src="<%= ad.IMAGE %>">
+            <div class="txt"><%= ad.DETAILS %></div>
             <button class="btn">REMOVE</button>
             <button class="btn">UPDATE</button>
         </div>
-        /*for loop end*/
+    <% } %>
     </body>

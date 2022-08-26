@@ -26,7 +26,7 @@
     padding-top: 7vh;
     font-size: 1rem;
     }
-    .btn{
+    .bttn{
      float:right;
      margin-top:14vh;
      margin-right: 1vw;
@@ -39,7 +39,7 @@
      font-size: 0.8rem;
      font-family: �Open Sans�;
     }
-    .btn:hover {
+    .bttn:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
     .add-btn{
@@ -65,10 +65,12 @@
     
     <body>
         <div><button class="add-btn"><div class="plus">+</div> ADD BRAND</button></div>
-        /*for loop start*/
+    <% for (let brand of brands){ %>
         <div class="card">
-            <img class="img" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png">
-            <div class="txt">BRAND NAME<br>BRAND DETAILS</div>
+            <img class="img" src="<%= brand.LOGO %>">
+            <div class="txt"><%= brand.BRANDNAME %><br><%= brand.COUNTRY %></div>
+            <button class="bttn">REMOVE</button>
+            <button class="bttn">UPDATE</button>
         </div>
-        /*for loop end*/
+    <% } %>
     </body>
