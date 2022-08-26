@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         news
     };
@@ -44,6 +45,19 @@ router.post('/newsAdd',async (req,res)=>{
      res.send(da);
     // let product="abcd";
     // res.send(product);
+})
+router.post('/newsUpdate/:nid',async (req,res)=>{
+    const bn_id= req.params.nid;
+    const details= req.body.details;
+   
+    await DB_admin.updateNews(bn_id,details);
+
+     
+     const da={
+         hello: "HELLO"
+     };
+     res.send(da);
+
 })
 
 

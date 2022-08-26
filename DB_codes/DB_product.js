@@ -7,27 +7,17 @@ async function getProductByID(productid) {
         FROM PRODUCTS 
         WHERE PRODUCTID = :PRODUCTID
     `
-    let typ= (await database.execute(sql1, [productid], database.options)).rows[0];
+    const typ= (await database.execute(sql1, [productid], database.options)).rows[0].TYPE;
     console.log(typ);
-    if(typ.TYPE=="LAPTOP"){
-        let sql2 = `
-        SELECT*
-        FROM PRODUCTS NATURAL JOIN LAPTOP
-        WHERE PRODUCTID = :PRODUCTID
-    `
     
-    return (await database.execute(sql2, [productid], database.options)).rows[0];
-    }
-    else if(typ.TYPE=="MONITOR"){
-        
         let sql2 = `
         SELECT*
-        FROM PRODUCTS NATURAL JOIN MONITOR
+        FROM PRODUCTS NATURAL JOIN ${typ}
         WHERE PRODUCTID = :PRODUCTID
     `
-    return (await database.execute(sql2, [productid], database.options)).rows[0];
 
-    }
+    return (await database.execute(sql2, [productid], database.options)).rows[0];
+    
 }
 
 async function getProductBySearch(string) {
@@ -44,34 +34,15 @@ async function getProductByType(type) {
     let sql = `
     SELECT *
      FROM PRODUCTS
-      WHERE TYPE= :type `
+      WHERE TYPE= :TYPE `
     return (await database.execute(sql, [type], database.options)).rows
 }
-async function getNewlyReleasedProduct() {
-    let sql = `
-        SELECT*
-        FROM PRODUCTS
-        ORDER BY RELEASE_DATE DESC
-        
-    `
-    return (await database.execute(sql, [], database.options)).rows
-}
-async function getTopProducts() {
-    let sql = `
-        SELECT *
-        FROM PRODUCTS
-        ORDER BY RATING DESC
-        
-    `
-    return (await database.execute(sql, [], database.options)).rows
-}
+
 
 
 module.exports = {
 
     getProductByID,
     getProductBySearch,
-    getProductByType,
-    getTopProducts,
-    getNewlyReleasedProduct
+    getProductByType
 }

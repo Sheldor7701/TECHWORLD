@@ -2,18 +2,19 @@ const express = require('express');
 const { redirect } = require('express/lib/response');
 const DB_product = require('../../../DB_codes/DB_product')
 const DB_user = require('../../../DB_codes/DB_user')
-const DB_admin = require('../../../DB_codes/DB_admin')
+const DB_advertisement = require('../../../DB_codes/DB_advertisement')
 const router = express.Router({ mergeParams: true });
 
 router.get('/', async (req, res) => {
         
     //database query
-    const ads=await DB_admin.getAllAds();
+    const ads=await DB_advertisement.getAllAds();
     const data = {
         pageTitle: 'Advertisements',
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
+        isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         ads
     };
@@ -24,7 +25,7 @@ router.get('/remove/:adid', async (req, res) => {
         
     //database query
     const adid= req.params.adid;
-    await DB_admin.deleteAd(adid);
+    await DB_advertisement.deleteAd(adid);
     const da = {
         hello: "hello"
     };
@@ -33,7 +34,7 @@ router.get('/remove/:adid', async (req, res) => {
 router.post('/priorityIncreament',async (req,res)=>{
     
     const adid= req.body.adid;
-    await DB_admin.adPrioIncreament(adid);
+    await DB_advertisement.adPrioIncreament(adid);
     let da = {
         id:"hello"
     }
@@ -43,7 +44,7 @@ router.post('/priorityIncreament',async (req,res)=>{
 router.post('/priorityDecreament',async (req,res)=>{
     
     const adid= req.body.adid;
-    await DB_admin.adPrioDecreament(adid);
+    await DB_advertisement.adPrioDecreament(adid);
     let da = {
         id:"hello"
     }
@@ -52,12 +53,23 @@ router.post('/priorityDecreament',async (req,res)=>{
 })
 router.post('/newAd',async (req,res)=>{
     
-    await DB_admin.newAd(req.body.type,req.body.productid,req.body.brandid,req.body.productType,req.body.image, req.body.details, req.body.link);
-    return res.redirect('/admin/advertisement');
+    await DB_advertisement.newAd(req.body.type,req.body.productid,req.body.brandid,req.body.productType,req.body.image, req.body.details, req.body.link);
+    return res.redirect('/advertisement/advertisement');
 
 })
 
+router.post('/adUpdate/:adid',async (req,res)=>{
 
+   
+    await DB_advertisement.updateAd(req.params.adid,req.body.type,req.body.productid,req.body.brandid,req.body.productType,req.body.image, req.body.details, req.body.link);
+
+     
+     const da={
+         hello: "HELLO"
+     };
+     res.send(da);
+
+})
 
 
 module.exports = router

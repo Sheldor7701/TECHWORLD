@@ -2,6 +2,7 @@ const express = require('express');
 const validator = require('validator')
 const { redirect } = require('express/lib/response');
 const DB_user = require('../../DB_codes/DB_user');
+const DB_admin = require('../../DB_codes/DB_admin');
 const router = express.Router({ mergeParams: true });
 
 
@@ -70,7 +71,7 @@ router.get('/:userid/delete', async (req, res) => {
     if (userid != loggedinAs) return res.redirect('/error');
     
     //database query
-     await DB_user.deleteUser(userid);
+     await DB_admin.deleteUser(userid);
      console.log("Successfully deleted");
 
     req.session.destroy();

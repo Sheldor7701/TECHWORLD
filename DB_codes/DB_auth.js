@@ -12,19 +12,15 @@ async function getUserByEmail(email) {
     return (await database.execute(sql, [email], database.options)).rows
 }
 
-async function insertAccountIntoDB(username, email, password, address) {
+async function insertAccountIntoDB(name, email, password, address) {
     let sql = `
-    INSERT INTO
-    USERS(USERNAME,EMAIL,PASSWORD,ADDRESS)       
-             VALUES(
-                    
-        :USERNAME,
-        :EMAIL,
-        :PASSWORD,
-        :ADDRESS
-       ) ;
-    `
-    return (await database.execute(sql, [username, email, password,address], database.options))
+    BEGIN
+    INSERT_USER(:NAME,:EMAIL,:PASSWORD,:ADDRESS);
+    END;
+    
+    `;
+     (await database.execute(sql, [name, email, password, address], database.options));
+     return;
 }
 
 
