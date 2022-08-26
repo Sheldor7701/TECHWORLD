@@ -21,7 +21,22 @@ router.get('/', async (req, res) => {
     };
     res.render('brandlist', data);
 });
-router.get('/:brandid', async (req, res) => {
+
+router.post('/newBrand',async (req,res)=>{
+    
+    await DB_brand.newBrand(req.body.name,req.body.logo, req.body.country);
+    return res.redirect('/admin/brand');
+
+})
+
+router.post('/updateBrand/:brandid',async (req,res)=>{
+    
+    await DB_brand.updateBrand(req.params.brandid,req.body.name,req.body.logo, req.body.country);
+    return res.redirect('/admin/brand');
+
+})
+
+router.get('brandinfo/:brandid', async (req, res) => {
         
     //database query
     const brandid= req.params.brandid;
@@ -39,18 +54,4 @@ router.get('/:brandid', async (req, res) => {
     };
     res.render('brand', data);
 });
-router.post('/newBrand',async (req,res)=>{
-    
-    await DB_brand.newBrand(req.body.name,req.body.logo, req.body.country);
-    return res.redirect('/admin/brand');
-
-})
-
-router.post('/updateBrand/:brandid',async (req,res)=>{
-    
-    await DB_brand.updateBrand(req.params.brandid,req.body.name,req.body.logo, req.body.country);
-    return res.redirect('/admin/brand');
-
-})
-
 module.exports = router
