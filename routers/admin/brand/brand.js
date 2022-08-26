@@ -36,7 +36,7 @@ router.post('/updateBrand/:brandid',async (req,res)=>{
 
 })
 
-router.get('brandinfo/:brandid', async (req, res) => {
+router.get('/brandinfo/:brandid', async (req, res) => {
         
     //database query
     const brandid= req.params.brandid;
