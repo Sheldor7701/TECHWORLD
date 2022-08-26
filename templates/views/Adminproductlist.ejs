@@ -65,14 +65,14 @@
     
     <body>
         <div><button class="add-bttn" data-bs-toggle="modal" data-bs-target="#myModal"><div class="pls">+</div> ADD PRODUCT</button></div>
-        /*for loop start*/
+        <% for (let product of productlist){ %>
         <div class="card1">
-            <img class="img" src="https://thumbs.dreamstime.com/b/flat-isolated-vector-eps-illustration-icon-minimal-design-long-shadow-add-remove-shop-product-cart-118523592.jpg">
-            <div class="txt">PRODUCT NAME</div>
+            <img class="img" src="<%= product.IMAGE %>">
+            <div class="txt"><%= product.PRODUCT_NAME %></div>
             <button class="bttn">REMOVE</button>
             <button class="bttn">UPDATE</button>
         </div>
-        /*for loop end*/
+        <% } %>
         <p id="demo"></p>
         
     
