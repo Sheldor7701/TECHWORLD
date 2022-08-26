@@ -97,13 +97,15 @@ router.post('/payment', async (req, res) => {
 router.post('/done', async (req, res) => {
 
     await DB_cart.buyAll(req.session.userid);
+    req.session.cart= [];
+
     const data = {
         pageTitle: 'THANK YOU',
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
-        isAdmin: req.session.isAdmin
-        
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart
     }
 
     return res.render('thankyou',data);
