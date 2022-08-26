@@ -3,6 +3,7 @@ const validator = require('validator')
 const { redirect } = require('express/lib/response');
 const DB_cart = require('../../DB_codes/DB_cart');
 const DB_product = require('../../DB_codes/DB_product')
+const DB_user = require('../../DB_codes/DB_user')
 const router = express.Router({ mergeParams: true });
 
 router.get('/update', async (req, res) => {
@@ -71,5 +72,18 @@ router.get('/viewcart', async (req, res) => {
         cart: req.session.cart,
     }
     return res.render('viewcart',data);
+})
+router.get('/checkout', async (req, res) => {
+    const user= await DB_user.getUserInfoByUserId(req.session.userid);
+    const data = {
+        pageTitle: 'CHECKOUT',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+        user
+    }
+    return res.render('checkout',data);
 })
 module.exports = router
