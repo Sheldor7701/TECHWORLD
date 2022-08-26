@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
         cart: req.session.cart,
         userInfo
     }
-       res.render('admincontrol', data);
+       res.render('admin', data);
         }
     else return res.redirect('/login');
 })
@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 router.use('/advertisement', adsRouter);
 router.use('/brand', brandRouter);
 router.use('/breakingnews', breakingNewsRouter);
-router.use('/user', userControlRouter);
+router.use('/userlist', userControlRouter);
 router.use('/product', productControlRouter);
 
 

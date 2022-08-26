@@ -3,7 +3,6 @@ const database = require('./database')
 
 
 
-
 async function getAllNews() {
     let sql = `
         SELECT* 
