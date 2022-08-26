@@ -86,7 +86,7 @@ router.get('/checkout', async (req, res) => {
     }
     return res.render('checkout',data);
 })
-router.get('/payment', async (req, res) => {
+router.post('/payment', async (req, res) => {
     const data = {
         pageTitle: 'PAYMENT',
         isAuth: req.session.isAuth,
