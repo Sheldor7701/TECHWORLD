@@ -34,6 +34,7 @@ router.get('/addProduct/:type', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
     };
+    res.send(data);
     res.render('Add'+type,data)
     //database query
 
