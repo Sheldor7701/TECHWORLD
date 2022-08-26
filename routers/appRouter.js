@@ -58,18 +58,18 @@ router.use('/admin', adminRouter);
 
 //!ERRORS
 
-// router.get('*', (req, res) => {
-//     const data = {
-//         pageTitle: '404',
-//         isAuth: req.session.isAuth,
-//         userid: req.session.userid,
-//         username: req.session.username,
-//         isAdmin: req.session.isAdmin,
-//         cart: req.session.cart,
-//         message: 'Requested page does not exist'
-//     }
-//     res.status(400).render('error', data)
-// })
+router.get('*', (req, res) => {
+    const data = {
+        pageTitle: '404',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+        message: 'Requested page does not exist'
+    }
+    res.status(400).render('error', data)
+})
 
 router.get('/error', (req, res) => {
 

@@ -7,17 +7,35 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
+<style>
+    .svk{
+        width:20vw; 
+        word-wrap:break-word; 
+        display:inline-block;
+        text-align: center;
+    }
+
+    .container-svk{
+        width: 80vw;
+    }
+
+    .svk-1{
+        width:20vw; 
+        word-wrap:break-word; 
+        display:inline-block;
+        text-align: center;
+    }
+</style>
 
 
-
-<div class="container bg-white rounded-top mt-5" id="zero-pad">
+<div class="container-svk" id="zero-pad">
     <div class="row d-flex justify-content-center">
         <div class="col-lg-10 col-12 pt-3">
             <div class="d-flex flex-column pt-4">
                 <div><h5 class="text-uppercase font-weight-normal">SHOPPING CART</h5></div>
             </div>
             <div class="d-flex flex-row px-lg-5 mx-lg-5 mobile" id="heading">
-                <div class="px-lg-5 mr-lg-5" id="produc">PRODUCTS</div>
+                <div class="svk-1" id="produc">PRODUCTS</div>
                 <div class="px-lg-5 ml-lg-5" id="prc">PRICE</div>
                 <div class="px-lg-5 ml-lg-1" id="quantity">QUANTITY</div>
                 <div class="px-lg-5 ml-lg-3" id="total">TOTAL</div>
@@ -27,7 +45,7 @@
             <div class="d-flex flex-row justify-content-between align-items-center pt-lg-4 pt-2 pb-3 border-bottom mobile">
                 <div class="d-flex flex-row align-items-center">
                     <div><img src="<%=product.IMAGE%>" width="150" height="150" alt="" id="image"></div>
-                    <div class="d-flex flex-column pl-md-0 pl-1">
+                    <div class="svk">
                         <div><%=product.PRODUCT_NAME%></div>
                     </div>                    
                 </div>
@@ -49,7 +67,7 @@
         <div class="col-lg-10 col-12">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <button class="btn btn-sm bg-light border border-dark">GO BACK</button>
+                    <a href="/login"><button class="btn btn-sm bg-light border border-dark">GO BACK</button></a>
                 </div>
                 <div class="px-md-0 px-1" id="footer-font">
                     <b class="pl-md-4">SUBTOTAL<span class="pl-md-4">$61.78</span></b>
