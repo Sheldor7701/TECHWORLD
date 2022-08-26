@@ -65,7 +65,7 @@
     
     <body>
         <div><button class="add-bttn" data-bs-toggle="modal" data-bs-target="#myModal"><div class="pls">+</div> ADD PRODUCT</button></div>
-        <% for (let product of productlist){ %>
+        <% for (let product of products){ %>
         <div class="card1">
             <img class="img" src="<%= product.IMAGE %>">
             <div class="txt"><%= product.PRODUCT_NAME %></div>
@@ -117,7 +117,7 @@
         </select>
     </div>
     <div class="modal-footer">
-    <button type="button" class="btn btn-primary">ADD</button>
+    <button type="button" class="btn btn-primary" onclick="myFunction()">ADD</button>
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
     </div>
 </div>
@@ -129,8 +129,16 @@
 
 <script>
     function myFunction() {
-        var x = document.getElementById("exampleSelect1").value;
-        document.getElementById("demo").innerHTML = x;
+        var type = document.getElementById("exampleSelect1").value; 
+        
+        let data = {
+             hello: "hello",
+         }
+
+        axios.post('http://localhost:3000/admin/product/addProduct/'+type,data).then((da)=>{
+             console.log("-------------done-------------");
+         })        
+
     }
 </script>
     </body>

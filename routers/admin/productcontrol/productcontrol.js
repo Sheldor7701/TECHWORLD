@@ -4,8 +4,8 @@ const DB_product = require('../../../DB_codes/DB_product')
 const DB_user = require('../../../DB_codes/DB_user')
 const DB_admin = require('../../../DB_codes/DB_admin')
 const router = express.Router({ mergeParams: true });
-router.post('/', async (req, res) => {
-    const products = DB_product.allProduct();
+router.get('/', async (req, res) => {
+    const products = await DB_product.allProduct();
     const data = {
         pageTitle:"ALL PRODUCTS",
         isAuth: req.session.isAuth,
