@@ -34,15 +34,25 @@ router.get('/addProduct/:type', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
     };
-    res.send(data);
     res.render('Add'+type,data)
-    //database query
 
-   // await DB_admin.updateUserInfo(userid,username, email,password, address);
-
-
-    //res.redirect('/user');
 });
+// router.post('/addProduct/:type', async (req, res) => {
+//     const type= (req.params.type).toLowerCase().trim();
+//     await DB_product.addProduct(type,req.body);
+//     const products = await DB_product.allProduct();
+//     const data = {
+//         pageTitle:"ADD PRODUCTS",
+//         isAuth: req.session.isAuth,
+//         userid: req.session.userid,
+//         username: req.session.username,
+//         isAdmin: req.session.isAdmin,
+//         cart: req.session.cart,
+//         products
+//     };
+//     res.render('Adminproductlist',data)
+
+// });
 
 
 router.get('/changeproduct/:type', async (req, res) => {
@@ -60,6 +70,21 @@ router.get('/changeproduct/:type', async (req, res) => {
     };
     res.render('changeproduct', data);
 });
+// router.get('/removeproduct/:productid', async (req, res) => {
+        
+//     //database query
+//     const pro= req.params.type;
+//     const products=await DB_product.removeProduct(type);
+//     const data = {
+//         pageTitle: type+'S',
+//         isAuth: req.session.isAuth,
+//         userid: req.session.userid,
+//         username: req.session.username,
+//         cart: req.session.cart,
+//         products
+//     };
+//     res.render('changeproduct', data);
+// });
 
 
 module.exports = router

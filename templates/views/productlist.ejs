@@ -88,7 +88,7 @@ clear: both;
              axios.post(' http://localhost:3000/cart/cartAdd',data).then((da)=>{
                  console.log("-------------done-------------");
     
-                if(da.data.exists){
+                if(da.data.exists>0){
                     Increament(productID);
                     return;
                 }
