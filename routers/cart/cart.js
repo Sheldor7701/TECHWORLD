@@ -15,10 +15,10 @@ router.post('/cartIncreament',async (req,res)=>{
     
     const pid= req.body.pid;
     const uid= req.session.userid;
-    console.log(pid," inc er vitor");
+    //console.log(pid," inc er vitor");
     await DB_cart.cartIncreament(uid,pid);
     req.session.cart= await DB_cart.getCart(uid);
-    console.log("doneeeee");
+    //console.log("doneeeee");
     let da = {
         id:"hello"
     }
@@ -32,7 +32,7 @@ router.post('/cartDecreament',async (req,res)=>{
 
     await DB_cart.cartDecreament(uid,pid);
     req.session.cart= await DB_cart.getCart(uid);
-    console.log("doneeeee");
+    //console.log("doneeeee");
     let da = {
         id:"hello"
     }
@@ -43,17 +43,19 @@ router.post('/cartAdd',async (req,res)=>{
     
     const pid= req.body.pid;
     const uid= req.session.userid;
+    let exists=await DB_cart.checkCart(uid,pid);
 
      await DB_cart.addToCart(uid,pid);
+     //console.log(exists);
      req.session.cart= await DB_cart.getCart(uid);
 
      let product= await DB_product.getProductByID(pid);
      
      const da={
-         exists,
-          product
+        exists,
+        product
      };
-     console.log(da);
+     //console.log(da);
      res.send(da);
     // let product="abcd";
     // res.send(product);

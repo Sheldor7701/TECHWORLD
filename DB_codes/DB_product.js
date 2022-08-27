@@ -15,7 +15,7 @@ async function getProductByID(productid) {
         WHERE PRODUCTID = :PRODUCTID
     `
     const typ= (await database.execute(sql1, [productid], database.options)).rows[0].TYPE;
-    console.log(typ);
+    //console.log(typ);
     
         let sql2 = `
         SELECT*
