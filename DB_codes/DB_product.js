@@ -51,5 +51,6 @@ module.exports = {
     allProduct,
     getProductByID,
     getProductBySearch,
-    getProductByType
+    getProductByType,
+    addProduct
 }
