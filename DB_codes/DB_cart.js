@@ -91,6 +91,18 @@ async function orderHistory(userid){
      return ppp;
 
 }
+async function previouslyChosen(userid){
+    let sql= `
+    SELECT *
+    FROM PRODUCT_CHOSEN NATURAL JOIN PRODUCTS
+    WHERE USERID= :USERID 
+
+    `
+     let ppp=(await database.execute(sql, [userid], database.options)).rows;
+     //console.log(ppp);
+     return ppp;
+
+}
 
 module.exports = {
     getCart,
@@ -99,5 +111,6 @@ module.exports = {
     addToCart,
     checkCart,
     buyAll,
-    orderHistory
+    orderHistory,
+    previouslyChosen
 }

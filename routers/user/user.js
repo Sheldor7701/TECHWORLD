@@ -27,6 +27,7 @@ router.get('/:userid', async (req, res) => {
     //database query
     const products = await DB_cart.orderHistory(userid);
     const userInfo = await DB_user.getUserInfoByUserId(userid);
+    
     //error checking
     const data = {
         pageTitle: 'Profile',
@@ -57,7 +58,7 @@ router.get('/update', async (req, res) => {
         cart: req.session.cart,
         userInfo
     }
-    res.render('userprofile', data);
+    res.render('updateuserprofile', data);
 })
 
 
