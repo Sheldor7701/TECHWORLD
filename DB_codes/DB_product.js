@@ -1,6 +1,6 @@
 const database = require('./database')
 
-async function allProduct(){
+async function allProduct() {
     let sql = `
     SELECT *
      FROM PRODUCTS
@@ -14,17 +14,17 @@ async function getProductByID(productid) {
         FROM PRODUCTS 
         WHERE PRODUCTID = :PRODUCTID
     `
-    const typ= (await database.execute(sql1, [productid], database.options)).rows[0].TYPE;
+    const typ = (await database.execute(sql1, [productid], database.options)).rows[0].TYPE;
     //console.log(typ);
-    
-        let sql2 = `
+
+    let sql2 = `
         SELECT*
         FROM PRODUCTS NATURAL JOIN ${typ}
         WHERE PRODUCTID = :PRODUCTID
     `
 
     return (await database.execute(sql2, [productid], database.options)).rows[0];
-    
+
 }
 
 async function getProductBySearch(string) {
@@ -45,12 +45,96 @@ async function getProductByType(type) {
     return (await database.execute(sql, [type], database.options)).rows
 }
 
+async function addProduct(TYPE, PRODUCT) {
+    let FUNC = 'ADD_' + TYPE;
 
+    switch (TYPE) {
+        case 'MOTHERBOARD':
+            {
+                let sql = `
+            BEGIN
+            ${FUNC}(
+                ${PRODUCT.PRICE},
+                ${PRODUCT.IMAGE},
+                ${PRODUCT.STOCK},
+                ${PRODUCT.WARRANTY},
+                ${PRODUCT.BRANDID},
+                ${PRODUCT.PRODUCT_NAME},
+                ${PRODUCT.RELEASE_DATE},
+                ${PRODUCT.RATING},
+                ${PRODUCT.TYPE},
+                ${PRODUCT.DETAILS},                
+                ${PRODUCT.CHIPSET} ,
+                ${PRODUCT.FORM_FACTOR} ,
+                ${PRODUCT.AUDIO} ,
+                ${PRODUCT.PCI},
+                ${PRODUCT.SUPPORTED_SOFTWARE} ,
+                ${PRODUCT.SLOTS} ,
+                ${PRODUCT.SUPPORTED_MEMORY} ,
+                ${PRODUCT.MAXIMUM_MEMORY} ,
+                ${PRODUCT.GRAPHICS} ,
+                ${PRODUCT.HDMI} ,
+                ${PRODUCT.USB_TYPE} ,
+                ${PRODUCT.LAN_PORTS});
+            END;
+            `;
+            return (await database.execute(sql, [], database.options));
+            
+            }
+        
+
+    }
+
+    
+}
+
+async function updateProduct(TYPE, PRODUCT) {
+    let FUNC = 'UPDATE_' + TYPE;
+
+    switch (TYPE) {
+        case 'MOTHERBOARD':
+            {
+                let sql = `
+            BEGIN
+            ${FUNC}(${PRODUCT.PRODUCTID},
+                ${PRODUCT.PRICE},
+                ${PRODUCT.IMAGE},
+                ${PRODUCT.STOCK},
+                ${PRODUCT.WARRANTY},
+                ${PRODUCT.BRANDID},
+                ${PRODUCT.PRODUCT_NAME},
+                ${PRODUCT.RELEASE_DATE},
+                ${PRODUCT.RATING},
+                ${PRODUCT.TYPE},
+                ${PRODUCT.DETAILS},                
+                ${PRODUCT.CHIPSET} ,
+                ${PRODUCT.FORM_FACTOR} ,
+                ${PRODUCT.AUDIO} ,
+                ${PRODUCT.PCI},
+                ${PRODUCT.SUPPORTED_SOFTWARE} ,
+                ${PRODUCT.SLOTS} ,
+                ${PRODUCT.SUPPORTED_MEMORY} ,
+                ${PRODUCT.MAXIMUM_MEMORY} ,
+                ${PRODUCT.GRAPHICS} ,
+                ${PRODUCT.HDMI} ,
+                ${PRODUCT.USB_TYPE} ,
+                ${PRODUCT.LAN_PORTS});
+            END;
+            `;
+            return (await database.execute(sql, [], database.options));
+            
+            }
+
+    }
+
+   
+}
 
 module.exports = {
     allProduct,
     getProductByID,
     getProductBySearch,
     getProductByType,
-    addProduct
+    addProduct,
+    updateProduct
 }

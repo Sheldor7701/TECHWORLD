@@ -38,18 +38,8 @@ router.get('/addProduct/:type', async (req, res) => {
 
 });
 router.post('/addProduct/:type', async (req, res) => {
-    const TYPE= (req.params.type).toLowerCase().trim();
+    const TYPE= (req.params.type).toUpperCase().trim();
     await DB_product.addProduct(TYPE,req.body);
-    // const products = await DB_product.allProduct();
-    // const data = {
-    //     pageTitle:"ADD PRODUCTS",
-    //     isAuth: req.session.isAuth,
-    //     userid: req.session.userid,
-    //     username: req.session.username,
-    //     isAdmin: req.session.isAdmin,
-    //     cart: req.session.cart,
-    //     products
-    // };
     res.redirect('/admin/product');
 
 });
