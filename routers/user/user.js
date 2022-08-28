@@ -21,7 +21,9 @@ router.get('/update', async (req, res) => {
   
     
     //database query
+    const products = await DB_cart.orderHistory(userid);
     const userInfo = await DB_user.getUserInfoByUserId(userid);
+    const prev_chosen_products= await DB_cart.previouslyChosen(userid);
     //error checking
     const data = {
         pageTitle: 'Profile',
@@ -30,7 +32,9 @@ router.get('/update', async (req, res) => {
         username: req.session.username,
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
-        userInfo
+        userInfo,
+        products,
+        prev_chosen_products
     }
     res.render('updateuserprofile', data);
 })
