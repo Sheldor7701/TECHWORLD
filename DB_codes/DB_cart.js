@@ -78,11 +78,26 @@ async function buyAll(userid) {
     
     return (await database.execute(sql, [ userid ], database.options))
 }
+
+async function orderHistory(userid){
+    let sql= `
+    SELECT *
+    FROM BUYS NATURAL JOIN PRODUCTS
+    WHERE USERID= :USERID 
+
+    `
+     let ppp=(await database.execute(sql, [userid], database.options)).rows;
+     //console.log(ppp);
+     return ppp;
+
+}
+
 module.exports = {
     getCart,
     cartIncreament,
     cartDecreament,
     addToCart,
     checkCart,
-    buyAll
+    buyAll,
+    orderHistory
 }

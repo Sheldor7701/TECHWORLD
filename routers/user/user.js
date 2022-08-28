@@ -2,6 +2,7 @@ const express = require('express');
 const validator = require('validator')
 const { redirect } = require('express/lib/response');
 const DB_user = require('../../DB_codes/DB_user');
+const DB_cart= require('../../DB_codes/DB_cart');
 const DB_admin = require('../../DB_codes/DB_admin');
 const router = express.Router({ mergeParams: true });
 
@@ -24,6 +25,27 @@ router.get('/:userid', async (req, res) => {
     if (userid != loggedinAs) return res.redirect('/error');
     
     //database query
+    const products = await DB_cart.orderHistory(userid);
+    const userInfo = await DB_user.getUserInfoByUserId(userid);
+    //error checking
+    const data = {
+        pageTitle: 'Profile',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+        userInfo,
+        products
+    }
+    res.render('userprofile', data);
+})
+
+router.get('/update', async (req, res) => {
+    const userid = req.session.userid;
+  
+    
+    //database query
     const userInfo = await DB_user.getUserInfoByUserId(userid);
     //error checking
     const data = {
@@ -41,22 +63,14 @@ router.get('/:userid', async (req, res) => {
 
 
 
+router.post('/update', async (req, res) => {
+    const userid = req.session.userid;
 
-router.post('/:userid/update', async (req, res) => {
-    const userid = req.params.userid;
-    const loggedinAs = req.session.userid;
 
-    if (!req.session.isAuth) return res.redirect('/login');
-    if (userid != loggedinAs) return res.redirect('/error');
 
-    const { username, email,password, address } = req.body;
-    if (!validator.isEmail(email)) return res.redirect('/user');
-    if (address === '') return res.redirect('/user');
-    //database query
+    await DB_user.updateUserInfo(userid,req.body.username, req.body.email,req.body.password, req.body.address);
 
-    await DB_user.updateUserInfo(userid,username, email,password, address);
-
-    console.log("Successfully updated");
+   // console.log("Successfully updated");
 
     res.redirect('/user');
 })
