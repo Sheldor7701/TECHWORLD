@@ -48,12 +48,12 @@ async function getProductByType(type) {
 async function addProduct(TYPE, PRODUCT) {
     let FUNC = 'ADD_' + TYPE;
 
-    switch (TYPE) {
-        case 'MOTHERBOARD':
-            {
+    // switch (TYPE) {
+    //     case 'MOTHERBOARD':
+    //         {
                 let sql = `
             BEGIN
-            ${FUNC}(
+            ADD_MOTHERBOARD(
                 ${PRODUCT.PRICE},
                 ${PRODUCT.IMAGE},
                 ${PRODUCT.STOCK},
@@ -80,10 +80,10 @@ async function addProduct(TYPE, PRODUCT) {
             `;
             return (await database.execute(sql, [], database.options));
             
-            }
+            // }
         
 
-    }
+    // }
 
     
 }
@@ -96,7 +96,7 @@ async function updateProduct(TYPE, PRODUCT) {
             {
                 let sql = `
             BEGIN
-            ${FUNC}(${PRODUCT.PRODUCTID},
+            UPDATE_MOTHERBOARD(${PRODUCT.PRODUCTID},
                 ${PRODUCT.PRICE},
                 ${PRODUCT.IMAGE},
                 ${PRODUCT.STOCK},
