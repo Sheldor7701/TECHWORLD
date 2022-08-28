@@ -1,0 +1,110 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+<style>
+    .add-form-svk{
+        max-width:80vw;
+        padding-left: 5vw;
+    }
+</style>
+
+
+<form class="add-form-svk" action="/login" method="post">
+  <fieldset>
+    
+    <div class="form-group">
+        <fieldset disabled="">
+            <label class="form-label" for="disabledInput">Product Type </label>
+            <input class="form-control" id="disabledInput" type="text" placeholder="PROCESSOR" disabled="">
+        </fieldset>
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Product Name</label>
+      <input type="email" class="form-control" name="PRODUCT_NAME" id="PRODUCT_NAME" aria-describedby="emailHelp" placeholder="<%= product.PRODUCT_NAME %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Brand ID</label>
+      <input type="email" class="form-control" name="BRANDID" id="BRANDID" aria-describedby="emailHelp" placeholder="<%= product.BRANDID %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Price</label>
+      <input type="email" class="form-control" name="PRICE" id="PRICE" aria-describedby="emailHelp" placeholder="<%= product.PRICE %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Image</label>
+      <input type="email" class="form-control" name="IMAGE" id="IMAGE" aria-describedby="emailHelp" placeholder="<%= product.IMAGE %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Warranty</label>
+      <input type="email" class="form-control" name="WARRANTY" id="WARRANTY" aria-describedby="emailHelp" placeholder="<%= product.WARRANTY %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Stock</label>
+      <input type="email" class="form-control" name="STOCK" id="STOCK" aria-describedby="emailHelp" placeholder="<%= product.STOCK %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Details</label>
+      <input type="email" class="form-control" name="DETAILS" id="DETAILS" aria-describedby="emailHelp" placeholder="<%= product.DETAILS %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Base Frequency</label>
+      <input type="email" class="form-control" name="BASE_FREQUENCY" id="BASE_FREQUENCY" aria-describedby="emailHelp" placeholder="<%= product.BASE_FREQUENCY %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Maximum Turbo Frequency</label>
+      <input type="email" class="form-control" name="MAXIMUM_TURBO_FREQUENCY" id="MAXIMUM_TURBO_FREQUENCY" aria-describedby="emailHelp" placeholder="<%= product.MAXIMUM_TURBO_FREQUENCY %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Cache</label>
+      <input type="email" class="form-control" name="CACHE" id="CACHE" aria-describedby="emailHelp" placeholder="<%= product.CACHE %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Number of cores</label>
+      <input type="email" class="form-control" name="CORES" id="CORES" aria-describedby="emailHelp" placeholder="<%= product.CORES %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Number of threads</label>
+      <input type="email" class="form-control" name="THREADS" id="THREADS" aria-describedby="emailHelp" placeholder="<%= product.THREADS %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Base power</label>
+      <input type="email" class="form-control" name="PROCESSOR_BASE_POWER" id="PROCESSOR_BASE_POWER" aria-describedby="emailHelp" placeholder="<%= product.PROCESSOR_BASE_POWER %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Maximum turbo power </label>
+      <input type="email" class="form-control" name="MAXIMUM_TURBO_POWER" id="MAXIMUM_TURBO_POWER" aria-describedby="emailHelp" placeholder="<%= product.MAXIMUM_TURBO_POWER %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Maximum size</label>
+      <input type="email" class="form-control" name="MAXIMUM_SIZE" id="MAXIMUM_SIZE" aria-describedby="emailHelp" placeholder="<%= product.MAXIMUM_SIZE %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Maximum number of channels</label>
+      <input type="email" class="form-control" name="MAXIMUM_NUMBER_OF_CHANNELS" id="MAXIMUM_NUMBER_OF_CHANNELS" aria-describedby="emailHelp" placeholder="<%= product.MAXIMUM_NUMBER_OF_CHANNELS %> ">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Processor Graphics</label>
+      <input type="email" class="form-control" name="PROCESSOR_GRAPHICS" id="PROCESSOR_GRAPHICS" aria-describedby="emailHelp" placeholder="<%= product.PROCESSOR_GRAPHICS %>">
+    </div>
+    <br>
+    <input type="submit" class="btn btn-primary" value="UPDATE PRODUCT">
+</form>

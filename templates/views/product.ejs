@@ -105,5 +105,72 @@ font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 </tbody>
 </table>
 <% } %>
+
+<% if (product.TYPE=="MOTHERBOARD"){ %>
+
+  <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+    <h3><b>DESCRIPTION</b></h3>
+    <table class="tg">
+    <tbody>
+    <tr>
+      <td class="tg-0lax">CHIPSET</td>
+      <td class="tg-0lax"><%= product.CHIPSET %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">FORM_FACTOR</td>
+      <td class="tg-0lax"><%= product.FORM_FACTOR %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">AUDIO</td>
+      <td class="tg-0lax"><%= product.AUDIO %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">PCI</td>
+      <td class="tg-0lax"><%= product.PCI %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">SUPPORTED_SOFTWARE</td>
+      <td class="tg-0lax"><%= product.SUPPORTED_SOFTWARE %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">SUPPORTED_MEMORY</td>
+      <td class="tg-0lax"><%= product.SUPPORTED_MEMORY %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">SLOTS</td>
+      <td class="tg-0lax"><%= product.SLOTS %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">MAXIMUM_MEMORY</td>
+      <td class="tg-0lax"><%= product.MAXIMUM_MEMORY %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">GRAPHICS</td>
+      <td class="tg-0lax"><%= product.GRAPHICS %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">HDMI</td>
+      <td class="tg-0lax"><%= product.HDMI %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">USB_TYPE</td>
+      <td class="tg-0lax"><%= product.USB_TYPE %></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax">LAN_PORTS</td>
+      <td class="tg-0lax"><%= product.LAN_PORTS %></td>
+    </tr>
+    </tbody>
+    </table>
+
+<% } %>
+
 <%- include('../partials/footer.ejs') %>
 </main>
