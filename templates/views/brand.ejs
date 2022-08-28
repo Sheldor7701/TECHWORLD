@@ -54,21 +54,22 @@
 </style>
 
 <div class="brand-info-svk">
-<img src="https://i.pinimg.com/736x/75/68/b8/7568b8f2fd4ea6c0b8769890bb08bc9f--best-laptop-brands-acer-laptops.jpg" class="img-fluid" alt="Responsive image">
+<img src="<%= brand.LOGO %>" class="img-fluid" alt="Responsive image">
 
-<h1>BRAND NAME</h1>
-<h2>COUNTRY</h2>
+<h1><%= brand.BRANDNAME %></h1>
+<h2><%= brand.COUNTRY %></h2>
 <h3>
-  <small class="text-muted">NUMBER OF PRODUCTS</small>
+  <small class="text-muted"><%= brand.TOTAL_PRODUCTS %></small>
 </h3>
 </div>
 
         
-    /*for loop start*/
+<% for (let product of brandProducts){ %>
+    <a class="listed" href=<%="/product/" + product.PRODUCTID %> >
     <div class="card1">
-        <img class="img" src="https://thumbs.dreamstime.com/b/flat-isolated-vector-eps-illustration-icon-minimal-design-long-shadow-add-remove-shop-product-cart-118523592.jpg">
-        <div class="txt">PRODUCT NAME</div>
+        <img class="img" src="<%= product.IMAGE %>">
+        <div class="txt"><%= product.PRODUCT_NAME %></div>
         <button class="bttn">REMOVE</button>
         <button class="bttn">UPDATE</button>
-    </div>
-    /*for loop end*/
+    </div></a>
+<% } %>
