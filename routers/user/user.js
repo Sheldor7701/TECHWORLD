@@ -27,7 +27,7 @@ router.get('/:userid', async (req, res) => {
     //database query
     const products = await DB_cart.orderHistory(userid);
     const userInfo = await DB_user.getUserInfoByUserId(userid);
-    
+    const prev_chosen_products= await DB_cart.previouslyChosen(userid);
     //error checking
     const data = {
         pageTitle: 'Profile',
