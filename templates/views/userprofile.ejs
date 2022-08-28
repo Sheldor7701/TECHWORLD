@@ -170,7 +170,7 @@
               <div class="row gutters-sm" >
                   
         
-                <% for (let product of cart){ %>
+                <% for (let product of products){ %>
                 <div class="card-svk">
         <div class="card p-3 bg-white svk-1" ><i class="fa fa-apple"></i>
             <div class="about-product text-center mt-2"><img src="<%=product.IMAGE%>" width="280">
@@ -179,7 +179,7 @@
                 </div>
             </div>
             <div class="stats mt-2">
-                <div class="d-flex justify-content-between p-price"><span>Purchase date</span><span><%=product.DATE%></span></div>
+                <div class="d-flex justify-content-between p-price"><span>Purchase date</span><span><%=product.PURCHASE_DATE%></span></div>
                 <div class="d-flex justify-content-between p-price"><span>Price</span><span><%=product.PRICE%></span></div>
                 <div class="d-flex justify-content-between p-price"><span>Quantity</span><span><%=product.QUANTITY%></span></div>
             </div>
@@ -202,7 +202,7 @@
               <div class="row gutters-sm" >
                   
         
-                <% for (let product of products){ %>
+                <% for (let product of prev_chosen_products){ %>
                 <div class="card-svk">
         <div class="card p-3 bg-white svk-1" ><i class="fa fa-apple"></i>
             <div class="about-product text-center mt-2"><img src="<%=product.IMAGE%>" width="250">
@@ -211,7 +211,6 @@
                 </div>
             </div>
             <div class="stats mt-2">
-                <div class="d-flex justify-content-between p-price"><span>Purchase date</span><span><%=product.DATE%></span></div>
                 <div class="d-flex justify-content-between p-price"><span>Price</span><span><%=product.PRICE%></span></div>
                 <div class="d-flex justify-content-between p-price"><span>Quantity</span><span><%=product.QUANTITY%></span></div>
             </div>
