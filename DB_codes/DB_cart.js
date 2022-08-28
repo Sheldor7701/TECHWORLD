@@ -81,7 +81,7 @@ async function buyAll(userid) {
 
 async function orderHistory(userid){
     let sql= `
-    SELECT *
+    SELECT USERID,TO_CHAR(DATE,'DL') AS DATE, PRODUCTID, PRODUCT_NAME,QUANTITY
     FROM BUYS NATURAL JOIN PRODUCTS
     WHERE USERID= :USERID 
 
