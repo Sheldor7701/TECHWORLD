@@ -37,7 +37,8 @@ router.get('/:userid', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         userInfo,
-        products
+        products,
+        prev_chosen_products
     }
     res.render('userprofile', data);
 })
