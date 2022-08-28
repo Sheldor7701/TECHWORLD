@@ -16,7 +16,24 @@ router.get('/', async (req, res) => {
 })
 
 
-
+router.get('/update', async (req, res) => {
+    const userid = req.session.userid;
+  
+    
+    //database query
+    const userInfo = await DB_user.getUserInfoByUserId(userid);
+    //error checking
+    const data = {
+        pageTitle: 'Profile',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+        userInfo
+    }
+    res.render('updateuserprofile', data);
+})
 router.get('/:userid', async (req, res) => {
     const userid = req.params.userid;
     const loggedinAs = req.session.userid;
@@ -43,24 +60,7 @@ router.get('/:userid', async (req, res) => {
     res.render('userprofile', data);
 })
 
-router.get('/update', async (req, res) => {
-    const userid = req.session.userid;
-  
-    
-    //database query
-    const userInfo = await DB_user.getUserInfoByUserId(userid);
-    //error checking
-    const data = {
-        pageTitle: 'Profile',
-        isAuth: req.session.isAuth,
-        userid: req.session.userid,
-        username: req.session.username,
-        isAdmin: req.session.isAdmin,
-        cart: req.session.cart,
-        userInfo
-    }
-    res.render('updateuserprofile', data);
-})
+
 
 
 
