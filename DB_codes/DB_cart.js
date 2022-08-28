@@ -81,9 +81,9 @@ async function buyAll(userid) {
 
 async function orderHistory(userid){
     let sql= `
-    SELECT USERID,TO_CHAR(DATE,'DL') AS DATE, PRODUCTID, PRODUCT_NAME,QUANTITY
+    SELECT USERID,TO_CHAR(PURCHASE_DATE,'DL') PURCHASE_DATE, PRODUCTID, PRODUCT_NAME,QUANTITY
     FROM BUYS NATURAL JOIN PRODUCTS
-    WHERE USERID= :USERID 
+    WHERE USERID=:USERID 
 
     `
      let ppp=(await database.execute(sql, [userid], database.options)).rows;
