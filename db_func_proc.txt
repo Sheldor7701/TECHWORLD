@@ -240,3 +240,115 @@ BEGIN
     WHERE USERID = UID AND PRODUCTID= PID;
 END ;
 /
+
+CREATE OR REPLACE PROCEDURE "ADD_MOTHERBOARD" ( 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+ 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MCHIPSET IN VARCHAR2 , 
+                MFORM_FACTOR IN VARCHAR2 , 
+                MAUDIO IN VARCHAR2 , 
+                MPCI IN VARCHAR2 , 
+                MSUPPORTED_SOFTWARE IN VARCHAR2 , 
+                MSLOTS IN VARCHAR2 , 
+                MSUPPORTED_MEMORY IN VARCHAR2 , 
+                MMAXIMUM_MEMORY IN VARCHAR2 , 
+                MGRAPHICS IN VARCHAR2 , 
+                MHDMI IN VARCHAR2 , 
+                MUSB_TYPE IN VARCHAR2 , 
+                MLAN_PORTS IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO MOTHERBOARD(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+                   
+                    
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE MOTHERBOARD															 
+        SET        CHIPSET   =  MCHIPSET, 
+                   FORM_FACTOR   =  MFORM_FACTOR, 
+                   AUDIO   =  MAUDIO ,
+                   PCI   =  MPCI ,
+                   SUPPORTED_SOFTWARE   =  MSUPPORTED_SOFTWARE, 
+                   SLOTS   =  MSLOTS ,
+                   SUPPORTED_MEMORY   =  MSUPPORTED_MEMORY, 
+                   MAXIMUM_MEMORY   =  MMAXIMUM_MEMORY, 
+                   GRAPHICS   =  MGRAPHICS, 
+                   HDMI   =  MHDMI, 
+                   USB_TYPE   =  MUSB_TYPE, 
+                   LAN_PORTS  =  MLAN_PORTS
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE "UPDATE_MOTHERBOARD" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MCHIPSET IN VARCHAR2 , 
+                MFORM_FACTOR IN VARCHAR2 , 
+                MAUDIO IN VARCHAR2 , 
+                MPCI IN VARCHAR2 , 
+                MSUPPORTED_SOFTWARE IN VARCHAR2 , 
+                MSLOTS IN VARCHAR2 , 
+                MSUPPORTED_MEMORY IN VARCHAR2 , 
+                MMAXIMUM_MEMORY IN VARCHAR2 , 
+                MGRAPHICS IN VARCHAR2 , 
+                MHDMI IN VARCHAR2 , 
+                MUSB_TYPE IN VARCHAR2 , 
+                MLAN_PORTS IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE MOTHERBOARD															 
+        SET        CHIPSET   =  MCHIPSET, 
+                   FORM_FACTOR   =  MFORM_FACTOR, 
+                   AUDIO   =  MAUDIO ,
+                   PCI   =  MPCI ,
+                   SUPPORTED_SOFTWARE   =  MSUPPORTED_SOFTWARE, 
+                   SLOTS   =  MSLOTS ,
+                   SUPPORTED_MEMORY   =  MSUPPORTED_MEMORY, 
+                   MAXIMUM_MEMORY   =  MMAXIMUM_MEMORY, 
+                   GRAPHICS   =  MGRAPHICS, 
+                   HDMI   =  MHDMI, 
+                   USB_TYPE   =  MUSB_TYPE, 
+                   LAN_PORTS  =  MLAN_PORTS
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
