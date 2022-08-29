@@ -11,100 +11,110 @@
 </style>
 
 
-<form class="add-form-svk" action="/login" method="post">
-  <fieldset>
+<form class="add-form-svk" action="/admin/product/addproduct/PROCESSOR" method="post">
+  
     
     <div class="form-group">
-        <fieldset disabled="">
+        
             <label class="form-label" for="disabledInput">Product Type </label>
-            <input class="form-control" id="disabledInput" type="text" placeholder="PROCESSOR" disabled="">
-        </fieldset>
+            <input class="form-control" name="TYPE" id="TYPE" type="text" value="PROCESSOR" placeholder="PROCESSOR" readonly >
+      
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Product Name</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter product name">
+      <input  type="text" class="form-control" name="PRODUCT_NAME" id="PRODUCT_NAME"   placeholder="Enter product name">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Brand ID</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter brand ID">
+      <input  type="text" class="form-control" name="BRANDID" id="BRANDID"   placeholder="Enter brand ID">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Price</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter price">
+      <input  type="text" class="form-control" name="PRICE" id="PRICE"   placeholder="Enter price">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Image</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter image link">
+      <input  type="text" class="form-control" name="IMAGE" id="IMAGE"   placeholder="Enter image link">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Warranty</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter warranty details">
+      <input  type="text" class="form-control" name="WARRANTY" id="WARRANTY"   placeholder="Enter warranty details">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Stock</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter stock quantity">
+      <input  type="text" class="form-control" name="STOCK" id="STOCK"   placeholder="Enter stock quantity">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Details</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter product details">
+      <input  type="text" class="form-control" name="DETAILS" id="DETAILS"   placeholder="Enter product details">
     </div>
+
+
     
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Base Frequency</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter base frequency">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Maximum Turbo Frequency</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter maximum turbo frequency">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Cache</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter cache">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Number of cores</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter number of cores">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Number of threads</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter number of threads">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Base power</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter base power">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Maximum turbo power </label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter maximum turbo power">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Maximum size</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter maximum size">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Maximum number of channels</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Maximum number of channels">
-    </div>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Processor Graphics</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Processor Graphics">
-    </div>
+
+
+<div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">BASE_FREQUENCY</label>
+  <input  type="text" class="form-control" name="BASE_FREQUENCY" id="BASE_FREQUENCY"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">MAXIMUM_TURBO_FREQUENCY</label>
+  <input  type="text" class="form-control" name="MAXIMUM_TURBO_FREQUENCY" id="MAXIMUM_TURBO_FREQUENCY"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">CACHE</label>
+  <input  type="text" class="form-control" name="CACHE" id="CACHE"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">CORES</label>
+  <input  type="text" class="form-control" name="CORES" id="CORES"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">THREADS</label>
+  <input  type="text" class="form-control" name="THREADS" id="THREADS"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">PROCESSOR_BASE_POWER</label>
+  <input  type="text" class="form-control" name="PROCESSOR_BASE_POWER" id="PROCESSOR_BASE_POWER"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">MAXIMUM_TURBO_POWER</label>
+  <input  type="text" class="form-control" name="MAXIMUM_TURBO_POWER" id="MAXIMUM_TURBO_POWER"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">MAXIMUM_SIZE</label>
+  <input  type="text" class="form-control" name="MAXIMUM_SIZE" id="MAXIMUM_SIZE"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">TYPE1</label>
+  <input  type="text" class="form-control" name="TYPE1" id="TYPE1"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">TYPE2</label>
+  <input  type="text" class="form-control" name="TYPE2" id="TYPE2"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">MAX_NUMBER_OF_CHANNELS</label>
+  <input  type="text" class="form-control" name="MAX_NUMBER_OF_CHANNELS" id="MAX_NUMBER_OF_CHANNELS"   placeholder="Enter product details">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1" class="form-label mt-4">PROCESSOR_GRAPHICS</label>
+  <input  type="text" class="form-control" name="PROCESSOR_GRAPHICS" id="PROCESSOR_GRAPHICS"   placeholder="Enter product details">
+  </div>
+  
+  
+  
+  
+
+
+
     <br>
     <input type="submit" class="btn btn-primary" value="ADD PRODUCT">
 </form>

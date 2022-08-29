@@ -34,7 +34,7 @@ router.get('/addProduct/:type', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
     };
-    res.render('add'+type,data)
+    res.render('Add'+type,data)
 
 });
 router.post('/addProduct/:type', async (req, res) => {
