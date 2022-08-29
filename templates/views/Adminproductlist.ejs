@@ -73,7 +73,7 @@
         <div class="card1">
             <img class="img" src="<%= product.IMAGE %>">
             <div class="txt"><%= product.PRODUCT_NAME %></div>
-            <button class="bttn">UPDATE</button>
+            <a href=<%="/admin/product/updateproduct/" + product.PRODUCTID %> ><button class="bttn">UPDATE</button></a></div>
         </div>
         <% } %>
         <p id="demo"></p>

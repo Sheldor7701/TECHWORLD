@@ -11,7 +11,7 @@
 </style>
 
 
-<form class="add-form-svk" action="/login" method="post">
+<form class="add-form-svk" action=<%="/admin/product/updateproduct/" + product.PRODUCTID %> method="post">
   
     
     <div class="form-group">
@@ -64,20 +64,12 @@
     <input type="text" class="form-control" name="CAPACITY" id="CAPACITY" aria-describedby="emailHelp" placeholder="<%= product.CAPACITY %>">
     </div>
     <div class="form-group">
-    <label for="exampleInputEmail1" class="form-label mt-4">FORM</label>
-    <input type="text" class="form-control" name="FORM" id="FORM" aria-describedby="emailHelp" placeholder="<%= product.FORM %>">
+    <label for="exampleInputEmail1" class="form-label mt-4">FORM_FACTOR</label>
+    <input type="text" class="form-control" name="FORM_FACTOR" id="FORM_FACTOR" aria-describedby="emailHelp" placeholder="<%= product.FORM_FACTOR %>">
     </div>
     <div class="form-group">
-    <label for="exampleInputEmail1" class="form-label mt-4">FACTOR</label>
-    <input type="text" class="form-control" name="FACTOR" id="FACTOR" aria-describedby="emailHelp" placeholder="<%= product.FACTOR %>">
-    </div>
-    <div class="form-group">
-    <label for="exampleInputEmail1" class="form-label mt-4">FLASH</label>
-    <input type="text" class="form-control" name="FLASH" id="FLASH" aria-describedby="emailHelp" placeholder="<%= product.FLASH %>">
-    </div>
-    <div class="form-group">
-    <label for="exampleInputEmail1" class="form-label mt-4">TYPE</label>
-    <input type="text" class="form-control" name="TYPE" id="TYPE" aria-describedby="emailHelp" placeholder="<%= product.TYPE %>">
+    <label for="exampleInputEmail1" class="form-label mt-4">FLASH_TYPE</label>
+    <input type="text" class="form-control" name="FLASH_TYPE" id="FLASH_TYPE" aria-describedby="emailHelp" placeholder="<%= product.FLASH_TYPE %>">
     </div>
     <div class="form-group">
     <label for="exampleInputEmail1" class="form-label mt-4">INTERFACE</label>

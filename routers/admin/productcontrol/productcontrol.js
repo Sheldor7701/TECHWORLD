@@ -50,8 +50,8 @@ router.get('/updateproduct/:productid', async (req, res) => {
         
     //database query
     const PRODUCTID= req.params.productid;
-    const PRODUCT=await DB_product.getProductByID(PRODUCTID);
-    const TYPE=PRODUCT.TYPE;
+    const product=await DB_product.getProductByID(PRODUCTID);
+    const TYPE=product.TYPE;
     const data = {
         pageTitle: type+'S',
         isAuth: req.session.isAuth,
@@ -59,7 +59,7 @@ router.get('/updateproduct/:productid', async (req, res) => {
         username: req.session.username,
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
-        PRODUCT
+        product
     };
     res.render('update'+TYPE.toLowerCase().trim(), data);
 });
