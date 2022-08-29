@@ -469,3 +469,1290 @@ BEGIN
     WHERE PRODUCTID   =  MPRODUCTID;
 END;
 /
+
+CREATE OR REPLACE PROCEDURE "ADD_GRAPHICS_CARD" ( 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MGTYPE IN VARCHAR2,
+								MGSIZE IN VARCHAR2,
+								MRESOLUTION IN VARCHAR2,
+								MBOOST_CLOCK IN VARCHAR2,
+								MGAME_CLOCK IN VARCHAR2,
+								MCLOCK_INFO IN VARCHAR2,
+								MMEMORY_CLOCK IN VARCHAR2,
+								MMEMORY_INTERFACE IN VARCHAR2,
+								MSTREAM_PROCESSORS IN VARCHAR2,
+								MDISPALY_PORT IN VARCHAR2,
+								MHDMI IN VARCHAR2,
+								MCONNECTORS IN VARCHAR2,
+								MRECOMMENDED_PSU IN VARCHAR2,
+								MCONSUMPTION IN VARCHAR2,
+								MMULTI_DISPLAY IN VARCHAR2,
+								MDITERCTX IN VARCHAR2,
+								MDIMENSION1 IN VARCHAR2,
+								MDIMENSION2 IN VARCHAR2,
+								MDIMENSION3 IN VARCHAR2,
+								MOTHERS1 IN VARCHAR2,
+								MOTHERS2 IN VARCHAR2,
+								MOTHERS3 IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO GRAPHICS_CARD(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE GRAPHICS_CARD															 
+        SET        	GTYPE = MGTYPE,
+										GSIZE = MGSIZE,
+										RESOLUTION = MRESOLUTION,
+										BOOST_CLOCK = MBOOST_CLOCK,
+										GAME_CLOCK = MGAME_CLOCK,
+										CLOCK_INFO = MCLOCK_INFO,
+										MEMORY_CLOCK = MMEMORY_CLOCK,
+										MEMORY_INTERFACE = MMEMORY_INTERFACE,
+										STREAM_PROCESSORS = MSTREAM_PROCESSORS,
+										DISPALY_PORT = MDISPALY_PORT,
+										HDMI = MHDMI,
+										CONNECTORS = MCONNECTORS,
+										RECOMMENDED_PSU = MRECOMMENDED_PSU,
+										CONSUMPTION = MCONSUMPTION,
+										MULTI_DISPLAY = MMULTI_DISPLAY,
+										DITERCTX = MDITERCTX,
+										DIMENSION1 = MDIMENSION1,
+										DIMENSION2 = MDIMENSION2,
+										DIMENSION3 = MDIMENSION3,
+										OTHERS1 = MOTHERS1,
+										OTHERS2 = MOTHERS2,
+										OTHERS3 = MOTHERS3
+
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "ADD_HDD" ( 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MINTERFACE_TYPE IN VARCHAR2,
+								MCAPACITY IN VARCHAR2,
+								MRPM IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO HDD(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE HDD															 
+        SET        INTERFACE_TYPE = MINTERFACE_TYPE,
+										CAPACITY = MCAPACITY,
+										RPM = MRPM
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "ADD_HEADPHONE" ( 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MHEADPHONE_TYPE IN VARCHAR2,
+								MFREQUENCY IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MCOLOR IN VARCHAR2,
+								MUSB_TYPE IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO HEADPHONE(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE HEADPHONE															 
+        SET        HEADPHONE_TYPE = MHEADPHONE_TYPE,
+										FREQUENCY = MFREQUENCY,
+										WEIGHT = MWEIGHT,
+										COLOR = MCOLOR,
+										USB_TYPE = MUSB_TYPE
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "ADD_KEYBOARD" (
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MKEYBOARD_TYPE IN VARCHAR2,
+								MLIGHT IN VARCHAR2,
+								MKEYS IN VARCHAR2,
+								MDIMENTION IN VARCHAR2,
+								MCOLOR IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO KEYBOARD(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE KEYBOARD															 
+        SET        KEYBOARD_TYPE = MKEYBOARD_TYPE,
+										LIGHT = MLIGHT,
+										KEYS = MKEYS,
+										DIMENTION = MDIMENTION,
+										COLOR = MCOLOR
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "ADD_LAPTOP" (
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MDISPLAY IN VARCHAR2,
+								MGRAPHICS IN VARCHAR2,
+								MSTORAGE IN VARCHAR2,
+								MMEMORY IN VARCHAR2,
+								MPROCESSOR IN VARCHAR2,
+								MADAPTER IN VARCHAR2,
+								MBATTERY IN VARCHAR2,
+								MOPERATING_SYSTEM IN VARCHAR2,
+								MNETWORKING IN VARCHAR2,
+								MKEYBOARD IN VARCHAR2,
+								MBLUETOOTH IN VARCHAR2,
+								MAUDIO IN VARCHAR2,
+								MWEBCAM IN VARCHAR2,
+								MPORTS_CONNECTORS IN VARCHAR2,
+								MCOLOR IN VARCHAR2,
+								MWEIGHT IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO LAPTOP(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE LAPTOP															 
+        SET        DISPLAY = MDISPLAY,
+										GRAPHICS = MGRAPHICS,
+										STORAGE = MSTORAGE,
+										MEMORY = MMEMORY,
+										PROCESSOR = MPROCESSOR,
+										ADAPTER = MADAPTER,
+										BATTERY = MBATTERY,
+										OPERATING_SYSTEM = MOPERATING_SYSTEM,
+										NETWORKING = MNETWORKING,
+										KEYBOARD = MKEYBOARD,
+										BLUETOOTH = MBLUETOOTH,
+										AUDIO = MAUDIO,
+										WEBCAM = MWEBCAM,
+										PORTS_CONNECTORS = MPORTS_CONNECTORS,
+										COLOR = MCOLOR,
+										WEIGHT = MWEIGHT
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE "ADD_MONITOR" (
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MSCREEN_SIZE IN VARCHAR2,
+								MREFRESH_RATE IN VARCHAR2,
+								MDISPLAY_TYPE IN VARCHAR2,
+								MRESOLUTION IN VARCHAR2,
+								MBRIGHTNESS IN VARCHAR2,
+								MCONTRAST_RATIO IN VARCHAR2,
+								MASPECT_RATIO IN VARCHAR2,
+								MCOLOR IN VARCHAR2,
+								MI_O_PORTS IN VARCHAR2,
+								MRESPONSE_TIME IN VARCHAR2,
+								MVIEWING_ANGLE IN VARCHAR2,
+								MAUDIO_FEATURES IN VARCHAR2,
+								MVIDEO_FEATURES IN VARCHAR2,
+								MPOWER IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MDIMENSIONS IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO MONITOR(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE MONITOR															 
+        SET        SCREEN_SIZE = MSCREEN_SIZE,
+										REFRESH_RATE = MREFRESH_RATE,
+										DISPLAY_TYPE = MDISPLAY_TYPE,
+										RESOLUTION = MRESOLUTION,
+										BRIGHTNESS = MBRIGHTNESS,
+										CONTRAST_RATIO = MCONTRAST_RATIO,
+										ASPECT_RATIO = MASPECT_RATIO,
+										COLOR = MCOLOR,
+										I_O_PORTS = MI_O_PORTS,
+										RESPONSE_TIME = MRESPONSE_TIME,
+										VIEWING_ANGLE = MVIEWING_ANGLE,
+										AUDIO_FEATURES = MAUDIO_FEATURES,
+										VIDEO_FEATURES = MVIDEO_FEATURES,
+										POWER = MPOWER,
+										WEIGHT = MWEIGHT,
+										DIMENSIONS = MDIMENSIONS
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE "ADD_MOUSE" (
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MMOUSE_TYPE IN VARCHAR2,
+								MBUTTONS IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MDPI IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO MOUSE(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE MOUSE															 
+        SET        MOUSE_TYPE = MMOUSE_TYPE,
+										BUTTONS = MBUTTONS,
+										WEIGHT = MWEIGHT,
+										DPI = MDPI
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "ADD_POWER_SUPPLY" ( 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MEFFICIENCY IN VARCHAR2,
+								MCERTIFICATION IN VARCHAR2,
+								MFAN_SIZE IN VARCHAR2,
+								MMODULAR_TYPE IN VARCHAR2,
+								MTOTAL_POWER IN VARCHAR2,
+								MPEAK_POWER IN VARCHAR2,
+								MAC_INPUT IN VARCHAR2,
+								MDC_OUTPUT IN VARCHAR2,
+								MMAIN_POWER IN VARCHAR2,
+								MCPU IN VARCHAR2,
+								MPCI_E IN VARCHAR2,
+								MSATA IN VARCHAR2,
+								MMOLEX IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO POWER_SUPPLY(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE POWER_SUPPLY															 
+        SET        EFFICIENCY = MEFFICIENCY,
+										CERTIFICATION = MCERTIFICATION,
+										FAN_SIZE = MFAN_SIZE,
+										MODULAR_TYPE = MMODULAR_TYPE,
+										TOTAL_POWER = MTOTAL_POWER,
+										PEAK_POWER = MPEAK_POWER,
+										AC_INPUT = MAC_INPUT,
+										DC_OUTPUT = MDC_OUTPUT,
+										MAIN_POWER = MMAIN_POWER,
+										CPU = MCPU,
+										PCI_E = MPCI_E,
+										SATA = MSATA,
+										MOLEX = MMOLEX
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "ADD_RAM" (
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MRTYPE IN VARCHAR2,
+								MCAPACITY IN VARCHAR2,
+								MFREQUENCY IN VARCHAR2,
+								MOPERATING_VOLTAGE IN VARCHAR2,
+								MLATENCY IN VARCHAR2,
+								MHEAT_SINK_COLOR IN VARCHAR2,
+								MPIN IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO RAM(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE RAM															 
+        SET        RTYPE = MRTYPE,
+										CAPACITY = MCAPACITY,
+										FREQUENCY = MFREQUENCY,
+										OPERATING_VOLTAGE = MOPERATING_VOLTAGE,
+										LATENCY = MLATENCY,
+										HEAT_SINK_COLOR = MHEAT_SINK_COLOR,
+										PIN = MPIN
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE "ADD_SPEAKER" ( 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MSPEAKER_TYPE IN VARCHAR2,
+								MFREQUENCY IN VARCHAR2,
+								MNOISE IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO SPEAKER(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE SPEAKER															 
+        SET        SPEAKER_TYPE = MSPEAKER_TYPE,
+										FREQUENCY = MFREQUENCY,
+										NOISE = MNOISE
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "ADD_SSD" (
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MCAPACITY IN VARCHAR2,
+								MFORM_FACTOR IN VARCHAR2,
+								MFLASH_TYPE IN VARCHAR2,
+								MINTERFACE IN VARCHAR2,
+								MSEQ_READS IN VARCHAR2,
+								MSEQ_WRITES IN VARCHAR2,
+								MDIMENSION IN VARCHAR2,
+								MWEIGHT IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO SSD(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE SSD															 
+        SET        CAPACITY = MCAPACITY,
+										FORM_FACTOR = MFORM_FACTOR,
+										FLASH_TYPE = MFLASH_TYPE,
+										INTERFACE = MINTERFACE,
+										SEQ_READS = MSEQ_READS,
+										SEQ_WRITES = MSEQ_WRITES,
+										DIMENSION = MDIMENSION,
+										WEIGHT = MWEIGHT
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE "ADD_UPS" ( 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+								MUPS_TYPE IN VARCHAR2,
+								MCAPACITY IN VARCHAR2,
+								MBATTERY IN VARCHAR2,
+								MBACKUP_TIME IN VARCHAR2,
+								MPORTS IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO SSD(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE UPS															 
+        SET        UPS_TYPE = MUPS_TYPE,
+										CAPACITY = MCAPACITY,
+										BATTERY = MBATTERY,
+										BACKUP_TIME = MBACKUP_TIME,
+										PORTS = MPORTS
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE "ADD_WEBCAM" (
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+								MWEBCAM_TYPE IN VARCHAR2,
+								MRESOLUTION IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MMICROPHONE IN VARCHAR2,
+								MZOOM IN VARCHAR2)
+AS
+MPRODUCTID NUMBER;
+BEGIN
+	INSERT INTO PRODUCTS(PRICE)
+		VALUES(-1);
+		SELECT PRODUCTID INTO MPRODUCTID
+		FROM PRODUCTS
+		WHERE PRICE=-1;
+		INSERT INTO WEBCAM(PRODUCTID)
+		VALUES(MPRODUCTID);
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE WEBCAM															 
+        SET        WEBCAM_TYPE = MWEBCAM_TYPE,
+										RESOLUTION = MRESOLUTION,
+										WEIGHT = MWEIGHT,
+										MICROPHONE = MMICROPHONE,
+										ZOOM = MZOOM
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_GRAPHICS_CARD" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MGTYPE IN VARCHAR2,
+								MGSIZE IN VARCHAR2,
+								MRESOLUTION IN VARCHAR2,
+								MBOOST_CLOCK IN VARCHAR2,
+								MGAME_CLOCK IN VARCHAR2,
+								MCLOCK_INFO IN VARCHAR2,
+								MMEMORY_CLOCK IN VARCHAR2,
+								MMEMORY_INTERFACE IN VARCHAR2,
+								MSTREAM_PROCESSORS IN VARCHAR2,
+								MDISPALY_PORT IN VARCHAR2,
+								MHDMI IN VARCHAR2,
+								MCONNECTORS IN VARCHAR2,
+								MRECOMMENDED_PSU IN VARCHAR2,
+								MCONSUMPTION IN VARCHAR2,
+								MMULTI_DISPLAY IN VARCHAR2,
+								MDITERCTX IN VARCHAR2,
+								MDIMENSION1 IN VARCHAR2,
+								MDIMENSION2 IN VARCHAR2,
+								MDIMENSION3 IN VARCHAR2,
+								MOTHERS1 IN VARCHAR2,
+								MOTHERS2 IN VARCHAR2,
+								MOTHERS3 IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE GRAPHICS_CARD															 
+        SET GTYPE = MGTYPE,
+										GSIZE= MGSIZE,
+										RESOLUTION = MRESOLUTION,
+										BOOST_CLOCK = MBOOST_CLOCK,
+										GAME_CLOCK = MGAME_CLOCK,
+										CLOCK_INFO = MCLOCK_INFO,
+										MEMORY_CLOCK = MMEMORY_CLOCK,
+										MEMORY_INTERFACE = MMEMORY_INTERFACE,
+										STREAM_PROCESSORS = MSTREAM_PROCESSORS,
+										DISPALY_PORT = MDISPALY_PORT,
+										HDMI = MHDMI,
+										CONNECTORS = MCONNECTORS,
+										RECOMMENDED_PSU = MRECOMMENDED_PSU,
+										CONSUMPTION = MCONSUMPTION,
+										MULTI_DISPLAY = MMULTI_DISPLAY,
+										DITERCTX = MDITERCTX,
+										DIMENSION1 = MDIMENSION1,
+										DIMENSION2 = MDIMENSION2,
+										DIMENSION3 = MDIMENSION3,
+										OTHERS1 = MOTHERS1,
+										OTHERS2 = MOTHERS2,
+										OTHERS3 = MOTHERS3
+
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_HDD" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MINTERFACE_TYPE IN VARCHAR2,
+								MCAPACITY IN VARCHAR2,
+								MRPM IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE HDD															 
+        SET        INTERFACE_TYPE = MINTERFACE_TYPE,
+										CAPACITY = MCAPACITY,
+										RPM = MRPM
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE "UPDATE_HEADPHONE" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MHEADPHONE_TYPE IN VARCHAR2,
+								MFREQUENCY IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MCOLOR IN VARCHAR2,
+								MUSB_TYPE IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE HEADPHONE															 
+        SET        HEADPHONE_TYPE = MHEADPHONE_TYPE,
+										FREQUENCY = MFREQUENCY,
+										WEIGHT = MWEIGHT,
+										COLOR = MCOLOR,
+										USB_TYPE = MUSB_TYPE
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE "UPDATE_KEYBOARD" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MKEYBOARD_TYPE IN VARCHAR2,
+								MLIGHT IN VARCHAR2,
+								MKEYS IN VARCHAR2,
+								MDIMENTION IN VARCHAR2,
+								MCOLOR IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE KEYBOARD															 
+        SET        KEYBOARD_TYPE = MKEYBOARD_TYPE,
+										LIGHT = MLIGHT,
+										KEYS = MKEYS,
+										DIMENTION = MDIMENTION,
+										COLOR = MCOLOR
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_LAPTOP" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MDISPLAY IN VARCHAR2,
+								MGRAPHICS IN VARCHAR2,
+								MSTORAGE IN VARCHAR2,
+								MMEMORY IN VARCHAR2,
+								MPROCESSOR IN VARCHAR2,
+								MADAPTER IN VARCHAR2,
+								MBATTERY IN VARCHAR2,
+								MOPERATING_SYSTEM IN VARCHAR2,
+								MNETWORKING IN VARCHAR2,
+								MKEYBOARD IN VARCHAR2,
+								MBLUETOOTH IN VARCHAR2,
+								MAUDIO IN VARCHAR2,
+								MWEBCAM IN VARCHAR2,
+								MPORTS_CONNECTORS IN VARCHAR2,
+								MCOLOR IN VARCHAR2,
+								MWEIGHT IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE LAPTOP															 
+        SET        DISPLAY = MDISPLAY,
+										GRAPHICS = MGRAPHICS,
+										STORAGE = MSTORAGE,
+										MEMORY = MMEMORY,
+										PROCESSOR = MPROCESSOR,
+										ADAPTER = MADAPTER,
+										BATTERY = MBATTERY,
+										OPERATING_SYSTEM = MOPERATING_SYSTEM,
+										NETWORKING = MNETWORKING,
+										KEYBOARD = MKEYBOARD,
+										BLUETOOTH = MBLUETOOTH,
+										AUDIO = MAUDIO,
+										WEBCAM = MWEBCAM,
+										PORTS_CONNECTORS = MPORTS_CONNECTORS,
+										COLOR = MCOLOR,
+										WEIGHT = MWEIGHT
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_MONITOR" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MSCREEN_SIZE IN VARCHAR2,
+								MREFRESH_RATE IN VARCHAR2,
+								MDISPLAY_TYPE IN VARCHAR2,
+								MRESOLUTION IN VARCHAR2,
+								MBRIGHTNESS IN VARCHAR2,
+								MCONTRAST_RATIO IN VARCHAR2,
+								MASPECT_RATIO IN VARCHAR2,
+								MCOLOR IN VARCHAR2,
+								MI_O_PORTS IN VARCHAR2,
+								MRESPONSE_TIME IN VARCHAR2,
+								MVIEWING_ANGLE IN VARCHAR2,
+								MAUDIO_FEATURES IN VARCHAR2,
+								MVIDEO_FEATURES IN VARCHAR2,
+								MPOWER IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MDIMENSIONS IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE MONITOR															 
+        SET        SCREEN_SIZE = MSCREEN_SIZE,
+										REFRESH_RATE = MREFRESH_RATE,
+										DISPLAY_TYPE = MDISPLAY_TYPE,
+										RESOLUTION = MRESOLUTION,
+										BRIGHTNESS = MBRIGHTNESS,
+										CONTRAST_RATIO = MCONTRAST_RATIO,
+										ASPECT_RATIO = MASPECT_RATIO,
+										COLOR = MCOLOR,
+										I_O_PORTS = MI_O_PORTS,
+										RESPONSE_TIME = MRESPONSE_TIME,
+										VIEWING_ANGLE = MVIEWING_ANGLE,
+										AUDIO_FEATURES = MAUDIO_FEATURES,
+										VIDEO_FEATURES = MVIDEO_FEATURES,
+										POWER = MPOWER,
+										WEIGHT = MWEIGHT,
+										DIMENSIONS = MDIMENSIONS
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_MOUSE" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MMOUSE_TYPE IN VARCHAR2,
+								MBUTTONS IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MDPI IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE MOUSE															 
+        SET        MOUSE_TYPE = MMOUSE_TYPE,
+										BUTTONS = MBUTTONS,
+										WEIGHT = MWEIGHT,
+										DPI = MDPI
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_POWER_SUPPLY" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MEFFICIENCY IN VARCHAR2,
+								MCERTIFICATION IN VARCHAR2,
+								MFAN_SIZE IN VARCHAR2,
+								MMODULAR_TYPE IN VARCHAR2,
+								MTOTAL_POWER IN VARCHAR2,
+								MPEAK_POWER IN VARCHAR2,
+								MAC_INPUT IN VARCHAR2,
+								MDC_OUTPUT IN VARCHAR2,
+								MMAIN_POWER IN VARCHAR2,
+								MCPU IN VARCHAR2,
+								MPCI_E IN VARCHAR2,
+								MSATA IN VARCHAR2,
+								MMOLEX IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE POWER_SUPPLY															 
+        SET        EFFICIENCY = MEFFICIENCY,
+										CERTIFICATION = MCERTIFICATION,
+										FAN_SIZE = MFAN_SIZE,
+										MODULAR_TYPE = MMODULAR_TYPE,
+										TOTAL_POWER = MTOTAL_POWER,
+										PEAK_POWER = MPEAK_POWER,
+										AC_INPUT = MAC_INPUT,
+										DC_OUTPUT = MDC_OUTPUT,
+										MAIN_POWER = MMAIN_POWER,
+										CPU = MCPU,
+										PCI_E = MPCI_E,
+										SATA = MSATA,
+										MOLEX = MMOLEX
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_RAM" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MRTYPE IN VARCHAR2,
+								MCAPACITY IN VARCHAR2,
+								MFREQUENCY IN VARCHAR2,
+								MOPERATING_VOLTAGE IN VARCHAR2,
+								MLATENCY IN VARCHAR2,
+								MHEAT_SINK_COLOR IN VARCHAR2,
+								MPIN IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE RAM															 
+        SET        RTYPE = MRTYPE,
+										CAPACITY = MCAPACITY,
+										FREQUENCY = MFREQUENCY,
+										OPERATING_VOLTAGE = MOPERATING_VOLTAGE,
+										LATENCY = MLATENCY,
+										HEAT_SINK_COLOR = MHEAT_SINK_COLOR,
+										PIN = MPIN
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE "UPDATE_SPEAKER" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MSPEAKER_TYPE IN VARCHAR2,
+								MFREQUENCY IN VARCHAR2,
+								MNOISE IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE SPEAKER															 
+        SET        SPEAKER_TYPE = MSPEAKER_TYPE,
+										FREQUENCY = MFREQUENCY,
+										NOISE = MNOISE
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE "UPDATE_SSD" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+                MCAPACITY IN VARCHAR2,
+								MFORM_FACTOR IN VARCHAR2,
+								MFLASH_TYPE IN VARCHAR2,
+								MINTERFACE IN VARCHAR2,
+								MSEQ_READS IN VARCHAR2,
+								MSEQ_WRITES IN VARCHAR2,
+								MDIMENSION IN VARCHAR2,
+								MWEIGHT IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE SSD															 
+        SET        CAPACITY = MCAPACITY,
+										FORM_FACTOR = MFORM_FACTOR,
+										FLASH_TYPE = MFLASH_TYPE,
+										INTERFACE = MINTERFACE,
+										SEQ_READS = MSEQ_READS,
+										SEQ_WRITES = MSEQ_WRITES,
+										DIMENSION = MDIMENSION,
+										WEIGHT = MWEIGHT
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_UPS" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+								MUPS_TYPE IN VARCHAR2,
+								MCAPACITY IN VARCHAR2,
+								MBATTERY IN VARCHAR2,
+								MBACKUP_TIME IN VARCHAR2,
+								MPORTS IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE UPS															 
+        SET        UPS_TYPE = MUPS_TYPE,
+										CAPACITY = MCAPACITY,
+										BATTERY = MBATTERY,
+										BACKUP_TIME = MBACKUP_TIME,
+										PORTS = MPORTS
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE "UPDATE_WEBCAM" (MPRODUCTID IN NUMBER , 
+                MPRICE IN NUMBER , 
+                MIMAGE IN VARCHAR2 , 
+                MSTOCK IN NUMBER , 
+                MWARRANTY IN NUMBER , 
+                MBRANDID IN NUMBER , 
+                MPRODUCT_NAME IN VARCHAR2 , 
+                MTYPE IN VARCHAR2 , 
+                MDETAILS IN VARCHAR2 ,                 
+								MWEBCAM_TYPE IN VARCHAR2,
+								MRESOLUTION IN VARCHAR2,
+								MWEIGHT IN VARCHAR2,
+								MMICROPHONE IN VARCHAR2,
+								MZOOM IN VARCHAR2)
+AS
+BEGIN
+    UPDATE PRODUCTS
+    SET            PRICE=MPRICE,
+                   IMAGE   =  MIMAGE, 
+                   STOCK   =  MSTOCK, 
+                   WARRANTY   =  MWARRANTY, 
+                   BRANDID   =  MBRANDID, 
+                   PRODUCT_NAME   =  MPRODUCT_NAME, 
+
+                   TYPE   =  MTYPE, 
+                   DETAILS   =  MDETAILS 
+		    WHERE PRODUCTID   =  MPRODUCTID;
+				UPDATE WEBCAM															 
+        SET        WEBCAM_TYPE = MWEBCAM_TYPE,
+										RESOLUTION = MRESOLUTION,
+										WEIGHT = MWEIGHT,
+										MICROPHONE = MMICROPHONE,
+										ZOOM = MZOOM
+    WHERE PRODUCTID   =  MPRODUCTID;
+END;
+/
+
+
+
+
+
+
+
