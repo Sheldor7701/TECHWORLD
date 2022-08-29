@@ -39,7 +39,8 @@ router.get('/addProduct/:type', async (req, res) => {
 });
 router.post('/addProduct/:type', async (req, res) => {
     //const TYPE= (req.params.type).toUpperCase().trim();
-    console.log(req.body);
+    //console.log(req.body);
+    
     await DB_product.addProduct(req.body);
     res.redirect('/admin/product');
 
@@ -50,7 +51,10 @@ router.get('/updateproduct/:productid', async (req, res) => {
         
     //database query
     const PRODUCTID= req.params.productid;
+    //console.log(PRODUCTID+"IDDDDDDDDD");
     const product=await DB_product.getProductByID(PRODUCTID);
+    console.log(product);
+
     const TYPE=product.TYPE;
     const data = {
         pageTitle: type+'S',
@@ -64,9 +68,13 @@ router.get('/updateproduct/:productid', async (req, res) => {
     res.render('update'+TYPE.toLowerCase().trim(), data);
 });
 
-
+function getString(chars){
+    if(chars==null) return '';
+    return chars;
+}
 router.post('/updateProduct/:productid', async (req, res) => {
     const PRODUCTID= (req.params.productid);
+
     await DB_product.updateProduct(PRODUCTID,req.body);
     // const products = await DB_product.allProduct();
     // const data = {

@@ -1,8 +1,17 @@
 const database = require('./database')
 
 function getInt(chars){
-    if(chars=='') return 0;
+    if(chars=='' || chars==null) return 0;
     return parseInt(chars);
+}
+function getString(chars){
+    if(chars==null ) {
+        // console.log("here");
+
+        return '';
+    }
+    //console.log(chars);
+    return chars;
 }
 // ${getInt(PRODUCT.PRICE)},
 // ${getInt(PRODUCT.STOCK)},
@@ -38,9 +47,9 @@ async function getProductBySearch(string) {
     let sql = `
     SELECT *
      FROM PRODUCTS
-      WHERE UPPER(TYPE) LIKE '${string[0]}' OR UPPER(PRODUCT_NAME) LIKE '${string[0]}' `
+      WHERE UPPER(TYPE) LIKE '${getString(string[0])}' OR UPPER(PRODUCT_NAME) LIKE '${getString(string[0])}' `
     for (let i = 1; i < string.length; i++) {
-        sql += ` OR UPPER(TYPE) LIKE '${string[i]}' OR UPPER(PRODUCT_NAME) LIKE '${string[i]}'`;
+        sql += ` OR UPPER(TYPE) LIKE '${getString(string[i])}' OR UPPER(PRODUCT_NAME) LIKE '${getString(string[i])}'`;
     }
     return (await database.execute(sql, [], database.options)).rows
 }
@@ -62,25 +71,25 @@ async function addProduct(PRODUCT) {
             BEGIN
             ${FUNC}(
                 ${getInt(PRODUCT.PRICE)},
-                '${PRODUCT.IMAGE}',
+                '${getString(PRODUCT.IMAGE)}',
                 ${getInt(PRODUCT.STOCK)},
                 ${getInt(PRODUCT.WARRANTY)},
                 ${PRODUCT.BRANDID},
-                '${PRODUCT.PRODUCT_NAME}',
-                '${PRODUCT.TYPE}',
-                '${PRODUCT.DETAILS}',                
-                '${PRODUCT.CHIPSET}' ,
-                '${PRODUCT.FORM_FACTOR}' ,
-                '${PRODUCT.AUDIO}' ,
-                '${PRODUCT.PCI}',
-                '${PRODUCT.SUPPORTED_SOFTWARE}' ,
-                '${PRODUCT.SLOTS}' ,
-                '${PRODUCT.SUPPORTED_MEMORY}' ,
-                '${PRODUCT.MAXIMUM_MEMORY}' ,
-                '${PRODUCT.GRAPHICS}' ,
-                '${PRODUCT.HDMI}' ,
-                '${PRODUCT.USB_TYPE}' ,
-                '${PRODUCT.LAN_PORTS}');
+                '${getString(PRODUCT.PRODUCT_NAME)}',
+                '${getString(PRODUCT.TYPE)}',
+                '${getString(PRODUCT.DETAILS)}',                
+                '${getString(PRODUCT.CHIPSET)}' ,
+                '${getString(PRODUCT.FORM_FACTOR)}' ,
+                '${getString(PRODUCT.AUDIO)}' ,
+                '${getString(PRODUCT.PCI)}',
+                '${getString(PRODUCT.SUPPORTED_SOFTWARE)}' ,
+                '${getString(PRODUCT.SLOTS)}' ,
+                '${getString(PRODUCT.SUPPORTED_MEMORY)}' ,
+                '${getString(PRODUCT.MAXIMUM_MEMORY)}' ,
+                '${getString(PRODUCT.GRAPHICS)}' ,
+                '${getString(PRODUCT.HDMI)}' ,
+                '${getString(PRODUCT.USB_TYPE)}' ,
+                '${getString(PRODUCT.LAN_PORTS)}');
             END;
             `;
             return (await database.execute(sql, [], database.options));
@@ -92,25 +101,25 @@ async function addProduct(PRODUCT) {
                 BEGIN
                 ${FUNC}(
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.BASE_FREQUENCY}' ,
-                    '${PRODUCT.MAXIMUM_TURBO_FREQUENCY}' ,
-                    '${PRODUCT.CACHE}' ,
-                    '${PRODUCT.CORES}',
-                    '${PRODUCT.THREADS}' ,
-                    '${PRODUCT.PROCESSOR_BASE_POWER}' ,
-                    '${PRODUCT.MAXIMUM_TURBO_POWER}' ,
-                    '${PRODUCT.MAXIMUM_SIZE}' ,
-                    '${PRODUCT.TYPE1}' ,
-                    '${PRODUCT.TYPE2}' ,
-                    '${PRODUCT.MAX_NUMBER_OF_CHANNELS}' ,
-                    '${PRODUCT.PROCESSOR_GRAPHICS}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.BASE_FREQUENCY)}' ,
+                    '${getString(PRODUCT.MAXIMUM_TURBO_FREQUENCY)}' ,
+                    '${getString(PRODUCT.CACHE)}' ,
+                    '${getString(PRODUCT.CORES)}',
+                    '${getString(PRODUCT.THREADS)}' ,
+                    '${getString(PRODUCT.PROCESSOR_BASE_POWER)}' ,
+                    '${getString(PRODUCT.MAXIMUM_TURBO_POWER)}' ,
+                    '${getString(PRODUCT.MAXIMUM_SIZE)}' ,
+                    '${getString(PRODUCT.TYPE1)}' ,
+                    '${getString(PRODUCT.TYPE2)}' ,
+                    '${getString(PRODUCT.MAX_NUMBER_OF_CHANNELS)}' ,
+                    '${getString(PRODUCT.PROCESSOR_GRAPHICS)}');
                 END;
                 `;
                 return (await database.execute(sql, [], database.options));
@@ -122,35 +131,35 @@ async function addProduct(PRODUCT) {
                     BEGIN
                     ${FUNC}(
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.GTYPE}'  ,
-                    '${PRODUCT.GSIZE}'  ,
-                    '${PRODUCT.RESOLUTION}'  ,
-                    '${PRODUCT.BOOST_CLOCK}'  ,
-                    '${PRODUCT.GAME_CLOCK}'  ,
-                    '${PRODUCT.CLOCK_INFO}'  ,
-                    '${PRODUCT.MEMORY_CLOCK}'  ,
-                    '${PRODUCT.MEMORY_INTERFACE}'  ,
-                    '${PRODUCT.STREAM_PROCESSORS}'  ,
-                    '${PRODUCT.DISPALY_PORT}'  ,
-                    '${PRODUCT.HDMI}'  ,
-                    '${PRODUCT.CONNECTORS}'  ,
-                    '${PRODUCT.RECOMMENDED_PSU}'  ,
-                    '${PRODUCT.CONSUMPTION}'  ,
-                    '${PRODUCT.MULTI_DISPLAY}'  ,
-                    '${PRODUCT.DITERCTX}'  ,
-                    '${PRODUCT.DIMENSION1}'  ,
-                    '${PRODUCT.DIMENSION2}'  ,
-                    '${PRODUCT.DIMENSION3}'  ,
-                    '${PRODUCT.OTHERS1}'  ,
-                    '${PRODUCT.OTHERS2}'  ,
-                    '${PRODUCT.OTHERS3}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.GTYPE)}'  ,
+                    '${getString(PRODUCT.GSIZE)}'  ,
+                    '${getString(PRODUCT.RESOLUTION)}'  ,
+                    '${getString(PRODUCT.BOOST_CLOCK)}'  ,
+                    '${getString(PRODUCT.GAME_CLOCK)}'  ,
+                    '${getString(PRODUCT.CLOCK_INFO)}'  ,
+                    '${getString(PRODUCT.MEMORY_CLOCK)}'  ,
+                    '${getString(PRODUCT.MEMORY_INTERFACE)}'  ,
+                    '${getString(PRODUCT.STREAM_PROCESSORS)}'  ,
+                    '${getString(PRODUCT.DISPALY_PORT)}'  ,
+                    '${getString(PRODUCT.HDMI)}'  ,
+                    '${getString(PRODUCT.CONNECTORS)}'  ,
+                    '${getString(PRODUCT.RECOMMENDED_PSU)}'  ,
+                    '${getString(PRODUCT.CONSUMPTION)}'  ,
+                    '${getString(PRODUCT.MULTI_DISPLAY)}'  ,
+                    '${getString(PRODUCT.DITERCTX)}'  ,
+                    '${getString(PRODUCT.DIMENSION1)}'  ,
+                    '${getString(PRODUCT.DIMENSION2)}'  ,
+                    '${getString(PRODUCT.DIMENSION3)}'  ,
+                    '${getString(PRODUCT.OTHERS1)}'  ,
+                    '${getString(PRODUCT.OTHERS2)}'  ,
+                    '${getString(PRODUCT.OTHERS3)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -163,16 +172,16 @@ async function addProduct(PRODUCT) {
                     BEGIN
                     ${FUNC}(
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.INTERFACE_TYPE}'  ,
-                    '${PRODUCT.CAPACITY}'  ,
-                    '${PRODUCT.RPM}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.INTERFACE_TYPE)}'  ,
+                    '${getString(PRODUCT.CAPACITY)}'  ,
+                    '${getString(PRODUCT.RPM)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -184,18 +193,18 @@ async function addProduct(PRODUCT) {
                     BEGIN
                     ${FUNC}(
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.HEADPHONE_TYPE}'  ,
-                    '${PRODUCT.FREQUENCY}'  ,
-                    '${PRODUCT.WEIGHT}'  ,
-                    '${PRODUCT.COLOR}'  ,
-                    '${PRODUCT.USB_TYPE}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.HEADPHONE_TYPE)}'  ,
+                    '${getString(PRODUCT.FREQUENCY)}'  ,
+                    '${getString(PRODUCT.WEIGHT)}'  ,
+                    '${getString(PRODUCT.COLOR)}'  ,
+                    '${getString(PRODUCT.USB_TYPE)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -207,18 +216,18 @@ async function addProduct(PRODUCT) {
                         BEGIN
                         ${FUNC}(
                         ${getInt(PRODUCT.PRICE)},
-                        '${PRODUCT.IMAGE}',
+                        '${getString(PRODUCT.IMAGE)}',
                         ${getInt(PRODUCT.STOCK)},
                         ${getInt(PRODUCT.WARRANTY)},
                         ${PRODUCT.BRANDID},
-                        '${PRODUCT.PRODUCT_NAME}',
-                        '${PRODUCT.TYPE}',
-                        '${PRODUCT.DETAILS}',                
-                        '${PRODUCT.KEYBOARD_TYPE}'  ,
-                        '${PRODUCT.LIGHT}'  ,
-                        '${PRODUCT.KEYS}'  ,
-                        '${PRODUCT.DIMENTION}'  ,
-                        '${PRODUCT.COLOR}');
+                        '${getString(PRODUCT.PRODUCT_NAME)}',
+                        '${getString(PRODUCT.TYPE)}',
+                        '${getString(PRODUCT.DETAILS)}',                
+                        '${getString(PRODUCT.KEYBOARD_TYPE)}'  ,
+                        '${getString(PRODUCT.LIGHT)}'  ,
+                        '${getString(PRODUCT.KEYS)}'  ,
+                        '${getString(PRODUCT.DIMENTION)}'  ,
+                        '${getString(PRODUCT.COLOR)}');
                         END;
                         `;
                         return (await database.execute(sql, [], database.options));
@@ -230,29 +239,29 @@ async function addProduct(PRODUCT) {
                             BEGIN
                             ${FUNC}(
                             ${getInt(PRODUCT.PRICE)},
-                            '${PRODUCT.IMAGE}',
+                            '${getString(PRODUCT.IMAGE)}',
                             ${getInt(PRODUCT.STOCK)},
                             ${getInt(PRODUCT.WARRANTY)},
                             ${PRODUCT.BRANDID},
-                            '${PRODUCT.PRODUCT_NAME}',
-                            '${PRODUCT.TYPE}',
-                            '${PRODUCT.DETAILS}',                
-                            '${PRODUCT.DISPLAY}'  ,
-                            '${PRODUCT.GRAPHICS}'  ,
-                            '${PRODUCT.STORAGE}'  ,
-                            '${PRODUCT.MEMORY}'  ,
-                            '${PRODUCT.PROCESSOR}'  ,
-                            '${PRODUCT.ADAPTER}'  ,
-                            '${PRODUCT.BATTERY}'  ,
-                            '${PRODUCT.OPERATING_SYSTEM}'  ,
-                            '${PRODUCT.NETWORKING}'  ,
-                            '${PRODUCT.KEYBOARD}'  ,
-                            '${PRODUCT.BLUETOOTH}'  ,
-                            '${PRODUCT.AUDIO}'  ,
-                            '${PRODUCT.WEBCAM}'  ,
-                            '${PRODUCT.PORTS_CONNECTORS}'  ,
-                            '${PRODUCT.COLOR}'  ,
-                            '${PRODUCT.WEIGHT}');
+                            '${getString(PRODUCT.PRODUCT_NAME)}',
+                            '${getString(PRODUCT.TYPE)}',
+                            '${getString(PRODUCT.DETAILS)}',                
+                            '${getString(PRODUCT.DISPLAY)}'  ,
+                            '${getString(PRODUCT.GRAPHICS)}'  ,
+                            '${getString(PRODUCT.STORAGE)}'  ,
+                            '${getString(PRODUCT.MEMORY)}'  ,
+                            '${getString(PRODUCT.PROCESSOR)}'  ,
+                            '${getString(PRODUCT.ADAPTER)}'  ,
+                            '${getString(PRODUCT.BATTERY)}'  ,
+                            '${getString(PRODUCT.OPERATING_SYSTEM)}'  ,
+                            '${getString(PRODUCT.NETWORKING)}'  ,
+                            '${getString(PRODUCT.KEYBOARD)}'  ,
+                            '${getString(PRODUCT.BLUETOOTH)}'  ,
+                            '${getString(PRODUCT.AUDIO)}'  ,
+                            '${getString(PRODUCT.WEBCAM)}'  ,
+                            '${getString(PRODUCT.PORTS_CONNECTORS)}'  ,
+                            '${getString(PRODUCT.COLOR)}'  ,
+                            '${getString(PRODUCT.WEIGHT)}');
                             END;
                             `;
                             return (await database.execute(sql, [], database.options));
@@ -265,29 +274,29 @@ async function addProduct(PRODUCT) {
                     BEGIN
                     ${FUNC}(
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.SCREEN_SIZE}'  ,
-                    '${PRODUCT.REFRESH_RATE}'  ,
-                    '${PRODUCT.DISPLAY_TYPE}'  ,
-                    '${PRODUCT.RESOLUTION}'  ,
-                    '${PRODUCT.BRIGHTNESS}'  ,
-                    '${PRODUCT.CONTRAST_RATIO}'  ,
-                    '${PRODUCT.ASPECT_RATIO}'  ,
-                    '${PRODUCT.COLOR}'  ,
-                    '${PRODUCT.I_O_PORTS}'  ,
-                    '${PRODUCT.RESPONSE_TIME}'  ,
-                    '${PRODUCT.VIEWING_ANGLE}'  ,
-                    '${PRODUCT.AUDIO_FEATURES}'  ,
-                    '${PRODUCT.VIDEO_FEATURES}'  ,
-                    '${PRODUCT.POWER}'  ,
-                    '${PRODUCT.WEIGHT}'  ,
-                    '${PRODUCT.DIMENSIONS}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.SCREEN_SIZE)}'  ,
+                    '${getString(PRODUCT.REFRESH_RATE)}'  ,
+                    '${getString(PRODUCT.DISPLAY_TYPE)}'  ,
+                    '${getString(PRODUCT.RESOLUTION)}'  ,
+                    '${getString(PRODUCT.BRIGHTNESS)}'  ,
+                    '${getString(PRODUCT.CONTRAST_RATIO)}'  ,
+                    '${getString(PRODUCT.ASPECT_RATIO)}'  ,
+                    '${getString(PRODUCT.COLOR)}'  ,
+                    '${getString(PRODUCT.I_O_PORTS)}'  ,
+                    '${getString(PRODUCT.RESPONSE_TIME)}'  ,
+                    '${getString(PRODUCT.VIEWING_ANGLE)}'  ,
+                    '${getString(PRODUCT.AUDIO_FEATURES)}'  ,
+                    '${getString(PRODUCT.VIDEO_FEATURES)}'  ,
+                    '${getString(PRODUCT.POWER)}'  ,
+                    '${getString(PRODUCT.WEIGHT)}'  ,
+                    '${getString(PRODUCT.DIMENSIONS)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -300,17 +309,17 @@ async function addProduct(PRODUCT) {
                     BEGIN
                     ${FUNC}(
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.MOUSE_TYPE}'  ,
-                    '${PRODUCT.BUTTONS}'  ,
-                    '${PRODUCT.WEIGHT}'  ,
-                    '${PRODUCT.DPI}' );
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.MOUSE_TYPE)}'  ,
+                    '${getString(PRODUCT.BUTTONS)}'  ,
+                    '${getString(PRODUCT.WEIGHT)}'  ,
+                    '${getString(PRODUCT.DPI)}' );
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -323,26 +332,26 @@ async function addProduct(PRODUCT) {
                     BEGIN
                     ${FUNC}(
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.EFFICIENCY}'  ,
-                    '${PRODUCT.CERTIFICATION}'  ,
-                    '${PRODUCT.FAN_SIZE}'  ,
-                    '${PRODUCT.MODULAR_TYPE}'  ,
-                    '${PRODUCT.TOTAL_POWER}'  ,
-                    '${PRODUCT.PEAK_POWER}'  ,
-                    '${PRODUCT.AC_INPUT}'  ,
-                    '${PRODUCT.DC_OUTPUT}'  ,
-                    '${PRODUCT.MAIN_POWER}'  ,
-                    '${PRODUCT.CPU}'  ,
-                    '${PRODUCT.PCI_E}'  ,
-                    '${PRODUCT.SATA}'  ,
-                    '${PRODUCT.MOLEX}' );
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.EFFICIENCY)}'  ,
+                    '${getString(PRODUCT.CERTIFICATION)}'  ,
+                    '${getString(PRODUCT.FAN_SIZE)}'  ,
+                    '${getString(PRODUCT.MODULAR_TYPE)}'  ,
+                    '${getString(PRODUCT.TOTAL_POWER)}'  ,
+                    '${getString(PRODUCT.PEAK_POWER)}'  ,
+                    '${getString(PRODUCT.AC_INPUT)}'  ,
+                    '${getString(PRODUCT.DC_OUTPUT)}'  ,
+                    '${getString(PRODUCT.MAIN_POWER)}'  ,
+                    '${getString(PRODUCT.CPU)}'  ,
+                    '${getString(PRODUCT.PCI_E)}'  ,
+                    '${getString(PRODUCT.SATA)}'  ,
+                    '${getString(PRODUCT.MOLEX)}' );
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -355,20 +364,20 @@ async function addProduct(PRODUCT) {
                         BEGIN
                         ${FUNC}(
                         ${getInt(PRODUCT.PRICE)},
-                        '${PRODUCT.IMAGE}',
+                        '${getString(PRODUCT.IMAGE)}',
                         ${getInt(PRODUCT.STOCK)},
                         ${getInt(PRODUCT.WARRANTY)},
                         ${PRODUCT.BRANDID},
-                        '${PRODUCT.PRODUCT_NAME}',
-                        '${PRODUCT.TYPE}',
-                        '${PRODUCT.DETAILS}',                
-                        '${PRODUCT.RTYPE}'  ,
-                        '${PRODUCT.CAPACITY}'  ,
-                        '${PRODUCT.FREQUENCY}'  ,
-                        '${PRODUCT.OPERATING_VOLTAGE}'  ,
-                        '${PRODUCT.LATENCY}'  ,
-                        '${PRODUCT.HEAT_SINK_COLOR}'  ,
-                        '${PRODUCT.PIN}'  );
+                        '${getString(PRODUCT.PRODUCT_NAME)}',
+                        '${getString(PRODUCT.TYPE)}',
+                        '${getString(PRODUCT.DETAILS)}',                
+                        '${getString(PRODUCT.RTYPE)}'  ,
+                        '${getString(PRODUCT.CAPACITY)}'  ,
+                        '${getString(PRODUCT.FREQUENCY)}'  ,
+                        '${getString(PRODUCT.OPERATING_VOLTAGE)}'  ,
+                        '${getString(PRODUCT.LATENCY)}'  ,
+                        '${getString(PRODUCT.HEAT_SINK_COLOR)}'  ,
+                        '${getString(PRODUCT.PIN)}'  );
                         END;
                         `;
                         return (await database.execute(sql, [], database.options));
@@ -378,18 +387,18 @@ async function addProduct(PRODUCT) {
                         {
                             let sql = `
                             BEGIN
-                            ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                            ${FUNC}(${PRODUCTID}  ,
                             ${getInt(PRODUCT.PRICE)},
-                            '${PRODUCT.IMAGE}',
+                            '${getString(PRODUCT.IMAGE)}',
                             ${getInt(PRODUCT.STOCK)},
                             ${getInt(PRODUCT.WARRANTY)},
                             ${PRODUCT.BRANDID},
-                            '${PRODUCT.PRODUCT_NAME}',
-                            '${PRODUCT.TYPE}',
-                            '${PRODUCT.DETAILS}',                
-                            '${PRODUCT.SPEAKER_TYPE}'  ,
-                            '${PRODUCT.FREQUENCY}'  ,
-                            '${PRODUCT.NOISE}');
+                            '${getString(PRODUCT.PRODUCT_NAME)}',
+                            '${getString(PRODUCT.TYPE)}',
+                            '${getString(PRODUCT.DETAILS)}',                
+                            '${getString(PRODUCT.SPEAKER_TYPE)}'  ,
+                            '${getString(PRODUCT.FREQUENCY)}'  ,
+                            '${getString(PRODUCT.NOISE)}');
                             END;
                             `;
                             return (await database.execute(sql, [], database.options));
@@ -402,21 +411,21 @@ async function addProduct(PRODUCT) {
                                 BEGIN
                                 ${FUNC}(
                                 ${getInt(PRODUCT.PRICE)},
-                                '${PRODUCT.IMAGE}',
+                                '${getString(PRODUCT.IMAGE)}',
                                 ${getInt(PRODUCT.STOCK)},
                                 ${getInt(PRODUCT.WARRANTY)},
                                 ${PRODUCT.BRANDID},
-                                '${PRODUCT.PRODUCT_NAME}',
-                                '${PRODUCT.TYPE}',
-                                '${PRODUCT.DETAILS}',                
-                                '${PRODUCT.CAPACITY}'  ,
-                                '${PRODUCT.FORM_FACTOR}'  ,
-                                '${PRODUCT.FLASH_TYPE}'  ,
-                                '${PRODUCT.INTERFACE}'  ,
-                                '${PRODUCT.SEQ_READS}'  ,
-                                '${PRODUCT.SEQ_WRITES}'  ,
-                                '${PRODUCT.DIMENSION}'  ,
-                                '${PRODUCT.WEIGHT}'  );
+                                '${getString(PRODUCT.PRODUCT_NAME)}',
+                                '${getString(PRODUCT.TYPE)}',
+                                '${getString(PRODUCT.DETAILS)}',                
+                                '${getString(PRODUCT.CAPACITY)}'  ,
+                                '${getString(PRODUCT.FORM_FACTOR)}'  ,
+                                '${getString(PRODUCT.FLASH_TYPE)}'  ,
+                                '${getString(PRODUCT.INTERFACE)}'  ,
+                                '${getString(PRODUCT.SEQ_READS)}'  ,
+                                '${getString(PRODUCT.SEQ_WRITES)}'  ,
+                                '${getString(PRODUCT.DIMENSION)}'  ,
+                                '${getString(PRODUCT.WEIGHT)}'  );
                                 END;
                                 `;
                                 return (await database.execute(sql, [], database.options));
@@ -429,18 +438,18 @@ async function addProduct(PRODUCT) {
                                     BEGIN
                                     ${FUNC}(
                                     ${getInt(PRODUCT.PRICE)},
-                                    '${PRODUCT.IMAGE}',
+                                    '${getString(PRODUCT.IMAGE)}',
                                     ${getInt(PRODUCT.STOCK)},
                                     ${getInt(PRODUCT.WARRANTY)},
                                     ${PRODUCT.BRANDID},
-                                    '${PRODUCT.PRODUCT_NAME}',
-                                    '${PRODUCT.TYPE}',
-                                    '${PRODUCT.DETAILS}',                
-                                    '${PRODUCT.UPS_TYPE}'  ,
-                                    '${PRODUCT.CAPACITY}'  ,
-                                    '${PRODUCT.BATTERY}'  ,
-                                    '${PRODUCT.BACKUP_TIME}'  ,
-                                    '${PRODUCT.PORTS}' );
+                                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                                    '${getString(PRODUCT.TYPE)}',
+                                    '${getString(PRODUCT.DETAILS)}',                
+                                    '${getString(PRODUCT.UPS_TYPE)}'  ,
+                                    '${getString(PRODUCT.CAPACITY)}'  ,
+                                    '${getString(PRODUCT.BATTERY)}'  ,
+                                    '${getString(PRODUCT.BACKUP_TIME)}'  ,
+                                    '${getString(PRODUCT.PORTS)}' );
                                     END;
                                     `;
                                     return (await database.execute(sql, [], database.options));
@@ -452,18 +461,18 @@ async function addProduct(PRODUCT) {
                                         BEGIN
                                         ${FUNC}(
                                         ${getInt(PRODUCT.PRICE)},
-                                        '${PRODUCT.IMAGE}',
+                                        '${getString(PRODUCT.IMAGE)}',
                                         ${getInt(PRODUCT.STOCK)},
                                         ${getInt(PRODUCT.WARRANTY)},
                                         ${PRODUCT.BRANDID},
-                                        '${PRODUCT.PRODUCT_NAME}',
-                                        '${PRODUCT.TYPE}',
-                                        '${PRODUCT.DETAILS}',                
-                                        '${PRODUCT.WEBCAM_TYPE}'  ,
-                                        '${PRODUCT.RESOLUTION}'  ,
-                                        '${PRODUCT.WEIGHT}'  ,
-                                        '${PRODUCT.MICROPHONE}'  ,
-                                        '${PRODUCT.ZOOM}' );
+                                        '${getString(PRODUCT.PRODUCT_NAME)}',
+                                        '${getString(PRODUCT.TYPE)}',
+                                        '${getString(PRODUCT.DETAILS)}',                
+                                        '${getString(PRODUCT.WEBCAM_TYPE)}'  ,
+                                        '${getString(PRODUCT.RESOLUTION)}'  ,
+                                        '${getString(PRODUCT.WEIGHT)}'  ,
+                                        '${getString(PRODUCT.MICROPHONE)}'  ,
+                                        '${getString(PRODUCT.ZOOM)}' );
                                         END;
                                         `;
                                         return (await database.execute(sql, [], database.options));
@@ -485,25 +494,25 @@ async function updateProduct(PRODUCTID, PRODUCT) {
             BEGIN
             ${FUNC}(${PRODUCTID},
                 ${getInt(PRODUCT.PRICE)},
-                '${PRODUCT.IMAGE}',
+                '${getString(PRODUCT.IMAGE)}',
                 ${getInt(PRODUCT.STOCK)},
                 ${getInt(PRODUCT.WARRANTY)},
                 ${PRODUCT.BRANDID},
-                '${PRODUCT.PRODUCT_NAME}',
-                '${PRODUCT.TYPE}',
-                '${PRODUCT.DETAILS}',                
-                '${PRODUCT.CHIPSET}' ,
-                '${PRODUCT.FORM_FACTOR}' ,
-                '${PRODUCT.AUDIO}' ,
-                '${PRODUCT.PCI}',
-                '${PRODUCT.SUPPORTED_SOFTWARE}' ,
-                '${PRODUCT.SLOTS}' ,
-                '${PRODUCT.SUPPORTED_MEMORY}' ,
-                '${PRODUCT.MAXIMUM_MEMORY}' ,
-                '${PRODUCT.GRAPHICS}' ,
-                '${PRODUCT.HDMI}' ,
-                '${PRODUCT.USB_TYPE}' ,
-                '${PRODUCT.LAN_PORTS}');
+                '${getString(PRODUCT.PRODUCT_NAME)}',
+                '${getString(PRODUCT.TYPE)}',
+                '${getString(PRODUCT.DETAILS)}',                
+                '${getString(PRODUCT.CHIPSET)}' ,
+                '${getString(PRODUCT.FORM_FACTOR)}' ,
+                '${getString(PRODUCT.AUDIO)}' ,
+                '${getString(PRODUCT.PCI)}',
+                '${getString(PRODUCT.SUPPORTED_SOFTWARE)}' ,
+                '${getString(PRODUCT.SLOTS)}' ,
+                '${getString(PRODUCT.SUPPORTED_MEMORY)}' ,
+                '${getString(PRODUCT.MAXIMUM_MEMORY)}' ,
+                '${getString(PRODUCT.GRAPHICS)}' ,
+                '${getString(PRODUCT.HDMI)}' ,
+                '${getString(PRODUCT.USB_TYPE)}' ,
+                '${getString(PRODUCT.LAN_PORTS)}');
             END;
             `;
             return (await database.execute(sql, [], database.options));
@@ -515,25 +524,25 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 BEGIN
                 ${FUNC}(${PRODUCTID},
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.BASE_FREQUENCY}' ,
-                    '${PRODUCT.MAXIMUM_TURBO_FREQUENCY}' ,
-                    '${PRODUCT.CACHE}' ,
-                    '${PRODUCT.CORES}',
-                    '${PRODUCT.THREADS}' ,
-                    '${PRODUCT.PROCESSOR_BASE_POWER}' ,
-                    '${PRODUCT.MAXIMUM_TURBO_POWER}' ,
-                    '${PRODUCT.MAXIMUM_SIZE}' ,
-                    '${PRODUCT.TYPE1}' ,
-                    '${PRODUCT.TYPE2}' ,
-                    '${PRODUCT.MAX_NUMBER_OF_CHANNELS}' ,
-                    '${PRODUCT.PROCESSOR_GRAPHICS}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.BASE_FREQUENCY)}' ,
+                    '${getString(PRODUCT.MAXIMUM_TURBO_FREQUENCY)}' ,
+                    '${getString(PRODUCT.CACHE)}' ,
+                    '${getString(PRODUCT.CORES)}',
+                    '${getString(PRODUCT.THREADS)}' ,
+                    '${getString(PRODUCT.PROCESSOR_BASE_POWER)}' ,
+                    '${getString(PRODUCT.MAXIMUM_TURBO_POWER)}' ,
+                    '${getString(PRODUCT.MAXIMUM_SIZE)}' ,
+                    '${getString(PRODUCT.TYPE1)}' ,
+                    '${getString(PRODUCT.TYPE2)}' ,
+                    '${getString(PRODUCT.MAX_NUMBER_OF_CHANNELS)}' ,
+                    '${getString(PRODUCT.PROCESSOR_GRAPHICS)}');
                 END;
                 `;
                 return (await database.execute(sql, [], database.options));
@@ -543,37 +552,37 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.GTYPE}'  ,
-                    '${PRODUCT.GSIZE}'  ,
-                    '${PRODUCT.RESOLUTION}'  ,
-                    '${PRODUCT.BOOST_CLOCK}'  ,
-                    '${PRODUCT.GAME_CLOCK}'  ,
-                    '${PRODUCT.CLOCK_INFO}'  ,
-                    '${PRODUCT.MEMORY_CLOCK}'  ,
-                    '${PRODUCT.MEMORY_INTERFACE}'  ,
-                    '${PRODUCT.STREAM_PROCESSORS}'  ,
-                    '${PRODUCT.DISPALY_PORT}'  ,
-                    '${PRODUCT.HDMI}'  ,
-                    '${PRODUCT.CONNECTORS}'  ,
-                    '${PRODUCT.RECOMMENDED_PSU}'  ,
-                    '${PRODUCT.CONSUMPTION}'  ,
-                    '${PRODUCT.MULTI_DISPLAY}'  ,
-                    '${PRODUCT.DITERCTX}'  ,
-                    '${PRODUCT.DIMENSION1}'  ,
-                    '${PRODUCT.DIMENSION2}'  ,
-                    '${PRODUCT.DIMENSION3}'  ,
-                    '${PRODUCT.OTHERS1}'  ,
-                    '${PRODUCT.OTHERS2}'  ,
-                    '${PRODUCT.OTHERS3}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.GTYPE)}'  ,
+                    '${getString(PRODUCT.GSIZE)}'  ,
+                    '${getString(PRODUCT.RESOLUTION)}'  ,
+                    '${getString(PRODUCT.BOOST_CLOCK)}'  ,
+                    '${getString(PRODUCT.GAME_CLOCK)}'  ,
+                    '${getString(PRODUCT.CLOCK_INFO)}'  ,
+                    '${getString(PRODUCT.MEMORY_CLOCK)}'  ,
+                    '${getString(PRODUCT.MEMORY_INTERFACE)}'  ,
+                    '${getString(PRODUCT.STREAM_PROCESSORS)}'  ,
+                    '${getString(PRODUCT.DISPALY_PORT)}'  ,
+                    '${getString(PRODUCT.HDMI)}'  ,
+                    '${getString(PRODUCT.CONNECTORS)}'  ,
+                    '${getString(PRODUCT.RECOMMENDED_PSU)}'  ,
+                    '${getString(PRODUCT.CONSUMPTION)}'  ,
+                    '${getString(PRODUCT.MULTI_DISPLAY)}'  ,
+                    '${getString(PRODUCT.DITERCTX)}'  ,
+                    '${getString(PRODUCT.DIMENSION1)}'  ,
+                    '${getString(PRODUCT.DIMENSION2)}'  ,
+                    '${getString(PRODUCT.DIMENSION3)}'  ,
+                    '${getString(PRODUCT.OTHERS1)}'  ,
+                    '${getString(PRODUCT.OTHERS2)}'  ,
+                    '${getString(PRODUCT.OTHERS3)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -584,18 +593,18 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.INTERFACE_TYPE}'  ,
-                    '${PRODUCT.CAPACITY}'  ,
-                    '${PRODUCT.RPM}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.INTERFACE_TYPE)}'  ,
+                    '${getString(PRODUCT.CAPACITY)}'  ,
+                    '${getString(PRODUCT.RPM)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -605,20 +614,20 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.HEADPHONE_TYPE}'  ,
-                    '${PRODUCT.FREQUENCY}'  ,
-                    '${PRODUCT.WEIGHT}'  ,
-                    '${PRODUCT.COLOR}'  ,
-                    '${PRODUCT.USB_TYPE}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.HEADPHONE_TYPE)}'  ,
+                    '${getString(PRODUCT.FREQUENCY)}'  ,
+                    '${getString(PRODUCT.WEIGHT)}'  ,
+                    '${getString(PRODUCT.COLOR)}'  ,
+                    '${getString(PRODUCT.USB_TYPE)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -629,20 +638,20 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.KEYBOARD_TYPE}'  ,
-                    '${PRODUCT.LIGHT}'  ,
-                    '${PRODUCT.KEYS}'  ,
-                    '${PRODUCT.DIMENTION}'  ,
-                    '${PRODUCT.COLOR}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.KEYBOARD_TYPE)}'  ,
+                    '${getString(PRODUCT.LIGHT)}'  ,
+                    '${getString(PRODUCT.KEYS)}'  ,
+                    '${getString(PRODUCT.DIMENTION)}'  ,
+                    '${getString(PRODUCT.COLOR)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -650,33 +659,34 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 }
                 case 'LAPTOP':
                 {
+                    console.log(PRODUCT);
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.DISPLAY}'  ,
-                    '${PRODUCT.GRAPHICS}'  ,
-                    '${PRODUCT.STORAGE}'  ,
-                    '${PRODUCT.MEMORY}'  ,
-                    '${PRODUCT.PROCESSOR}'  ,
-                    '${PRODUCT.ADAPTER}'  ,
-                    '${PRODUCT.BATTERY}'  ,
-                    '${PRODUCT.OPERATING_SYSTEM}'  ,
-                    '${PRODUCT.NETWORKING}'  ,
-                    '${PRODUCT.KEYBOARD}'  ,
-                    '${PRODUCT.BLUETOOTH}'  ,
-                    '${PRODUCT.AUDIO}'  ,
-                    '${PRODUCT.WEBCAM}'  ,
-                    '${PRODUCT.PORTS_CONNECTORS}'  ,
-                    '${PRODUCT.COLOR}'  ,
-                    '${PRODUCT.WEIGHT}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.DISPLAY)}'  ,
+                    '${getString(PRODUCT.GRAPHICS)}'  ,
+                    '${getString(PRODUCT.STORAGE)}'  ,
+                    '${getString(PRODUCT.MEMORY)}'  ,
+                    '${getString(PRODUCT.PROCESSOR)}'  ,
+                    '${getString(PRODUCT.ADAPTER)}'  ,
+                    '${getString(PRODUCT.BATTERY)}'  ,
+                    '${getString(PRODUCT.OPERATING_SYSTEM)}'  ,
+                    '${getString(PRODUCT.NETWORKING)}'  ,
+                    '${getString(PRODUCT.KEYBOARD)}'  ,
+                    '${getString(PRODUCT.BLUETOOTH)}'  ,
+                    '${getString(PRODUCT.AUDIO)}'  ,
+                    '${getString(PRODUCT.WEBCAM)}'  ,
+                    '${getString(PRODUCT.PORTS_CONNECTORS)}'  ,
+                    '${getString(PRODUCT.COLOR)}'  ,
+                    '${getString(PRODUCT.WEIGHT)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -687,31 +697,31 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.SCREEN_SIZE}'  ,
-                    '${PRODUCT.REFRESH_RATE}'  ,
-                    '${PRODUCT.DISPLAY_TYPE}'  ,
-                    '${PRODUCT.RESOLUTION}'  ,
-                    '${PRODUCT.BRIGHTNESS}'  ,
-                    '${PRODUCT.CONTRAST_RATIO}'  ,
-                    '${PRODUCT.ASPECT_RATIO}'  ,
-                    '${PRODUCT.COLOR}'  ,
-                    '${PRODUCT.I_O_PORTS}'  ,
-                    '${PRODUCT.RESPONSE_TIME}'  ,
-                    '${PRODUCT.VIEWING_ANGLE}'  ,
-                    '${PRODUCT.AUDIO_FEATURES}'  ,
-                    '${PRODUCT.VIDEO_FEATURES}'  ,
-                    '${PRODUCT.POWER}'  ,
-                    '${PRODUCT.WEIGHT}'  ,
-                    '${PRODUCT.DIMENSIONS}');
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.SCREEN_SIZE)}'  ,
+                    '${getString(PRODUCT.REFRESH_RATE)}'  ,
+                    '${getString(PRODUCT.DISPLAY_TYPE)}'  ,
+                    '${getString(PRODUCT.RESOLUTION)}'  ,
+                    '${getString(PRODUCT.BRIGHTNESS)}'  ,
+                    '${getString(PRODUCT.CONTRAST_RATIO)}'  ,
+                    '${getString(PRODUCT.ASPECT_RATIO)}'  ,
+                    '${getString(PRODUCT.COLOR)}'  ,
+                    '${getString(PRODUCT.I_O_PORTS)}'  ,
+                    '${getString(PRODUCT.RESPONSE_TIME)}'  ,
+                    '${getString(PRODUCT.VIEWING_ANGLE)}'  ,
+                    '${getString(PRODUCT.AUDIO_FEATURES)}'  ,
+                    '${getString(PRODUCT.VIDEO_FEATURES)}'  ,
+                    '${getString(PRODUCT.POWER)}'  ,
+                    '${getString(PRODUCT.WEIGHT)}'  ,
+                    '${getString(PRODUCT.DIMENSIONS)}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -722,19 +732,19 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.MOUSE_TYPE}'  ,
-                    '${PRODUCT.BUTTONS}'  ,
-                    '${PRODUCT.WEIGHT}'  ,
-                    '${PRODUCT.DPI}' );
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.MOUSE_TYPE)}'  ,
+                    '${getString(PRODUCT.BUTTONS)}'  ,
+                    '${getString(PRODUCT.WEIGHT)}'  ,
+                    '${getString(PRODUCT.DPI)}' );
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -745,28 +755,28 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${FUNC}(${PRODUCTID}  ,
                     ${getInt(PRODUCT.PRICE)},
-                    '${PRODUCT.IMAGE}',
+                    '${getString(PRODUCT.IMAGE)}',
                     ${getInt(PRODUCT.STOCK)},
                     ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
-                    '${PRODUCT.PRODUCT_NAME}',
-                    '${PRODUCT.TYPE}',
-                    '${PRODUCT.DETAILS}',                
-                    '${PRODUCT.EFFICIENCY}'  ,
-                    '${PRODUCT.CERTIFICATION}'  ,
-                    '${PRODUCT.FAN_SIZE}'  ,
-                    '${PRODUCT.MODULAR_TYPE}'  ,
-                    '${PRODUCT.TOTAL_POWER}'  ,
-                    '${PRODUCT.PEAK_POWER}'  ,
-                    '${PRODUCT.AC_INPUT}'  ,
-                    '${PRODUCT.DC_OUTPUT}'  ,
-                    '${PRODUCT.MAIN_POWER}'  ,
-                    '${PRODUCT.CPU}'  ,
-                    '${PRODUCT.PCI_E}'  ,
-                    '${PRODUCT.SATA}'  ,
-                    '${PRODUCT.MOLEX}' );
+                    '${getString(PRODUCT.PRODUCT_NAME)}',
+                    '${getString(PRODUCT.TYPE)}',
+                    '${getString(PRODUCT.DETAILS)}',                
+                    '${getString(PRODUCT.EFFICIENCY)}'  ,
+                    '${getString(PRODUCT.CERTIFICATION)}'  ,
+                    '${getString(PRODUCT.FAN_SIZE)}'  ,
+                    '${getString(PRODUCT.MODULAR_TYPE)}'  ,
+                    '${getString(PRODUCT.TOTAL_POWER)}'  ,
+                    '${getString(PRODUCT.PEAK_POWER)}'  ,
+                    '${getString(PRODUCT.AC_INPUT)}'  ,
+                    '${getString(PRODUCT.DC_OUTPUT)}'  ,
+                    '${getString(PRODUCT.MAIN_POWER)}'  ,
+                    '${getString(PRODUCT.CPU)}'  ,
+                    '${getString(PRODUCT.PCI_E)}'  ,
+                    '${getString(PRODUCT.SATA)}'  ,
+                    '${getString(PRODUCT.MOLEX)}' );
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
@@ -776,22 +786,22 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                     {
                         let sql = `
                         BEGIN
-                        ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                        ${FUNC}(${PRODUCTID}  ,
                         ${getInt(PRODUCT.PRICE)},
-                        '${PRODUCT.IMAGE}',
+                        '${getString(PRODUCT.IMAGE)}',
                         ${getInt(PRODUCT.STOCK)},
                         ${getInt(PRODUCT.WARRANTY)},
                         ${PRODUCT.BRANDID},
-                        '${PRODUCT.PRODUCT_NAME}',
-                        '${PRODUCT.TYPE}',
-                        '${PRODUCT.DETAILS}',                
-                        '${PRODUCT.RTYPE}'  ,
-                        '${PRODUCT.CAPACITY}'  ,
-                        '${PRODUCT.FREQUENCY}'  ,
-                        '${PRODUCT.OPERATING_VOLTAGE}'  ,
-                        '${PRODUCT.LATENCY}'  ,
-                        '${PRODUCT.HEAT_SINK_COLOR}'  ,
-                        '${PRODUCT.PIN}'  );
+                        '${getString(PRODUCT.PRODUCT_NAME)}',
+                        '${getString(PRODUCT.TYPE)}',
+                        '${getString(PRODUCT.DETAILS)}',                
+                        '${getString(PRODUCT.RTYPE)}'  ,
+                        '${getString(PRODUCT.CAPACITY)}'  ,
+                        '${getString(PRODUCT.FREQUENCY)}'  ,
+                        '${getString(PRODUCT.OPERATING_VOLTAGE)}'  ,
+                        '${getString(PRODUCT.LATENCY)}'  ,
+                        '${getString(PRODUCT.HEAT_SINK_COLOR)}'  ,
+                        '${getString(PRODUCT.PIN)}'  );
                         END;
                         `;
                         return (await database.execute(sql, [], database.options));
@@ -801,18 +811,18 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                         {
                             let sql = `
                             BEGIN
-                            ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                            ${FUNC}(${PRODUCTID}  ,
                             ${getInt(PRODUCT.PRICE)},
-                            '${PRODUCT.IMAGE}',
+                            '${getString(PRODUCT.IMAGE)}',
                             ${getInt(PRODUCT.STOCK)},
                             ${getInt(PRODUCT.WARRANTY)},
                             ${PRODUCT.BRANDID},
-                            '${PRODUCT.PRODUCT_NAME}',
-                            '${PRODUCT.TYPE}',
-                            '${PRODUCT.DETAILS}',                
-                            '${PRODUCT.SPEAKER_TYPE}'  ,
-                            '${PRODUCT.FREQUENCY}'  ,
-                            '${PRODUCT.NOISE}');
+                            '${getString(PRODUCT.PRODUCT_NAME)}',
+                            '${getString(PRODUCT.TYPE)}',
+                            '${getString(PRODUCT.DETAILS)}',                
+                            '${getString(PRODUCT.SPEAKER_TYPE)}'  ,
+                            '${getString(PRODUCT.FREQUENCY)}'  ,
+                            '${getString(PRODUCT.NOISE)}');
                             END;
                             `;
                             return (await database.execute(sql, [], database.options));
@@ -822,23 +832,23 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                             {
                                 let sql = `
                                 BEGIN
-                                ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                                ${FUNC}(${PRODUCTID}  ,
                                 ${getInt(PRODUCT.PRICE)},
-                                '${PRODUCT.IMAGE}',
+                                '${getString(PRODUCT.IMAGE)}',
                                 ${getInt(PRODUCT.STOCK)},
                                 ${getInt(PRODUCT.WARRANTY)},
                                 ${PRODUCT.BRANDID},
-                                '${PRODUCT.PRODUCT_NAME}',
-                                '${PRODUCT.TYPE}',
-                                '${PRODUCT.DETAILS}',                
-                                '${PRODUCT.CAPACITY}'  ,
-                                '${PRODUCT.FORM_FACTOR}'  ,
-                                '${PRODUCT.FLASH_TYPE}'  ,
-                                '${PRODUCT.INTERFACE}'  ,
-                                '${PRODUCT.SEQ_READS}'  ,
-                                '${PRODUCT.SEQ_WRITES}'  ,
-                                '${PRODUCT.DIMENSION}'  ,
-                                '${PRODUCT.WEIGHT}'  );
+                                '${getString(PRODUCT.PRODUCT_NAME)}',
+                                '${getString(PRODUCT.TYPE)}',
+                                '${getString(PRODUCT.DETAILS)}',                
+                                '${getString(PRODUCT.CAPACITY)}'  ,
+                                '${getString(PRODUCT.FORM_FACTOR)}'  ,
+                                '${getString(PRODUCT.FLASH_TYPE)}'  ,
+                                '${getString(PRODUCT.INTERFACE)}'  ,
+                                '${getString(PRODUCT.SEQ_READS)}'  ,
+                                '${getString(PRODUCT.SEQ_WRITES)}'  ,
+                                '${getString(PRODUCT.DIMENSION)}'  ,
+                                '${getString(PRODUCT.WEIGHT)}'  );
                                 END;
                                 `;
                                 return (await database.execute(sql, [], database.options));
@@ -849,20 +859,20 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                             {
                                 let sql = `
                                 BEGIN
-                                ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                                ${FUNC}(${PRODUCTID}  ,
                                 ${getInt(PRODUCT.PRICE)},
-                                '${PRODUCT.IMAGE}',
+                                '${getString(PRODUCT.IMAGE)}',
                                 ${getInt(PRODUCT.STOCK)},
                                 ${getInt(PRODUCT.WARRANTY)},
                                 ${PRODUCT.BRANDID},
-                                '${PRODUCT.PRODUCT_NAME}',
-                                '${PRODUCT.TYPE}',
-                                '${PRODUCT.DETAILS}',                
-                                '${PRODUCT.UPS_TYPE}'  ,
-                                '${PRODUCT.CAPACITY}'  ,
-                                '${PRODUCT.BATTERY}'  ,
-                                '${PRODUCT.BACKUP_TIME}'  ,
-                                '${PRODUCT.PORTS}' );
+                                '${getString(PRODUCT.PRODUCT_NAME)}',
+                                '${getString(PRODUCT.TYPE)}',
+                                '${getString(PRODUCT.DETAILS)}',                
+                                '${getString(PRODUCT.UPS_TYPE)}'  ,
+                                '${getString(PRODUCT.CAPACITY)}'  ,
+                                '${getString(PRODUCT.BATTERY)}'  ,
+                                '${getString(PRODUCT.BACKUP_TIME)}'  ,
+                                '${getString(PRODUCT.PORTS)}' );
                                 END;
                                 `;
                                 return (await database.execute(sql, [], database.options));
@@ -873,20 +883,20 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                             {
                                 let sql = `
                                 BEGIN
-                                ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                                ${FUNC}(${PRODUCTID}  ,
                                 ${getInt(PRODUCT.PRICE)},
-                                '${PRODUCT.IMAGE}',
+                                '${getString(PRODUCT.IMAGE)}',
                                 ${getInt(PRODUCT.STOCK)},
                                 ${getInt(PRODUCT.WARRANTY)},
                                 ${PRODUCT.BRANDID},
-                                '${PRODUCT.PRODUCT_NAME}',
-                                '${PRODUCT.TYPE}',
-                                '${PRODUCT.DETAILS}',                
-                                '${PRODUCT.WEBCAM_TYPE}'  ,
-                                '${PRODUCT.RESOLUTION}'  ,
-                                '${PRODUCT.WEIGHT}'  ,
-                                '${PRODUCT.MICROPHONE}'  ,
-                                '${PRODUCT.ZOOM}' );
+                                '${getString(PRODUCT.PRODUCT_NAME)}',
+                                '${getString(PRODUCT.TYPE)}',
+                                '${getString(PRODUCT.DETAILS)}',                
+                                '${getString(PRODUCT.WEBCAM_TYPE)}'  ,
+                                '${getString(PRODUCT.RESOLUTION)}'  ,
+                                '${getString(PRODUCT.WEIGHT)}'  ,
+                                '${getString(PRODUCT.MICROPHONE)}'  ,
+                                '${getString(PRODUCT.ZOOM)}' );
                                 END;
                                 `;
                                 return (await database.execute(sql, [], database.options));
