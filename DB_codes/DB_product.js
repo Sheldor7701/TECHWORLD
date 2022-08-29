@@ -294,6 +294,29 @@ async function addProduct(PRODUCT) {
                      
                 }
 
+                case 'MOUSE':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.MOUSE_TYPE}'  ,
+                    '${PRODUCT.BUTTONS}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DPI}' );
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
     }
 
     
@@ -536,6 +559,29 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                     '${PRODUCT.POWER}'  ,
                     '${PRODUCT.WEIGHT}'  ,
                     '${PRODUCT.DIMENSIONS}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
+                case 'MOUSE':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.MOUSE_TYPE}'  ,
+                    '${PRODUCT.BUTTONS}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DPI}' );
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
