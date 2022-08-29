@@ -109,6 +109,38 @@ async function addProduct(PRODUCT) {
                 return (await database.execute(sql, [], database.options));
                  
             }
+            case 'GRAPHICS_CARD':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    '${PRODUCT.GTYPE}'  ,
+                    '${PRODUCT.GSIZE}'  ,
+                    '${PRODUCT.RESOLUTION}'  ,
+                    '${PRODUCT.BOOST_CLOCK}'  ,
+                    '${PRODUCT.GAME_CLOCK}'  ,
+                    '${PRODUCT.CLOCK_INFO}'  ,
+                    '${PRODUCT.MEMORY_CLOCK}'  ,
+                    '${PRODUCT.MEMORY_INTERFACE}'  ,
+                    '${PRODUCT.STREAM_PROCESSORS}'  ,
+                    '${PRODUCT.DISPALY_PORT}'  ,
+                    '${PRODUCT.HDMI}'  ,
+                    '${PRODUCT.CONNECTORS}'  ,
+                    '${PRODUCT.RECOMMENDED_PSU}'  ,
+                    '${PRODUCT.CONSUMPTION}'  ,
+                    '${PRODUCT.MULTI_DISPLAY}'  ,
+                    '${PRODUCT.DITERCTX}'  ,
+                    '${PRODUCT.DIMENSION1}'  ,
+                    '${PRODUCT.DIMENSION2}'  ,
+                    '${PRODUCT.DIMENSION3}'  ,
+                    '${PRODUCT.OTHERS1}'  ,
+                    '${PRODUCT.OTHERS2}'  ,
+                    '${PRODUCT.OTHERS3}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }    
         
 
     }
@@ -180,6 +212,38 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 return (await database.execute(sql, [], database.options));
                  
             }
+            case 'GRAPHICS_CARD':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}('${PRODUCT.PRODUCTID}'  ,
+                    '${PRODUCT.GTYPE}'  ,
+                    '${PRODUCT.GSIZE}'  ,
+                    '${PRODUCT.RESOLUTION}'  ,
+                    '${PRODUCT.BOOST_CLOCK}'  ,
+                    '${PRODUCT.GAME_CLOCK}'  ,
+                    '${PRODUCT.CLOCK_INFO}'  ,
+                    '${PRODUCT.MEMORY_CLOCK}'  ,
+                    '${PRODUCT.MEMORY_INTERFACE}'  ,
+                    '${PRODUCT.STREAM_PROCESSORS}'  ,
+                    '${PRODUCT.DISPALY_PORT}'  ,
+                    '${PRODUCT.HDMI}'  ,
+                    '${PRODUCT.CONNECTORS}'  ,
+                    '${PRODUCT.RECOMMENDED_PSU}'  ,
+                    '${PRODUCT.CONSUMPTION}'  ,
+                    '${PRODUCT.MULTI_DISPLAY}'  ,
+                    '${PRODUCT.DITERCTX}'  ,
+                    '${PRODUCT.DIMENSION1}'  ,
+                    '${PRODUCT.DIMENSION2}'  ,
+                    '${PRODUCT.DIMENSION3}'  ,
+                    '${PRODUCT.OTHERS1}'  ,
+                    '${PRODUCT.OTHERS2}'  ,
+                    '${PRODUCT.OTHERS3}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }    
 
     }
 
