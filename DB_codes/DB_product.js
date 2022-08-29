@@ -48,77 +48,73 @@ async function getProductByType(type) {
 async function addProduct(TYPE, PRODUCT) {
     let FUNC = 'ADD_' + TYPE;
 
-    // switch (TYPE) {
-    //     case 'MOTHERBOARD':
-    //         {
+    switch (TYPE) {
+        case 'MOTHERBOARD':
+            {
                 let sql = `
             BEGIN
             ADD_MOTHERBOARD(
                 ${PRODUCT.PRICE},
-                ${PRODUCT.IMAGE},
+                '${PRODUCT.IMAGE}',
                 ${PRODUCT.STOCK},
                 ${PRODUCT.WARRANTY},
                 ${PRODUCT.BRANDID},
-                ${PRODUCT.PRODUCT_NAME},
-                ${PRODUCT.RELEASE_DATE},
-                ${PRODUCT.RATING},
-                ${PRODUCT.TYPE},
-                ${PRODUCT.DETAILS},                
-                ${PRODUCT.CHIPSET} ,
-                ${PRODUCT.FORM_FACTOR} ,
-                ${PRODUCT.AUDIO} ,
-                ${PRODUCT.PCI},
-                ${PRODUCT.SUPPORTED_SOFTWARE} ,
-                ${PRODUCT.SLOTS} ,
-                ${PRODUCT.SUPPORTED_MEMORY} ,
-                ${PRODUCT.MAXIMUM_MEMORY} ,
-                ${PRODUCT.GRAPHICS} ,
-                ${PRODUCT.HDMI} ,
-                ${PRODUCT.USB_TYPE} ,
-                ${PRODUCT.LAN_PORTS});
+                '${PRODUCT.PRODUCT_NAME}',
+                '${PRODUCT.TYPE}',
+                '${PRODUCT.DETAILS}',                
+                '${PRODUCT.CHIPSET}' ,
+                '${PRODUCT.FORM_FACTOR}' ,
+                '${PRODUCT.AUDIO}' ,
+                '${PRODUCT.PCI}',
+                '${PRODUCT.SUPPORTED_SOFTWARE}' ,
+                '${PRODUCT.SLOTS}' ,
+                '${PRODUCT.SUPPORTED_MEMORY}' ,
+                '${PRODUCT.MAXIMUM_MEMORY}' ,
+                '${PRODUCT.GRAPHICS}' ,
+                '${PRODUCT.HDMI}' ,
+                '${PRODUCT.USB_TYPE}' ,
+                '${PRODUCT.LAN_PORTS}');
             END;
             `;
             return (await database.execute(sql, [], database.options));
             
-            // }
+            }
         
 
-    // }
+    }
 
     
 }
 
-async function updateProduct(TYPE, PRODUCT) {
-    let FUNC = 'UPDATE_' + TYPE;
+async function updateProduct(PRODUCTID, PRODUCT) {
+    let FUNC = 'UPDATE_' + PRODUCT.TYPE;
 
     switch (TYPE) {
         case 'MOTHERBOARD':
             {
                 let sql = `
             BEGIN
-            UPDATE_MOTHERBOARD(${PRODUCT.PRODUCTID},
+            UPDATE_MOTHERBOARD(${PRODUCTID},
                 ${PRODUCT.PRICE},
-                ${PRODUCT.IMAGE},
+                '${PRODUCT.IMAGE}',
                 ${PRODUCT.STOCK},
                 ${PRODUCT.WARRANTY},
                 ${PRODUCT.BRANDID},
-                ${PRODUCT.PRODUCT_NAME},
-                ${PRODUCT.RELEASE_DATE},
-                ${PRODUCT.RATING},
-                ${PRODUCT.TYPE},
-                ${PRODUCT.DETAILS},                
-                ${PRODUCT.CHIPSET} ,
-                ${PRODUCT.FORM_FACTOR} ,
-                ${PRODUCT.AUDIO} ,
-                ${PRODUCT.PCI},
-                ${PRODUCT.SUPPORTED_SOFTWARE} ,
-                ${PRODUCT.SLOTS} ,
-                ${PRODUCT.SUPPORTED_MEMORY} ,
-                ${PRODUCT.MAXIMUM_MEMORY} ,
-                ${PRODUCT.GRAPHICS} ,
-                ${PRODUCT.HDMI} ,
-                ${PRODUCT.USB_TYPE} ,
-                ${PRODUCT.LAN_PORTS});
+                '${PRODUCT.PRODUCT_NAME}',
+                '${PRODUCT.TYPE}',
+                '${PRODUCT.DETAILS}',                
+                '${PRODUCT.CHIPSET}' ,
+                '${PRODUCT.FORM_FACTOR}' ,
+                '${PRODUCT.AUDIO}' ,
+                '${PRODUCT.PCI}',
+                '${PRODUCT.SUPPORTED_SOFTWARE}' ,
+                '${PRODUCT.SLOTS}' ,
+                '${PRODUCT.SUPPORTED_MEMORY}' ,
+                '${PRODUCT.MAXIMUM_MEMORY}' ,
+                '${PRODUCT.GRAPHICS}' ,
+                '${PRODUCT.HDMI}' ,
+                '${PRODUCT.USB_TYPE}' ,
+                '${PRODUCT.LAN_PORTS}');
             END;
             `;
             return (await database.execute(sql, [], database.options));
