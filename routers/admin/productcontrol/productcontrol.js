@@ -38,9 +38,9 @@ router.get('/addProduct/:type', async (req, res) => {
 
 });
 router.post('/addProduct/:type', async (req, res) => {
-    const TYPE= (req.params.type).toUpperCase().trim();
+    //const TYPE= (req.params.type).toUpperCase().trim();
     console.log(req.body);
-    await DB_product.addProduct(TYPE,req.body);
+    await DB_product.addProduct(req.body);
     res.redirect('/admin/product');
 
 });

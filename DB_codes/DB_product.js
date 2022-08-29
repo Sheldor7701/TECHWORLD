@@ -45,15 +45,15 @@ async function getProductByType(type) {
     return (await database.execute(sql, [type], database.options)).rows
 }
 
-async function addProduct(TYPE, PRODUCT) {
-    let FUNC = 'ADD_' + TYPE;
+async function addProduct(PRODUCT) {
+    let FUNC = 'ADD_' + PRODUCT.TYPE;
 
-    switch (TYPE) {
+    switch (PRODUCT.TYPE) {
         case 'MOTHERBOARD':
             {
                 let sql = `
             BEGIN
-            ADD_MOTHERBOARD(
+            ${FUNC}(
                 ${PRODUCT.PRICE},
                 '${PRODUCT.IMAGE}',
                 ${PRODUCT.STOCK},
@@ -79,6 +79,36 @@ async function addProduct(TYPE, PRODUCT) {
             return (await database.execute(sql, [], database.options));
             
             }
+        case 'PROCESSOR':
+            {
+                let sql = `
+                BEGIN
+                ${FUNC}(
+                    ${PRODUCT.PRICE},
+                    '${PRODUCT.IMAGE}',
+                    ${PRODUCT.STOCK},
+                    ${PRODUCT.WARRANTY},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.BASE_FREQUENCY}' ,
+                    '${PRODUCT.MAXIMUM_TURBO_FREQUENCY}' ,
+                    '${PRODUCT.CACHE}' ,
+                    '${PRODUCT.CORES}',
+                    '${PRODUCT.THREADS}' ,
+                    '${PRODUCT.PROCESSOR_BASE_POWER}' ,
+                    '${PRODUCT.MAXIMUM_TURBO_POWER}' ,
+                    '${PRODUCT.MAXIMUM_SIZE}' ,
+                    '${PRODUCT.TYPE1}' ,
+                    '${PRODUCT.TYPE2}' ,
+                    '${PRODUCT.MAX_NUMBER_OF_CHANNELS}' ,
+                    '${PRODUCT.PROCESSOR_GRAPHICS}');
+                END;
+                `;
+                return (await database.execute(sql, [], database.options));
+                 
+            }
         
 
     }
@@ -88,13 +118,13 @@ async function addProduct(TYPE, PRODUCT) {
 
 async function updateProduct(PRODUCTID, PRODUCT) {
     let FUNC = 'UPDATE_' + PRODUCT.TYPE;
-
-    switch (TYPE) {
+    
+    switch (PRODUCT.TYPE) {
         case 'MOTHERBOARD':
             {
                 let sql = `
             BEGIN
-            UPDATE_MOTHERBOARD(${PRODUCTID},
+            ${FUNC}(${PRODUCTID},
                 ${PRODUCT.PRICE},
                 '${PRODUCT.IMAGE}',
                 ${PRODUCT.STOCK},
@@ -119,6 +149,36 @@ async function updateProduct(PRODUCTID, PRODUCT) {
             `;
             return (await database.execute(sql, [], database.options));
             
+            }
+            case 'PROCESSOR':
+            {
+                let sql = `
+                BEGIN
+                ${FUNC}(${PRODUCTID},
+                    ${PRODUCT.PRICE},
+                    '${PRODUCT.IMAGE}',
+                    ${PRODUCT.STOCK},
+                    ${PRODUCT.WARRANTY},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.BASE_FREQUENCY}' ,
+                    '${PRODUCT.MAXIMUM_TURBO_FREQUENCY}' ,
+                    '${PRODUCT.CACHE}' ,
+                    '${PRODUCT.CORES}',
+                    '${PRODUCT.THREADS}' ,
+                    '${PRODUCT.PROCESSOR_BASE_POWER}' ,
+                    '${PRODUCT.MAXIMUM_TURBO_POWER}' ,
+                    '${PRODUCT.MAXIMUM_SIZE}' ,
+                    '${PRODUCT.TYPE1}' ,
+                    '${PRODUCT.TYPE2}' ,
+                    '${PRODUCT.MAX_NUMBER_OF_CHANNELS}' ,
+                    '${PRODUCT.PROCESSOR_GRAPHICS}');
+                END;
+                `;
+                return (await database.execute(sql, [], database.options));
+                 
             }
 
     }
