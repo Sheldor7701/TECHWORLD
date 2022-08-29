@@ -257,7 +257,42 @@ async function addProduct(PRODUCT) {
                             `;
                             return (await database.execute(sql, [], database.options));
                              
-                        }       
+                        } 
+                        
+                        case 'MONITOR':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.SCREEN_SIZE}'  ,
+                    '${PRODUCT.REFRESH_RATE}'  ,
+                    '${PRODUCT.DISPLAY_TYPE}'  ,
+                    '${PRODUCT.RESOLUTION}'  ,
+                    '${PRODUCT.BRIGHTNESS}'  ,
+                    '${PRODUCT.CONTRAST_RATIO}'  ,
+                    '${PRODUCT.ASPECT_RATIO}'  ,
+                    '${PRODUCT.COLOR}'  ,
+                    '${PRODUCT.I_O_PORTS}'  ,
+                    '${PRODUCT.RESPONSE_TIME}'  ,
+                    '${PRODUCT.VIEWING_ANGLE}'  ,
+                    '${PRODUCT.AUDIO_FEATURES}'  ,
+                    '${PRODUCT.VIDEO_FEATURES}'  ,
+                    '${PRODUCT.POWER}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DIMENSIONS}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
 
     }
 
@@ -466,6 +501,41 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                     '${PRODUCT.PORTS_CONNECTORS}'  ,
                     '${PRODUCT.COLOR}'  ,
                     '${PRODUCT.WEIGHT}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
+                case 'MONITOR':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.SCREEN_SIZE}'  ,
+                    '${PRODUCT.REFRESH_RATE}'  ,
+                    '${PRODUCT.DISPLAY_TYPE}'  ,
+                    '${PRODUCT.RESOLUTION}'  ,
+                    '${PRODUCT.BRIGHTNESS}'  ,
+                    '${PRODUCT.CONTRAST_RATIO}'  ,
+                    '${PRODUCT.ASPECT_RATIO}'  ,
+                    '${PRODUCT.COLOR}'  ,
+                    '${PRODUCT.I_O_PORTS}'  ,
+                    '${PRODUCT.RESPONSE_TIME}'  ,
+                    '${PRODUCT.VIEWING_ANGLE}'  ,
+                    '${PRODUCT.AUDIO_FEATURES}'  ,
+                    '${PRODUCT.VIDEO_FEATURES}'  ,
+                    '${PRODUCT.POWER}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DIMENSIONS}');
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
