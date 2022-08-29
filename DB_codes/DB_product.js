@@ -317,6 +317,38 @@ async function addProduct(PRODUCT) {
                      
                 }
 
+                case 'POWER_SUPPLY':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.EFFICIENCY}'  ,
+                    '${PRODUCT.CERTIFICATION}'  ,
+                    '${PRODUCT.FAN_SIZE}'  ,
+                    '${PRODUCT.MODULAR_TYPE}'  ,
+                    '${PRODUCT.TOTAL_POWER}'  ,
+                    '${PRODUCT.PEAK_POWER}'  ,
+                    '${PRODUCT.AC_INPUT}'  ,
+                    '${PRODUCT.DC_OUTPUT}'  ,
+                    '${PRODUCT.MAIN_POWER}'  ,
+                    '${PRODUCT.CPU}'  ,
+                    '${PRODUCT.PCI_E}'  ,
+                    '${PRODUCT.SATA}'  ,
+                    '${PRODUCT.MOLEX}' );
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
     }
 
     
@@ -582,6 +614,38 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                     '${PRODUCT.BUTTONS}'  ,
                     '${PRODUCT.WEIGHT}'  ,
                     '${PRODUCT.DPI}' );
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
+                case 'POWER_SUPPLY':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.EFFICIENCY}'  ,
+                    '${PRODUCT.CERTIFICATION}'  ,
+                    '${PRODUCT.FAN_SIZE}'  ,
+                    '${PRODUCT.MODULAR_TYPE}'  ,
+                    '${PRODUCT.TOTAL_POWER}'  ,
+                    '${PRODUCT.PEAK_POWER}'  ,
+                    '${PRODUCT.AC_INPUT}'  ,
+                    '${PRODUCT.DC_OUTPUT}'  ,
+                    '${PRODUCT.MAIN_POWER}'  ,
+                    '${PRODUCT.CPU}'  ,
+                    '${PRODUCT.PCI_E}'  ,
+                    '${PRODUCT.SATA}'  ,
+                    '${PRODUCT.MOLEX}' );
                     END;
                     `;
                     return (await database.execute(sql, [], database.options));
