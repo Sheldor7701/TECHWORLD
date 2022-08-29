@@ -6,8 +6,7 @@ const router = express.Router({ mergeParams: true })
 
 router.get('/:productid', async (req, res) => {
     const productid = req.params.productid;
-    const userid = req.session.userid;
-    const username = req.session.username;
+    console.log(productid+"  IDDD");
     const product= await DB_product.getProductByID(productid);
 
     const data = {

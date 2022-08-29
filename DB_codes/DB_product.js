@@ -200,7 +200,30 @@ async function addProduct(PRODUCT) {
                     `;
                     return (await database.execute(sql, [], database.options));
                      
-                }       
+                }
+                case 'KEYBOARD':
+                    {
+                        let sql = `
+                        BEGIN
+                        ${FUNC}(
+                        ${getInt(PRODUCT.PRICE)},
+                        '${PRODUCT.IMAGE}',
+                        ${getInt(PRODUCT.STOCK)},
+                        ${getInt(PRODUCT.WARRANTY)},
+                        ${PRODUCT.BRANDID},
+                        '${PRODUCT.PRODUCT_NAME}',
+                        '${PRODUCT.TYPE}',
+                        '${PRODUCT.DETAILS}',                
+                        '${PRODUCT.KEYBOARD_TYPE}'  ,
+                        '${PRODUCT.LIGHT}'  ,
+                        '${PRODUCT.KEYS}'  ,
+                        '${PRODUCT.DIMENTION}'  ,
+                        '${PRODUCT.COLOR}');
+                        END;
+                        `;
+                        return (await database.execute(sql, [], database.options));
+                         
+                    }       
 
     }
 
@@ -357,6 +380,29 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                      
                 }
 
+                case 'KEYBOARD':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.KEYBOARD_TYPE}'  ,
+                    '${PRODUCT.LIGHT}'  ,
+                    '${PRODUCT.KEYS}'  ,
+                    '${PRODUCT.DIMENTION}'  ,
+                    '${PRODUCT.COLOR}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
     }
 
    
