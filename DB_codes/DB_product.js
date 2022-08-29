@@ -349,6 +349,80 @@ async function addProduct(PRODUCT) {
                      
                 }
 
+                case 'RAM':
+                    {
+                        let sql = `
+                        BEGIN
+                        ${FUNC}(
+                        ${getInt(PRODUCT.PRICE)},
+                        '${PRODUCT.IMAGE}',
+                        ${getInt(PRODUCT.STOCK)},
+                        ${getInt(PRODUCT.WARRANTY)},
+                        ${PRODUCT.BRANDID},
+                        '${PRODUCT.PRODUCT_NAME}',
+                        '${PRODUCT.TYPE}',
+                        '${PRODUCT.DETAILS}',                
+                        '${PRODUCT.RTYPE}'  ,
+                        '${PRODUCT.CAPACITY}'  ,
+                        '${PRODUCT.FREQUENCY}'  ,
+                        '${PRODUCT.OPERATING_VOLTAGE}'  ,
+                        '${PRODUCT.LATENCY}'  ,
+                        '${PRODUCT.HEAT_SINK_COLOR}'  ,
+                        '${PRODUCT.PIN}'  );
+                        END;
+                        `;
+                        return (await database.execute(sql, [], database.options));
+                         
+                    }
+                    case 'SPEAKER':
+                        {
+                            let sql = `
+                            BEGIN
+                            ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                            ${getInt(PRODUCT.PRICE)},
+                            '${PRODUCT.IMAGE}',
+                            ${getInt(PRODUCT.STOCK)},
+                            ${getInt(PRODUCT.WARRANTY)},
+                            ${PRODUCT.BRANDID},
+                            '${PRODUCT.PRODUCT_NAME}',
+                            '${PRODUCT.TYPE}',
+                            '${PRODUCT.DETAILS}',                
+                            '${PRODUCT.SPEAKER_TYPE}'  ,
+                            '${PRODUCT.FREQUENCY}'  ,
+                            '${PRODUCT.NOISE}');
+                            END;
+                            `;
+                            return (await database.execute(sql, [], database.options));
+                             
+                        }
+
+                        case 'SSD':
+                            {
+                                let sql = `
+                                BEGIN
+                                ${FUNC}(
+                                ${getInt(PRODUCT.PRICE)},
+                                '${PRODUCT.IMAGE}',
+                                ${getInt(PRODUCT.STOCK)},
+                                ${getInt(PRODUCT.WARRANTY)},
+                                ${PRODUCT.BRANDID},
+                                '${PRODUCT.PRODUCT_NAME}',
+                                '${PRODUCT.TYPE}',
+                                '${PRODUCT.DETAILS}',                
+                                '${PRODUCT.CAPACITY}'  ,
+                                '${PRODUCT.FORM_FACTOR}'  ,
+                                '${PRODUCT.FLASH_TYPE}'  ,
+                                '${PRODUCT.INTERFACE}'  ,
+                                '${PRODUCT.SEQ_READS}'  ,
+                                '${PRODUCT.SEQ_WRITES}'  ,
+                                '${PRODUCT.DIMENSION}'  ,
+                                '${PRODUCT.WEIGHT}'  );
+                                END;
+                                `;
+                                return (await database.execute(sql, [], database.options));
+                                 
+                            }
+
     }
 
     
@@ -651,6 +725,78 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                     return (await database.execute(sql, [], database.options));
                      
                 }
+                case 'RAM':
+                    {
+                        let sql = `
+                        BEGIN
+                        ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                        ${getInt(PRODUCT.PRICE)},
+                        '${PRODUCT.IMAGE}',
+                        ${getInt(PRODUCT.STOCK)},
+                        ${getInt(PRODUCT.WARRANTY)},
+                        ${PRODUCT.BRANDID},
+                        '${PRODUCT.PRODUCT_NAME}',
+                        '${PRODUCT.TYPE}',
+                        '${PRODUCT.DETAILS}',                
+                        '${PRODUCT.RTYPE}'  ,
+                        '${PRODUCT.CAPACITY}'  ,
+                        '${PRODUCT.FREQUENCY}'  ,
+                        '${PRODUCT.OPERATING_VOLTAGE}'  ,
+                        '${PRODUCT.LATENCY}'  ,
+                        '${PRODUCT.HEAT_SINK_COLOR}'  ,
+                        '${PRODUCT.PIN}'  );
+                        END;
+                        `;
+                        return (await database.execute(sql, [], database.options));
+                         
+                    }
+                    case 'SPEAKER':
+                        {
+                            let sql = `
+                            BEGIN
+                            ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                            ${getInt(PRODUCT.PRICE)},
+                            '${PRODUCT.IMAGE}',
+                            ${getInt(PRODUCT.STOCK)},
+                            ${getInt(PRODUCT.WARRANTY)},
+                            ${PRODUCT.BRANDID},
+                            '${PRODUCT.PRODUCT_NAME}',
+                            '${PRODUCT.TYPE}',
+                            '${PRODUCT.DETAILS}',                
+                            '${PRODUCT.SPEAKER_TYPE}'  ,
+                            '${PRODUCT.FREQUENCY}'  ,
+                            '${PRODUCT.NOISE}');
+                            END;
+                            `;
+                            return (await database.execute(sql, [], database.options));
+                             
+                        }
+                        case 'SSD':
+                            {
+                                let sql = `
+                                BEGIN
+                                ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                                ${getInt(PRODUCT.PRICE)},
+                                '${PRODUCT.IMAGE}',
+                                ${getInt(PRODUCT.STOCK)},
+                                ${getInt(PRODUCT.WARRANTY)},
+                                ${PRODUCT.BRANDID},
+                                '${PRODUCT.PRODUCT_NAME}',
+                                '${PRODUCT.TYPE}',
+                                '${PRODUCT.DETAILS}',                
+                                '${PRODUCT.CAPACITY}'  ,
+                                '${PRODUCT.FORM_FACTOR}'  ,
+                                '${PRODUCT.FLASH_TYPE}'  ,
+                                '${PRODUCT.INTERFACE}'  ,
+                                '${PRODUCT.SEQ_READS}'  ,
+                                '${PRODUCT.SEQ_WRITES}'  ,
+                                '${PRODUCT.DIMENSION}'  ,
+                                '${PRODUCT.WEIGHT}'  );
+                                END;
+                                `;
+                                return (await database.execute(sql, [], database.options));
+                                 
+                            }
     }
 
    
