@@ -423,6 +423,30 @@ async function addProduct(PRODUCT) {
                                  
                             }
 
+                            case 'UPS':
+                                {
+                                    let sql = `
+                                    BEGIN
+                                    ${FUNC}(
+                                    ${getInt(PRODUCT.PRICE)},
+                                    '${PRODUCT.IMAGE}',
+                                    ${getInt(PRODUCT.STOCK)},
+                                    ${getInt(PRODUCT.WARRANTY)},
+                                    ${PRODUCT.BRANDID},
+                                    '${PRODUCT.PRODUCT_NAME}',
+                                    '${PRODUCT.TYPE}',
+                                    '${PRODUCT.DETAILS}',                
+                                    '${PRODUCT.UPS_TYPE}'  ,
+                                    '${PRODUCT.CAPACITY}'  ,
+                                    '${PRODUCT.BATTERY}'  ,
+                                    '${PRODUCT.BACKUP_TIME}'  ,
+                                    '${PRODUCT.PORTS}' );
+                                    END;
+                                    `;
+                                    return (await database.execute(sql, [], database.options));
+                                     
+                                }
+
     }
 
     
@@ -792,6 +816,30 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                                 '${PRODUCT.SEQ_WRITES}'  ,
                                 '${PRODUCT.DIMENSION}'  ,
                                 '${PRODUCT.WEIGHT}'  );
+                                END;
+                                `;
+                                return (await database.execute(sql, [], database.options));
+                                 
+                            }
+
+                            case 'UPS':
+                            {
+                                let sql = `
+                                BEGIN
+                                ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                                ${getInt(PRODUCT.PRICE)},
+                                '${PRODUCT.IMAGE}',
+                                ${getInt(PRODUCT.STOCK)},
+                                ${getInt(PRODUCT.WARRANTY)},
+                                ${PRODUCT.BRANDID},
+                                '${PRODUCT.PRODUCT_NAME}',
+                                '${PRODUCT.TYPE}',
+                                '${PRODUCT.DETAILS}',                
+                                '${PRODUCT.UPS_TYPE}'  ,
+                                '${PRODUCT.CAPACITY}'  ,
+                                '${PRODUCT.BATTERY}'  ,
+                                '${PRODUCT.BACKUP_TIME}'  ,
+                                '${PRODUCT.PORTS}' );
                                 END;
                                 `;
                                 return (await database.execute(sql, [], database.options));
