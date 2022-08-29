@@ -446,6 +446,29 @@ async function addProduct(PRODUCT) {
                                     return (await database.execute(sql, [], database.options));
                                      
                                 }
+                                case 'WEBCAM':
+                                    {
+                                        let sql = `
+                                        BEGIN
+                                        ${FUNC}(
+                                        ${getInt(PRODUCT.PRICE)},
+                                        '${PRODUCT.IMAGE}',
+                                        ${getInt(PRODUCT.STOCK)},
+                                        ${getInt(PRODUCT.WARRANTY)},
+                                        ${PRODUCT.BRANDID},
+                                        '${PRODUCT.PRODUCT_NAME}',
+                                        '${PRODUCT.TYPE}',
+                                        '${PRODUCT.DETAILS}',                
+                                        '${PRODUCT.WEBCAM_TYPE}'  ,
+                                        '${PRODUCT.RESOLUTION}'  ,
+                                        '${PRODUCT.WEIGHT}'  ,
+                                        '${PRODUCT.MICROPHONE}'  ,
+                                        '${PRODUCT.ZOOM}' );
+                                        END;
+                                        `;
+                                        return (await database.execute(sql, [], database.options));
+                                         
+                                    }
 
     }
 
@@ -840,6 +863,30 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                                 '${PRODUCT.BATTERY}'  ,
                                 '${PRODUCT.BACKUP_TIME}'  ,
                                 '${PRODUCT.PORTS}' );
+                                END;
+                                `;
+                                return (await database.execute(sql, [], database.options));
+                                 
+                            }
+
+                            case 'WEBCAM':
+                            {
+                                let sql = `
+                                BEGIN
+                                ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                                ${getInt(PRODUCT.PRICE)},
+                                '${PRODUCT.IMAGE}',
+                                ${getInt(PRODUCT.STOCK)},
+                                ${getInt(PRODUCT.WARRANTY)},
+                                ${PRODUCT.BRANDID},
+                                '${PRODUCT.PRODUCT_NAME}',
+                                '${PRODUCT.TYPE}',
+                                '${PRODUCT.DETAILS}',                
+                                '${PRODUCT.WEBCAM_TYPE}'  ,
+                                '${PRODUCT.RESOLUTION}'  ,
+                                '${PRODUCT.WEIGHT}'  ,
+                                '${PRODUCT.MICROPHONE}'  ,
+                                '${PRODUCT.ZOOM}' );
                                 END;
                                 `;
                                 return (await database.execute(sql, [], database.options));
