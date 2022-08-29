@@ -1,5 +1,12 @@
 const database = require('./database')
 
+function getInt(chars){
+    if(chars=='') return 0;
+    return parseInt(chars);
+}
+// ${getInt(PRODUCT.PRICE)},
+// ${getInt(PRODUCT.STOCK)},
+// ${getInt(PRODUCT.WARRANTY)},
 async function allProduct() {
     let sql = `
     SELECT *
@@ -54,10 +61,10 @@ async function addProduct(PRODUCT) {
                 let sql = `
             BEGIN
             ${FUNC}(
-                ${PRODUCT.PRICE},
+                ${getInt(PRODUCT.PRICE)},
                 '${PRODUCT.IMAGE}',
-                ${PRODUCT.STOCK},
-                ${PRODUCT.WARRANTY},
+                ${getInt(PRODUCT.STOCK)},
+                ${getInt(PRODUCT.WARRANTY)},
                 ${PRODUCT.BRANDID},
                 '${PRODUCT.PRODUCT_NAME}',
                 '${PRODUCT.TYPE}',
@@ -84,10 +91,10 @@ async function addProduct(PRODUCT) {
                 let sql = `
                 BEGIN
                 ${FUNC}(
-                    ${PRODUCT.PRICE},
+                    ${getInt(PRODUCT.PRICE)},
                     '${PRODUCT.IMAGE}',
-                    ${PRODUCT.STOCK},
-                    ${PRODUCT.WARRANTY},
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
                     '${PRODUCT.PRODUCT_NAME}',
                     '${PRODUCT.TYPE}',
@@ -114,6 +121,14 @@ async function addProduct(PRODUCT) {
                     let sql = `
                     BEGIN
                     ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
                     '${PRODUCT.GTYPE}'  ,
                     '${PRODUCT.GSIZE}'  ,
                     '${PRODUCT.RESOLUTION}'  ,
@@ -140,8 +155,167 @@ async function addProduct(PRODUCT) {
                     `;
                     return (await database.execute(sql, [], database.options));
                      
-                }    
-        
+                } 
+                
+                case 'HDD':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.INTERFACE_TYPE}'  ,
+                    '${PRODUCT.CAPACITY}'  ,
+                    '${PRODUCT.RPM}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                } 
+                case 'HEADPHONE':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.HEADPHONE_TYPE}'  ,
+                    '${PRODUCT.FREQUENCY}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.COLOR}'  ,
+                    '${PRODUCT.USB_TYPE}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+                case 'KEYBOARD':
+                    {
+                        let sql = `
+                        BEGIN
+                        ${FUNC}(
+                        ${getInt(PRODUCT.PRICE)},
+                        '${PRODUCT.IMAGE}',
+                        ${getInt(PRODUCT.STOCK)},
+                        ${getInt(PRODUCT.WARRANTY)},
+                        ${PRODUCT.BRANDID},
+                        '${PRODUCT.PRODUCT_NAME}',
+                        '${PRODUCT.TYPE}',
+                        '${PRODUCT.DETAILS}',                
+                        '${PRODUCT.KEYBOARD_TYPE}'  ,
+                        '${PRODUCT.LIGHT}'  ,
+                        '${PRODUCT.KEYS}'  ,
+                        '${PRODUCT.DIMENTION}'  ,
+                        '${PRODUCT.COLOR}');
+                        END;
+                        `;
+                        return (await database.execute(sql, [], database.options));
+                         
+                    }
+                    case 'LAPTOP':
+                        {
+                            let sql = `
+                            BEGIN
+                            ${FUNC}(
+                            ${getInt(PRODUCT.PRICE)},
+                            '${PRODUCT.IMAGE}',
+                            ${getInt(PRODUCT.STOCK)},
+                            ${getInt(PRODUCT.WARRANTY)},
+                            ${PRODUCT.BRANDID},
+                            '${PRODUCT.PRODUCT_NAME}',
+                            '${PRODUCT.TYPE}',
+                            '${PRODUCT.DETAILS}',                
+                            '${PRODUCT.DISPLAY}'  ,
+                            '${PRODUCT.GRAPHICS}'  ,
+                            '${PRODUCT.STORAGE}'  ,
+                            '${PRODUCT.MEMORY}'  ,
+                            '${PRODUCT.PROCESSOR}'  ,
+                            '${PRODUCT.ADAPTER}'  ,
+                            '${PRODUCT.BATTERY}'  ,
+                            '${PRODUCT.OPERATING_SYSTEM}'  ,
+                            '${PRODUCT.NETWORKING}'  ,
+                            '${PRODUCT.KEYBOARD}'  ,
+                            '${PRODUCT.BLUETOOTH}'  ,
+                            '${PRODUCT.AUDIO}'  ,
+                            '${PRODUCT.WEBCAM}'  ,
+                            '${PRODUCT.PORTS_CONNECTORS}'  ,
+                            '${PRODUCT.COLOR}'  ,
+                            '${PRODUCT.WEIGHT}');
+                            END;
+                            `;
+                            return (await database.execute(sql, [], database.options));
+                             
+                        } 
+                        
+                        case 'MONITOR':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.SCREEN_SIZE}'  ,
+                    '${PRODUCT.REFRESH_RATE}'  ,
+                    '${PRODUCT.DISPLAY_TYPE}'  ,
+                    '${PRODUCT.RESOLUTION}'  ,
+                    '${PRODUCT.BRIGHTNESS}'  ,
+                    '${PRODUCT.CONTRAST_RATIO}'  ,
+                    '${PRODUCT.ASPECT_RATIO}'  ,
+                    '${PRODUCT.COLOR}'  ,
+                    '${PRODUCT.I_O_PORTS}'  ,
+                    '${PRODUCT.RESPONSE_TIME}'  ,
+                    '${PRODUCT.VIEWING_ANGLE}'  ,
+                    '${PRODUCT.AUDIO_FEATURES}'  ,
+                    '${PRODUCT.VIDEO_FEATURES}'  ,
+                    '${PRODUCT.POWER}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DIMENSIONS}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
+                case 'MOUSE':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.MOUSE_TYPE}'  ,
+                    '${PRODUCT.BUTTONS}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DPI}' );
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
 
     }
 
@@ -157,10 +331,10 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 let sql = `
             BEGIN
             ${FUNC}(${PRODUCTID},
-                ${PRODUCT.PRICE},
+                ${getInt(PRODUCT.PRICE)},
                 '${PRODUCT.IMAGE}',
-                ${PRODUCT.STOCK},
-                ${PRODUCT.WARRANTY},
+                ${getInt(PRODUCT.STOCK)},
+                ${getInt(PRODUCT.WARRANTY)},
                 ${PRODUCT.BRANDID},
                 '${PRODUCT.PRODUCT_NAME}',
                 '${PRODUCT.TYPE}',
@@ -187,10 +361,10 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 let sql = `
                 BEGIN
                 ${FUNC}(${PRODUCTID},
-                    ${PRODUCT.PRICE},
+                    ${getInt(PRODUCT.PRICE)},
                     '${PRODUCT.IMAGE}',
-                    ${PRODUCT.STOCK},
-                    ${PRODUCT.WARRANTY},
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
                     ${PRODUCT.BRANDID},
                     '${PRODUCT.PRODUCT_NAME}',
                     '${PRODUCT.TYPE}',
@@ -216,7 +390,15 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                 {
                     let sql = `
                     BEGIN
-                    ${FUNC}('${PRODUCT.PRODUCTID}'  ,
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
                     '${PRODUCT.GTYPE}'  ,
                     '${PRODUCT.GSIZE}'  ,
                     '${PRODUCT.RESOLUTION}'  ,
@@ -243,8 +425,168 @@ async function updateProduct(PRODUCTID, PRODUCT) {
                     `;
                     return (await database.execute(sql, [], database.options));
                      
-                }    
+                } 
+                
+                case 'HDD':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.INTERFACE_TYPE}'  ,
+                    '${PRODUCT.CAPACITY}'  ,
+                    '${PRODUCT.RPM}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+                case 'HEADPHONE':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.HEADPHONE_TYPE}'  ,
+                    '${PRODUCT.FREQUENCY}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.COLOR}'  ,
+                    '${PRODUCT.USB_TYPE}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
 
+                case 'KEYBOARD':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.KEYBOARD_TYPE}'  ,
+                    '${PRODUCT.LIGHT}'  ,
+                    '${PRODUCT.KEYS}'  ,
+                    '${PRODUCT.DIMENTION}'  ,
+                    '${PRODUCT.COLOR}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+                case 'LAPTOP':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.DISPLAY}'  ,
+                    '${PRODUCT.GRAPHICS}'  ,
+                    '${PRODUCT.STORAGE}'  ,
+                    '${PRODUCT.MEMORY}'  ,
+                    '${PRODUCT.PROCESSOR}'  ,
+                    '${PRODUCT.ADAPTER}'  ,
+                    '${PRODUCT.BATTERY}'  ,
+                    '${PRODUCT.OPERATING_SYSTEM}'  ,
+                    '${PRODUCT.NETWORKING}'  ,
+                    '${PRODUCT.KEYBOARD}'  ,
+                    '${PRODUCT.BLUETOOTH}'  ,
+                    '${PRODUCT.AUDIO}'  ,
+                    '${PRODUCT.WEBCAM}'  ,
+                    '${PRODUCT.PORTS_CONNECTORS}'  ,
+                    '${PRODUCT.COLOR}'  ,
+                    '${PRODUCT.WEIGHT}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
+                case 'MONITOR':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.SCREEN_SIZE}'  ,
+                    '${PRODUCT.REFRESH_RATE}'  ,
+                    '${PRODUCT.DISPLAY_TYPE}'  ,
+                    '${PRODUCT.RESOLUTION}'  ,
+                    '${PRODUCT.BRIGHTNESS}'  ,
+                    '${PRODUCT.CONTRAST_RATIO}'  ,
+                    '${PRODUCT.ASPECT_RATIO}'  ,
+                    '${PRODUCT.COLOR}'  ,
+                    '${PRODUCT.I_O_PORTS}'  ,
+                    '${PRODUCT.RESPONSE_TIME}'  ,
+                    '${PRODUCT.VIEWING_ANGLE}'  ,
+                    '${PRODUCT.AUDIO_FEATURES}'  ,
+                    '${PRODUCT.VIDEO_FEATURES}'  ,
+                    '${PRODUCT.POWER}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DIMENSIONS}');
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
+
+                case 'MOUSE':
+                {
+                    let sql = `
+                    BEGIN
+                    ${FUNC}(${PRODUCT.PRODUCTID}  ,
+                    ${getInt(PRODUCT.PRICE)},
+                    '${PRODUCT.IMAGE}',
+                    ${getInt(PRODUCT.STOCK)},
+                    ${getInt(PRODUCT.WARRANTY)},
+                    ${PRODUCT.BRANDID},
+                    '${PRODUCT.PRODUCT_NAME}',
+                    '${PRODUCT.TYPE}',
+                    '${PRODUCT.DETAILS}',                
+                    '${PRODUCT.MOUSE_TYPE}'  ,
+                    '${PRODUCT.BUTTONS}'  ,
+                    '${PRODUCT.WEIGHT}'  ,
+                    '${PRODUCT.DPI}' );
+                    END;
+                    `;
+                    return (await database.execute(sql, [], database.options));
+                     
+                }
     }
 
    
