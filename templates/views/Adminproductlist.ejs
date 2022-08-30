@@ -32,7 +32,7 @@
      float:right;
      margin-top:14vh;
      margin-right: 1vw;
-     width: 13vw;
+     width: 9vw;
      height: 5vh;
      border: none;
      background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
@@ -73,6 +73,32 @@
         <div class="card1">
             <img class="img" src="<%= product.IMAGE %>">
             <div class="txt"><%= product.PRODUCT_NAME %></div>
+
+        <% if(product.TYPE=="SSD" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="PROCESSOR" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="GRAPHICS_CARD" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="HDD" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="RAM" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="POWER_SUPPLY" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+            
             <a href=<%="/admin/product/updateproduct/" + product.PRODUCTID %> ><button class="bttn">UPDATE</button></a></div>
         </div>
         <% } %>
