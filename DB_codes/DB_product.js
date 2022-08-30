@@ -920,6 +920,7 @@ async function getCompatibleMotherboards(PRODUCTID){
 }
 async function setCompatibleMotherboards(PRODUCTID, M_IDS){
     let sql =``;
+    console.log(M_IDS);
     for(let i=0;i<M_IDS.length;i++)
         {   sql+= `
             INSERT INTO MOTHERBOARD_COMPATIBILITY 

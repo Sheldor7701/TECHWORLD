@@ -135,7 +135,8 @@ router.post('/setcompatibility/:productid', async (req, res) => {
     //console.log(PRODUCTID+"IDDDDDDDDD");
     //const motherboards=await DB_product.getProductByType('MOTHERBOARD');
     console.log(req.body);
-
+    const PRODUCTID= req.params.productid;
+    await DB_product.setCompatibleMotherboards(PRODUCTID,req.body.list);
     // const TYPE=product.TYPE;
     // const data = {
     //     pageTitle: type+'S',
@@ -148,7 +149,10 @@ router.post('/setcompatibility/:productid', async (req, res) => {
     //     PRODUCTID
     // };
     // res.render('update'+TYPE.toLowerCase().trim(), data);
-    res.send(req.params.productid);
+    const da={
+        PRODUCTID
+     };
+    res.send(da);
 });
 
 module.exports = router
