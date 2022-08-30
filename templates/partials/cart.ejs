@@ -239,7 +239,7 @@ text-align: center;
 <div class="checkout">
  <div class="total"></div>
  <div class="items">2 items</div>
- <div class="total-amount">$6.18</div>
+ <div class="total-amount" id="total_price">0.00TK</div>
  <a href="/cart/viewcart"><button class="button">VIEW CART</button><br></div></a>
 
 
@@ -292,10 +292,7 @@ text-align: center;
 <script>
 		var a = 0;
 		var b = 0;
-        function totalPRICE(x){
-            a=a+x;
-            return a;
-        }
+        
         
         function openCART() {
             if(b==0){
@@ -306,6 +303,11 @@ text-align: center;
                 document.getElementById("user-cart").style.display= "none";
                 return b=0;            
             }
+
+            axios.get('http://localhost:3000/cart/cartprice',data).then((da)=>{
+             console.log("-------------price done-------------")
+             document.getElementById("total_price").value =da.data.price;
+         })
 		}
 				
 </script></cart>
