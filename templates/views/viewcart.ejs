@@ -69,7 +69,7 @@
                         <div><%=product.PRODUCT_NAME%></div>
                     </div>                    
                 </div>
-                <div class="pl-md-0 pl-1"><b>$9.99</b></div>
+                <div class="pl-md-0 pl-1"><b><%=product.PRICE%></b></div>
                 <div class="pl-md-0 pl-2">
                     <button class="btn" onclick="Increament(<%=product.PRODUCTID%>)">+</button><input type="text" class="px-1 quantity" name="quantity" id="id <%=product.PRODUCTID%>"  value=<%=product.QUANTITY%> readonly><button class="btn" onclick="Decreament(<%=product.PRODUCTID%>)">-</button>
                 </div>

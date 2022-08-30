@@ -45,13 +45,6 @@ input.search-bar {
 input.search-bar:hover {
     border: 2px solid #5204fc;
 }
-button {
-    cursor : pointer;
-    border: 1px solid #888888;
-    background: #8708ff;
-    color: white;
-    padding: 6px;
-}
 
 a.listed {
     color: #946aec;

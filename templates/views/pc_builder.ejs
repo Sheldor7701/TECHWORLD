@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -34,7 +32,8 @@
     
     .pc-builder-btn{
         float: right;
-    margin-right: -20vw;
+    width:10vw;
+    height: 5vh;
      border-radius: 1.5vw;
      cursor: pointer;
      font-size: 1rem;
@@ -58,7 +57,7 @@
     <div class="card-body pc-builder-card">
         <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
         <div class="txt">MOTHERBOARD</div>
-        <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href="/pcbuilder/motherboard" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     </div>
   </div>
 
@@ -69,28 +68,34 @@
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">PROCESSOR</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<% if(products.motherboard.PRODUCTID==null) { %>
+<a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+<% } else{ %>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<% } %>
 </div>
 </div>
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
-<div class="txt">GRAPHICS</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<div class="txt">GRAPHICS CARD</div>
+<% if(products.motherboard.PRODUCTID==null) { %>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <% } else{ %>
+        <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <% } %>
 </div>
 </div>
-<div class="card bg-light text-dark ok">
-<div class="card-body pc-builder-card">
-<img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
-<div class="txt">CARD</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
-</div>
-</div>
+
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">RAM 1</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<% if(products.motherboard.PRODUCTID==null) { %>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <% } else{ %>
+        <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <% } %>
 </div>
 </div>
 
@@ -98,7 +103,11 @@
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">RAM 2</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<% if(products.motherboard.PRODUCTID==null) { %>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <% } else{ %>
+        <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <% } %>
 </div>
 </div>
 
@@ -106,28 +115,33 @@
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">SSD</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<% if(products.motherboard.PRODUCTID==null) { %>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <% } else{ %>
+        <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <% } %>
 </div>
 </div>
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">HDD</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<% if(products.motherboard.PRODUCTID==null) { %>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <% } else{ %>
+        <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <% } %>
 </div>
 </div>
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
-<div class="txt">POWER</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
-</div>
-</div>
-<div class="card bg-light text-dark ok">
-<div class="card-body pc-builder-card">
-<img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
-<div class="txt">SUPPLY</div>
-<a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">CHOOSE</button></a>
+<div class="txt">POWER SUPPLY</div>
+<% if(products.motherboard.PRODUCTID==null) { %>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <% } else{ %>
+        <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <% } %>
 </div>
 </div>
 
