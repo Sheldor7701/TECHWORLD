@@ -36,8 +36,10 @@
                 <li><a href="/user/" + <%=userid%> >Profile</a></li>
                 <% if(isAdmin) { %>
                     <li><a href="/admin" >ADMIN CONTROL</a></li>
-                <% } %> 
                 <% } %>
+                <li><a href="/pcbuilder">Logout</a></li>
+                <% } %>
+
                 <span style="float: right;">
                     <% if(!isAuth) { %>
                     <li><a href="/login">Login</a></li>
@@ -46,6 +48,7 @@
                     <% if(isAuth) { %>
                     <li><a href="/logout">Logout</a></li>
                     <% } %>
+                    
                 </span>
             </ul>
         </div>
