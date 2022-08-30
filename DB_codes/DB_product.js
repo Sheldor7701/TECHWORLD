@@ -25,6 +25,7 @@ async function allProduct() {
 
 }
 async function getProductByID(productid) {
+    console.log(productid);
     let sql1 = `
         SELECT TYPE
         FROM PRODUCTS 
