@@ -919,14 +919,14 @@ async function getCompatibleMotherboards(PRODUCTID){
     return (await database.execute(sql, [], database.options)).rows 
 }
 async function setCompatibleMotherboards(PRODUCTID, M_IDS){
-    let sql = `
-    SELECT *
-     FROM PRODUCTS
-      WHERE UPPER(TYPE) LIKE '${getString(string[0])}' OR UPPER(PRODUCT_NAME) LIKE '${getString(string[0])}' `
-    for (let i = 1; i < string.length; i++) {
-        sql += ` OR UPPER(TYPE) LIKE '${getString(string[i])}' OR UPPER(PRODUCT_NAME) LIKE '${getString(string[i])}'`;
-    }
-    return (await database.execute(sql, [], database.options)).rows
+    let sql =``;
+    for(let i=0;i<M_IDS.length;i++)
+        {   sql+= `
+            INSERT INTO MOTHERBOARD_COMPATIBILITY 
+            VALUES (${M_IDS[i]},${PRODUCTID}) ; / 
+            `;
+}
+    return (await database.execute(sql, [], database.options))
 }
 
 
