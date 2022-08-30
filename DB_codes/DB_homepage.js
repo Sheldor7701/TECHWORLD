@@ -20,9 +20,29 @@ async function getTopProducts() {
     `
     return (await database.execute(sql, [], database.options)).rows
 }
-
+async function getAllBrands() {
+    let sql = `
+        SELECT DISTINCT BRANDNAME
+        FROM BRANDS
+        ORDER BY BRANDNAME 
+    
+    `;
+    return (await database.execute(sql, [], database.options)).rows
+}
+async function getBrandsByProductType(TYPE) {
+    let sql = `
+        SELECT DISTINCT BRANDNAME
+        FROM BRANDS NATURAL JOIN PRODUCTS
+        WHERE TYPE=${TYPE}
+        ORDER BY BRANDNAME 
+    
+    `;
+    return (await database.execute(sql, [], database.options)).rows
+}
 
 module.exports = {
     getNewlyReleasedProduct,
-    getTopProducts
+    getTopProducts,
+    getAllBrands,
+    getBrandsByProductType
 }
