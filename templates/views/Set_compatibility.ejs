@@ -10,11 +10,34 @@
 
 <div class="form-group col-md-6 col-lg-6 col-sm-6">
   <label>Choose Motherboards</label>
-  <form class="add-form-svk" action=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> method="post">
-  <select id="DDLActivites" data-style="btn-default" class="selectpicker form-control" multiple data-max-options="2">
+  <form class="add-form-svk" method="post">
+  <select id="motherboards" data-style="btn-default" class="selectpicker form-control" multiple>
         <option value="1" >ONE</option>
         <option value="2">TWO</option>
      </select>
-     <input type="submit" class="btn btn-primary" value="SET">
+     <button id="submit" class="btn btn-primary" onclick="sendlist(<%=PRODUCTID%>)"> SAVE </button>
+     <a href="/admin/product"><button class="btn btn-primary" >GO BACK</button></a>
    </form> 
 </div>
+
+<script>
+    
+    function sendlist(PRODUCTID) {
+    var selected = [];
+    for (var option of document.getElementById('motherboards').options)
+    {
+        if (option.selected) {
+            selected.push(option.value);
+        }
+    }
+    let data = {
+             pid: PRODUCTID,
+             list: selected,
+         }
+
+         axios.post('/admin/product/setcompatibility/'+PRODUCTID,data).then((da)=>{
+             console.log("-------------done-------------");
+
+         })
+}
+</script>
