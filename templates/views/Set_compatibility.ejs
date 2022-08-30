@@ -12,14 +12,14 @@
 
 <div class="form-group col-md-6 col-lg-6 col-sm-6">
   <label>Choose Motherboards</label>
-  <form class="add-form-svk" method="post">
+  
   <select id="motherboards" data-style="btn-default" class="selectpicker form-control" multiple>
     <% for (let product of motherboards){ %>
         <option value="<%= product.PRODUCTID%>" ><%= product.PRODUCT_NAME %></option>
     <% } %>
      </select>
      <button id="submit" class="btn btn-primary" onclick="sendlist(<%=PRODUCTID%>)" >SAVE</button> 
-   </form> 
+ 
 </div>
 
 <script>

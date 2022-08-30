@@ -920,11 +920,11 @@ async function getCompatibleMotherboards(PRODUCTID){
 }
 async function setCompatibleMotherboards(PRODUCTID, M_IDS){
     let sql =``;
-    console.log(M_IDS);
+    console.log("asdasdadsd",M_IDS);
     for(let i=0;i<M_IDS.length;i++)
         {   sql+= `
             INSERT INTO MOTHERBOARD_COMPATIBILITY 
-            VALUES (${M_IDS[i]},${PRODUCTID}) ; / 
+            VALUES (${getInt(M_IDS[i])},${getInt(PRODUCTID)}) ; / 
             `;
 }
     return (await database.execute(sql, [], database.options))
