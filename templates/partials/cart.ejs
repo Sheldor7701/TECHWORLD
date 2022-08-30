@@ -1,3 +1,4 @@
+
 <cart>
 <style>
 
@@ -239,7 +240,7 @@ text-align: center;
 <div class="checkout">
  <div class="total"></div>
  <div class="items">2 items</div>
- <div class="total-amount">$6.18</div>
+ <div class="total-amount" id="total_price" ></div>
  <a href="/cart/viewcart"><button class="button">VIEW CART</button><br></div></a>
 
 
@@ -254,7 +255,7 @@ text-align: center;
          }
          axios.post(' http://localhost:3000/cart/cartIncreament',data).then((da)=>{
              console.log("-------------done-------------");
-
+             document.getElementById("total_price").innerHTML ='$'+da.data.price;
             console.log(productID);
             // let x=quantity+1;
             // document.getElementById("baal").innerHTML=
@@ -271,7 +272,7 @@ text-align: center;
          }
          axios.post('http://localhost:3000/cart/cartDecreament',data).then((da)=>{
              console.log("-------------done-------------");
-
+             document.getElementById("total_price").innerHTML ='$'+da.data.price;
             console.log(productID);
             // let x=quantity+1;
             // document.getElementById("baal").innerHTML=
@@ -294,8 +295,19 @@ text-align: center;
 		var b = 0;
         
         
-        function openCART() {
-            if(b==0){
+        function openCART() {            
+
+            let data= {
+             pid: "10",
+             
+         }
+
+            axios.post('/cart/cartprice',data).then((da)=>{
+             console.log("-------------price done-------------",da.data.price);
+             document.getElementById("total_price").innerHTML ='$'+da.data.price;
+         })
+
+         if(b==0){
                 document.getElementById("user-cart").style.display= "block";
                 return b=1;            
             }

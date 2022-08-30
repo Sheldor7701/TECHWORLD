@@ -16,7 +16,7 @@ async function getCart(userid){
 }
 async function getCartPrice(userid){
     let sql= `
-    SELECT SUM(PRICE) "TOTAL_PRICE"
+    SELECT SUM(PRICE*QUANTITY) "TOTAL_PRICE"
     FROM CART NATURAL JOIN PRODUCTS
     WHERE USERID= :USERID 
 
