@@ -128,7 +128,7 @@ router.get('/setcompatibility/:productid', async (req, res) => {
     };
     res.render('Set_compatibility', data);
 });
-router.post('/setcompatibility', async (req, res) => {
+router.post('/setcompatibility/:productid', async (req, res) => {
         
     //database query
     //const PRODUCTID= req.params.productid;
@@ -148,7 +148,7 @@ router.post('/setcompatibility', async (req, res) => {
     //     PRODUCTID
     // };
     // res.render('update'+TYPE.toLowerCase().trim(), data);
-    res.redirect('/admin/product');
+    res.send(req.params.productid);
 });
 
 module.exports = router
