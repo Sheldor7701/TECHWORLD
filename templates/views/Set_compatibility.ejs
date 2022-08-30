@@ -4,6 +4,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" ></script>
+
 
 
 
@@ -12,11 +14,11 @@
   <label>Choose Motherboards</label>
   <form class="add-form-svk" method="post">
   <select id="motherboards" data-style="btn-default" class="selectpicker form-control" multiple>
-        <option value="1" >ONE</option>
-        <option value="2">TWO</option>
+    <% for (let product of motherboards){ %>
+        <option value="<%= product.PRODUCTID%>" ><%= product.PRODUCT_NAME %></option>
+    <% } %>
      </select>
-     <button id="submit" class="btn btn-primary" onclick="sendlist(<%=PRODUCTID%>)"> SAVE </button>
-     <a href="/admin/product"><button class="btn btn-primary" >GO BACK</button></a>
+     <button id="submit" class="btn btn-primary" onclick="sendlist(<%=PRODUCTID%>)" >SAVE</button> 
    </form> 
 </div>
 
