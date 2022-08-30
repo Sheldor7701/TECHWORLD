@@ -70,7 +70,7 @@
 
 <% if(products.MOTHERBOARD!=null || products.PROCESSOR!=null ||
  products.GRAPHICS_CARD!=null || products.RAM1!=null || products.RAM2!=null ||
-  products.SSD!=null || products.HDD!=null) || products.POWER_SUPPLY!=null{ %>
+  products.SSD!=null || products.HDD!=null || products.POWER_SUPPLY!=null ){ %>
     <button type="button" class="btn-outline-info pc-builder-btn-cart"><b>ADD TO CART</b></button>
 <% } %>
 <div class="container">
@@ -103,7 +103,7 @@
 <% if(products.MOTHERBOARD==null) { %>
 <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
 <% } else{ %>
-    <a href=<%="/pc_builder/processor/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <a href=<%="/pcbuilder/processor/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
 <% } %>
 </div>
 </div>
@@ -128,7 +128,7 @@
 <% if(products.MOTHERBOARD==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/pc_builder/GRAPHICS_CARD/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/GRAPHICS_CARD/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -151,7 +151,7 @@
 <% if(products.MOTHERBOARD==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/pc_builder/ram/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/ram/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -174,7 +174,7 @@
 <% if(products.MOTHERBOARD==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/pc_builder/ram/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/ram/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -198,7 +198,7 @@
 <% if(products.MOTHERBOARD==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/pc_builder/SSD/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/SSD/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -221,7 +221,7 @@
 <% if(products.MOTHERBOARD==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/pc_builder/hdd/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/hdd/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -244,7 +244,7 @@
 <% if(products.MOTHERBOARD==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/pc_builder/power_supply/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/power_supply/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
