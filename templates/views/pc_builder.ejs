@@ -61,7 +61,16 @@
     </div>
   </div>
 
-  
+  <% if(products.MOTHERBOARD.PRODUCTID!=null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= products.PROCESSOR.IMAGE %>">
+    <div class="txt"><%= products.MOTHERBOARD.PRODUCT_NAME %></div>
+    <div class="price"><%= products.MOTHERBOARD.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
+    <% } %>
 
 
 <div class="card bg-light text-dark ok">
@@ -78,16 +87,16 @@
 
 
 
-<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+<% if(products.PROCESSOR.PRODUCTID!=null) { %>
     <div class="card bg-light text-dark ok">
     <div class="card-body pc-builder-card">
-    <img class="img" src="<%= product.PROCESSOR.IMAGE %>">
-    <div class="txt"><%= product.PROCESSOR.PRODUCT_NAME %></div>
-    <div class="price"><%= product.PROCESSOR.PRICE %></div>
+    <img class="img" src="<%= products.PROCESSOR.IMAGE %>">
+    <div class="txt"><%= products.PROCESSOR.PRODUCT_NAME %></div>
+    <div class="price"><%= products.PROCESSOR.PRICE %></div>
     <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
-
+    <% } %>
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
@@ -101,16 +110,16 @@
 </div>
 </div>
 
-<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+<% if(products.GRAPHICS_CARD.PRODUCTID!=null) { %>
     <div class="card bg-light text-dark ok">
     <div class="card-body pc-builder-card">
-    <img class="img" src="<%= product.GRAPHICS_CARD.IMAGE %>">
-    <div class="txt"><%= product.GRAPHICS_CARD.PRODUCT_NAME %></div>
-    <div class="price"><%= product.GRAPHICS_CARD.PRICE %></div>
+    <img class="img" src="<%= products.GRAPHICS_CARD.IMAGE %>">
+    <div class="txt"><%= products.GRAPHICS_CARD.PRODUCT_NAME %></div>
+    <div class="price"><%= products.GRAPHICS_CARD.PRICE %></div>
     <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
-
+    <% } %>
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
@@ -124,16 +133,16 @@
 </div>
 </div>
 
-<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+<% if(products.RAM1.PRODUCTID!=null) { %>
     <div class="card bg-light text-dark ok">
     <div class="card-body pc-builder-card">
-    <img class="img" src="<%= product.RAM1.IMAGE %>">
-    <div class="txt"><%= product.RAM1.PRODUCT_NAME %></div>
-    <div class="price"><%= product.RAM1.PRICE %></div>
+    <img class="img" src="<%= products.RAM1.IMAGE %>">
+    <div class="txt"><%= products.RAM1.PRODUCT_NAME %></div>
+    <div class="price"><%= products.RAM1.PRICE %></div>
     <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
-
+    <% } %>
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
@@ -148,16 +157,16 @@
 </div>
 
 
-<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+<% if(products.RAM2.PRODUCTID!=null) { %>
     <div class="card bg-light text-dark ok">
     <div class="card-body pc-builder-card">
-    <img class="img" src="<%= product.RAM2.IMAGE %>">
-    <div class="txt"><%= product.RAM2.PRODUCT_NAME %></div>
-    <div class="price"><%= product.RAM2.PRICE %></div>
+    <img class="img" src="<%= products.RAM2.IMAGE %>">
+    <div class="txt"><%= products.RAM2.PRODUCT_NAME %></div>
+    <div class="price"><%= products.RAM2.PRICE %></div>
     <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
-
+    <% } %>
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
@@ -171,16 +180,16 @@
 </div>
 </div>
 
-<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+<% if(products.SSD.PRODUCTID!=null) { %>
     <div class="card bg-light text-dark ok">
     <div class="card-body pc-builder-card">
-    <img class="img" src="<%= product.SSD.IMAGE %>">
-    <div class="txt"><%= product.SSD.PRODUCT_NAME %></div>
-    <div class="price"><%= product.SSD.PRICE %></div>
+    <img class="img" src="<%= products.SSD.IMAGE %>">
+    <div class="txt"><%= products.SSD.PRODUCT_NAME %></div>
+    <div class="price"><%= products.SSD.PRICE %></div>
     <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
-
+    <% } %>
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
@@ -194,16 +203,16 @@
 </div>
 </div>
 
-<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+<% if(products.HDD.PRODUCTID!=null) { %>
     <div class="card bg-light text-dark ok">
     <div class="card-body pc-builder-card">
-    <img class="img" src="<%= product.HDD.IMAGE %>">
-    <div class="txt"><%= product.HDD.PRODUCT_NAME %></div>
-    <div class="price"><%= product.HDD.PRICE %></div>
+    <img class="img" src="<%= products.HDD.IMAGE %>">
+    <div class="txt"><%= products.HDD.PRODUCT_NAME %></div>
+    <div class="price"><%= products.HDD.PRICE %></div>
     <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
-
+    <% } %>
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
@@ -218,16 +227,16 @@
 </div>
 
 
-<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+<% if(products.POWER_SUPPLY.PRODUCTID!=null) { %>
     <div class="card bg-light text-dark ok">
     <div class="card-body pc-builder-card">
-    <img class="img" src="<%= product.POWER_SUPPLY.IMAGE %>">
-    <div class="txt"><%= product.POWER_SUPPLY.PRODUCT_NAME %></div>
-    <div class="price"><%= product.POWER_SUPPLY.PRICE %></div>
+    <img class="img" src="<%= products.POWER_SUPPLY.IMAGE %>">
+    <div class="txt"><%= products.POWER_SUPPLY.PRODUCT_NAME %></div>
+    <div class="price"><%= products.POWER_SUPPLY.PRICE %></div>
     <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
-
+    <% } %>
   
 </div>
 
