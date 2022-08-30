@@ -26,6 +26,27 @@ router.get('/', async (req, res) => {
 
     //res.redirect('/user');
 });
+router.get('/addtocart', async (req, res) => {
+    
+    const products= await DB_product.getProductByType('MOTHERBOARD');
+
+   const data = {
+       pageTitle:"ALL PRODUCTS",
+       isAuth: req.session.isAuth,
+       userid: req.session.userid,
+       username: req.session.username,
+       isAdmin: req.session.isAdmin,
+       cart: req.session.cart,
+       products
+   };
+   res.render('pc_builder_productlist',data)
+   //database query
+
+  // await DB_admin.updateUserInfo(userid,username, email,password, address);
+
+
+   //res.redirect('/user');
+});
 router.get('/motherboard', async (req, res) => {
     
     const products= await DB_product.getProductByType('MOTHERBOARD');
@@ -64,7 +85,7 @@ router.get('/motherboard', async (req, res) => {
 // });
 router.get('/chosen/:type/:productid', async (req, res) => {
     const userid= req.session.userid;
-    const PRODUCTID= req.params.productdid;
+    const PRODUCTID= req.params.productid;
     const TYPE= (req.params.type).toUpperCase().trim();
     console.log(TYPE,MOTHERBOARDID);
     await DB_pcbuilder.updateRecord(userid,TYPE,PRODUCTID);
