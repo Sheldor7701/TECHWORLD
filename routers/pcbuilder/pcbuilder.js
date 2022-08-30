@@ -64,10 +64,12 @@ router.get('/motherboard', async (req, res) => {
 // });
 router.get('/chosen/:type/:productid', async (req, res) => {
     const userid= req.session.userid;
-    const PRODUCTID= req.params.productdid;
+    const PRODUCTID= req.params.productid;
     const TYPE= (req.params.type).toUpperCase().trim();
-    console.log(TYPE,MOTHERBOARDID);
+    console.log(TYPE,PRODUCTID);
     await DB_pcbuilder.updateRecord(userid,TYPE,PRODUCTID);
+
+    
 
     res.redirect('/pcbuilder');
 
