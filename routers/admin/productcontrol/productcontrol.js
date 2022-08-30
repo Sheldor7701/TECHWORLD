@@ -89,6 +89,7 @@ router.post('/updateProduct/:productid', async (req, res) => {
     res.redirect('/admin/product');
 
 });
+
 // router.get('/removeproduct/:productid', async (req, res) => {
         
 //     //database query
@@ -104,6 +105,7 @@ router.post('/updateProduct/:productid', async (req, res) => {
 //     };
 //     res.render('changeproduct', data);
 // });
+
 
 router.get('/setcompatibility/:productid', async (req, res) => {
         
@@ -126,10 +128,10 @@ router.get('/setcompatibility/:productid', async (req, res) => {
     };
     res.render('Set_compatibility', data);
 });
-router.post('/setcompatibility/:productid', async (req, res) => {
+router.post('/setcompatibility', async (req, res) => {
         
     //database query
-    const PRODUCTID= req.params.productid;
+    //const PRODUCTID= req.params.productid;
     //console.log(PRODUCTID+"IDDDDDDDDD");
     //const motherboards=await DB_product.getProductByType('MOTHERBOARD');
     console.log(req.body);
