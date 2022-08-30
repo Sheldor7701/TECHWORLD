@@ -294,8 +294,19 @@ text-align: center;
 		var b = 0;
         
         
-        function openCART() {
-            if(b==0){
+        function openCART() {            
+
+            let data= {
+             pid: "10",
+             
+         }
+
+            axios.post('http://localhost:3000/cart/cartprice',data).then((da)=>{
+             console.log("-------------price done-------------")
+             document.getElementById("total_price").value =da.data.price;
+         })
+
+         if(b==0){
                 document.getElementById("user-cart").style.display= "block";
                 return b=1;            
             }
@@ -303,11 +314,6 @@ text-align: center;
                 document.getElementById("user-cart").style.display= "none";
                 return b=0;            
             }
-
-            axios.get('http://localhost:3000/cart/cartprice',data).then((da)=>{
-             console.log("-------------price done-------------")
-             document.getElementById("total_price").value =da.data.price;
-         })
 		}
 				
 </script></cart>
