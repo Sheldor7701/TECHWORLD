@@ -14,5 +14,10 @@ ja ja kora baki:
 7. discount, advertise type
 
 
-
+GRAPHICS_CARD
+PROCESSOR 
+RAM
+SSD
+HDD
+POWER_SUPPLY
 

@@ -906,6 +906,18 @@ async function updateProduct(PRODUCTID, PRODUCT) {
 
    
 }
+async function getCompatibleMotherboards(PRODUCTID){
+    let sql = `
+    SELECT  M.PRODUCTID AS PRODUCTID,PRODUCT_NAME
+     FROM MOTHERBOARD M JOIN MOTHERBOARD_COMPATIBILITY C
+		 ON M.PRODUCTID= C.MOTHERBOARDID AND C.PRODUCTID=${PRODUCTID}
+		 JOIN PRODUCTS P ON M.PRODUCTID=P.PRODUCTID
+		 ;
+		 
+     
+       `;
+    return (await database.execute(sql, [], database.options)).rows 
+}
 
 module.exports = {
     allProduct,
@@ -913,5 +925,6 @@ module.exports = {
     getProductBySearch,
     getProductByType,
     addProduct,
-    updateProduct
+    updateProduct,
+    getCompatibleMotherboards
 }
