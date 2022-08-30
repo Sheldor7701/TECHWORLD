@@ -918,6 +918,17 @@ async function getCompatibleMotherboards(PRODUCTID){
        `;
     return (await database.execute(sql, [], database.options)).rows 
 }
+async function setCompatibleMotherboards(PRODUCTID, M_IDS){
+    let sql =``;
+    for(let i=0;i<M_IDS.length;i++)
+        {   sql+= `
+            INSERT INTO MOTHERBOARD_COMPATIBILITY 
+            VALUES (${M_IDS[i]},${PRODUCTID}) ; / 
+            `;
+}
+    return (await database.execute(sql, [], database.options))
+}
+
 
 module.exports = {
     allProduct,
@@ -926,5 +937,6 @@ module.exports = {
     getProductByType,
     addProduct,
     updateProduct,
-    getCompatibleMotherboards
+    getCompatibleMotherboards,
+    setCompatibleMotherboards
 }
