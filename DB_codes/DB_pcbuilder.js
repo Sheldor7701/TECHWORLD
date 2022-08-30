@@ -11,6 +11,7 @@ async function getUserBuild(userid){
 
     `
      let ALL_ID=(await database.execute(sql, [], database.options)).rows;
+     console.log(ALL_ID);
       let  MOTHERBOARD= await DB_product.getProductByID(ALL_ID.MOTHERBOARDID);
       let  PROCESSOR = await DB_product.getProductByID(ALL_ID.PROCESSORID);
       let  GRAPHICS_CARD = await DB_product.getProductByID(ALL_ID.GRAPHICS_CARDID);
