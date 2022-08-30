@@ -57,7 +57,7 @@
     <div class="card-body pc-builder-card">
         <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
         <div class="txt">MOTHERBOARD</div>
-        <a href="/pcbuilder/motherboard" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href="/pcbuilder/MOTHERBOARD" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     </div>
   </div>
 
@@ -68,76 +68,148 @@
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">PROCESSOR</div>
-<% if(products.motherboard.PRODUCTID==null) { %>
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
 <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
 <% } else{ %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
 <% } %>
 </div>
 </div>
+
+
+
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= product.PROCESSOR.IMAGE %>">
+    <div class="txt"><%= product.PROCESSOR.PRODUCT_NAME %></div>
+    <div class="price"><%= product.PROCESSOR.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
+
+
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">GRAPHICS CARD</div>
-<% if(products.motherboard.PRODUCTID==null) { %>
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
         <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
+
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= product.GRAPHICS_CARD.IMAGE %>">
+    <div class="txt"><%= product.GRAPHICS_CARD.PRODUCT_NAME %></div>
+    <div class="price"><%= product.GRAPHICS_CARD.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
+
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">RAM 1</div>
-<% if(products.motherboard.PRODUCTID==null) { %>
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
         <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
+
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= product.RAM1.IMAGE %>">
+    <div class="txt"><%= product.RAM1.PRODUCT_NAME %></div>
+    <div class="price"><%= product.RAM1.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
+
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">RAM 2</div>
-<% if(products.motherboard.PRODUCTID==null) { %>
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
         <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
+
+
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= product.RAM2.IMAGE %>">
+    <div class="txt"><%= product.RAM2.PRODUCT_NAME %></div>
+    <div class="price"><%= product.RAM2.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
+
 
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">SSD</div>
-<% if(products.motherboard.PRODUCTID==null) { %>
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
         <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
+
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= product.SSD.IMAGE %>">
+    <div class="txt"><%= product.SSD.PRODUCT_NAME %></div>
+    <div class="price"><%= product.SSD.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
+
+
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">HDD</div>
-<% if(products.motherboard.PRODUCTID==null) { %>
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
         <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
+
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= product.HDD.IMAGE %>">
+    <div class="txt"><%= product.HDD.PRODUCT_NAME %></div>
+    <div class="price"><%= product.HDD.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
+
+
 <div class="card bg-light text-dark ok">
 <div class="card-body pc-builder-card">
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">POWER SUPPLY</div>
-<% if(products.motherboard.PRODUCTID==null) { %>
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
     <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
         <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
@@ -146,6 +218,15 @@
 </div>
 
 
+<% if(products.MOTHERBOARD.PRODUCTID==null) { %>
+    <div class="card bg-light text-dark ok">
+    <div class="card-body pc-builder-card">
+    <img class="img" src="<%= product.POWER_SUPPLY.IMAGE %>">
+    <div class="txt"><%= product.POWER_SUPPLY.PRODUCT_NAME %></div>
+    <div class="price"><%= product.POWER_SUPPLY.PRICE %></div>
+    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    </div>
+    </div>
 
   
 </div>
