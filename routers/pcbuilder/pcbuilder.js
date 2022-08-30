@@ -51,7 +51,9 @@ router.get('/motherboard', async (req, res) => {
 router.get('/:type/:motherboardid', async (req, res) => {
     const TYPE= (req.params.type).toUpperCase().trim();
     const MOTHERBOARDID= req.params.motherboardid;
+    console.log(TYPE,MOTHERBOARDID);
     const products= await DB_pcbuilder.getCompatibles(TYPE,MOTHERBOARDID);
+    
 
    const data = {
        pageTitle:"ALL PRODUCTS",

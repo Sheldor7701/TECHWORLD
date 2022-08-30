@@ -42,6 +42,25 @@
     .ok{
         margin-bottom: 5vh;
     }
+
+    .price{
+        float: left;
+        max-width: 30vw;
+        padding-left: 20vw;
+        max-height: 20vh;
+        padding-top: 1vh;
+        font-size: 1rem;
+    }
+
+    .pc-builder-btn-cart{
+        float: right;
+        margin-left: 50vw;
+        width:5vw;
+        height: 10vh;
+        cursor: pointer;
+        font-size: 1rem;
+
+    }
     
 </style>
  
@@ -49,7 +68,11 @@
 <body>
 <%- include('../partials/header.ejs') %>
 
-
+<% if(products.MOTHERBOARD!=null || products.PROCESSOR!=null ||
+ products.GRAPHICS_CARD!=null || products.RAM1!=null || products.RAM2!=null ||
+  products.SSD!=null || products.HDD!=null || products.POWER_SUPPLY!=null ){ %>
+    <button type="button" class="btn-outline-info pc-builder-btn-cart"><b>ADD TO CART</b></button>
+<% } %>
 <div class="container">
   <h2>Build your own desktop with TECHWORLD</h2>
     
@@ -67,7 +90,7 @@
     <img class="img" src="<%= products.MOTHERBOARD.IMAGE %>">
     <div class="txt"><%= products.MOTHERBOARD.PRODUCT_NAME %></div>
     <div class="price"><%= products.MOTHERBOARD.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
@@ -78,9 +101,9 @@
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">PROCESSOR</div>
 <% if(products.MOTHERBOARD==null) { %>
-<a href=<%="/admin/processor/" + products.PROCESSOR.PRODUCTID %> > ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+<a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
 <% } else{ %>
-    <a href=<%="/admin/processor/" + products.PROCESSOR.PRODUCTID %> >  ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+    <a href=<%="/pcbuilder/processor/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
 <% } %>
 </div>
 </div>
@@ -93,7 +116,7 @@
     <img class="img" src="<%= products.PROCESSOR.IMAGE %>">
     <div class="txt"><%= products.PROCESSOR.PRODUCT_NAME %></div>
     <div class="price"><%= products.PROCESSOR.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
@@ -103,9 +126,9 @@
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">GRAPHICS CARD</div>
 <% if(products.MOTHERBOARD==null) { %>
-    <a href=<%="/admin/graphics_card/" + products.MOTHERBOARD.PRODUCTID %> >  ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/admin/graphics_card/" + products.MOTHERBOARD.PRODUCTID %> >  ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/GRAPHICS_CARD/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -116,7 +139,7 @@
     <img class="img" src="<%= products.GRAPHICS_CARD.IMAGE %>">
     <div class="txt"><%= products.GRAPHICS_CARD.PRODUCT_NAME %></div>
     <div class="price"><%= products.GRAPHICS_CARD.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
@@ -126,9 +149,9 @@
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">RAM 1</div>
 <% if(products.MOTHERBOARD==null) { %>
-    <a href=<%="/admin/ram/" + products.MOTHERBOARD.PRODUCTID %> >  ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/admin/ram/" + products.MOTHERBOARD.PRODUCTID %> >  ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/ram/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -139,7 +162,7 @@
     <img class="img" src="<%= products.RAM1.IMAGE %>">
     <div class="txt"><%= products.RAM1.PRODUCT_NAME %></div>
     <div class="price"><%= products.RAM1.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
@@ -149,9 +172,9 @@
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">RAM 2</div>
 <% if(products.MOTHERBOARD==null) { %>
-    <a href=<%="/admin/ram/" + products.MOTHERBOARD.PRODUCTID %> >  ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/admin/ram/" + products.MOTHERBOARD.PRODUCTID %> > ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/ram/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -163,7 +186,7 @@
     <img class="img" src="<%= products.RAM2.IMAGE %>">
     <div class="txt"><%= products.RAM2.PRODUCT_NAME %></div>
     <div class="price"><%= products.RAM2.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
@@ -173,9 +196,9 @@
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">SSD</div>
 <% if(products.MOTHERBOARD==null) { %>
-    <a href=<%="/admin/ssd/" + products.MOTHERBOARD.PRODUCTID %> >  ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/admin/ssd/" + products.MOTHERBOARD.PRODUCTID %> > ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/SSD/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -186,7 +209,7 @@
     <img class="img" src="<%= products.SSD.IMAGE %>">
     <div class="txt"><%= products.SSD.PRODUCT_NAME %></div>
     <div class="price"><%= products.SSD.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
@@ -196,9 +219,9 @@
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">HDD</div>
 <% if(products.MOTHERBOARD==null) { %>
-    <a href=<%="/admin/HDD/" + products.MOTHERBOARD.PRODUCTID %> > ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/admin/HDD/" + products.MOTHERBOARD.PRODUCTID %> > > ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/hdd/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -209,7 +232,7 @@
     <img class="img" src="<%= products.HDD.IMAGE %>">
     <div class="txt"><%= products.HDD.PRODUCT_NAME %></div>
     <div class="price"><%= products.HDD.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
@@ -219,9 +242,9 @@
 <img class="img" src="https://www.techlandbd.com/image/cache/wp/gp/techlandxx/icon/mb.png-40x40.webp">
 <div class="txt">POWER SUPPLY</div>
 <% if(products.MOTHERBOARD==null) { %>
-    <a href=<%="/admin/power_supply/" + products.MOTHERBOARD.PRODUCTID %> > > ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn" disabled>CHOOSE</button></a>
     <% } else{ %>
-        <a href=<%="/admin/power_supply/" + products.MOTHERBOARD.PRODUCTID %> > > ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
+        <a href=<%="/pcbuilder/power_supply/" + products.MOTHERBOARD.PRODUCTID %> ><button type="button" class="btn-outline-info pc-builder-btn">CHOOSE</button></a>
     <% } %>
 </div>
 </div>
@@ -233,7 +256,7 @@
     <img class="img" src="<%= products.POWER_SUPPLY.IMAGE %>">
     <div class="txt"><%= products.POWER_SUPPLY.PRODUCT_NAME %></div>
     <div class="price"><%= products.POWER_SUPPLY.PRICE %></div>
-    <a href="" ><button type="button" class="btn btn-outline-info pc-builder-btn">REMOVE</button></a>
+    <a href="" ><button type="button" class="btn-outline-info pc-builder-btn">REMOVE</button></a>
     </div>
     </div>
     <% } %>
