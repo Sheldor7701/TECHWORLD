@@ -8,6 +8,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" ></script>
+
 
 <link rel="stylesheet" href="/css/styles.css">
 
@@ -30,10 +32,14 @@
                       <div class="top_bar_content ml-auto">
                           <div class="top_bar_user">
                               <div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
-                              <div><a href="">Profile</a></div>
+                              <% if(isAuth) { %>
+                              <div><a href="/user">Profile</a></div>
                               <div><a href="/logout">Sign out</a></div>
+                              <% } %>
+                              <% if(!isAuth) { %>
                               <div><a href="/register">Register</a></div>
                               <div><a href="/login">Sign in</a></div>
+                              <% } %>
                           </div>
                       </div>
                   </div>
@@ -50,7 +56,7 @@
                   <!-- Logo -->
                   <div class="col-lg-2 col-sm-3 col-3 order-1">
                       <div class="logo_container">
-                          <div class="logo"><a href="#">TECHLAND</a></div>
+                          <div class="logo"><a href="/login">TECHLAND</a></div>
                       </div>
                   </div>
 
@@ -59,8 +65,8 @@
                       <div class="header_search">
                           <div class="header_search_content">
                               <div class="header_search_form_container">
-                                  <form action="#" class="header_search_form clearfix">
-                                      <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+                                  <form action="/searchresults" method="post" class="header_search_form clearfix">
+                                      <input type="search" required="required" class="header_search_input" placeholder="Search for products..." name="search">
                                       
                                       <button type="submit" class="header_search_button trans_300" value="Submit"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918770/search.png" alt=""></button>
                                   </form>
@@ -75,7 +81,7 @@
                           <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                               <div class="wishlist_icon"><img src="https://static.vecteezy.com/system/resources/thumbnails/005/029/311/small/desktop-computer-monitor-line-icon-outline-sign-linear-style-pictogram-isolated-on-white-symbol-logo-illustration-editable-stroke-pixel-perfect-free-vector.jpg" alt=""></div>
                               <div class="wishlist_content">
-                                  <div class="wishlist_text"><a href="#">PC BUILDER</a></div>
+                                  <div class="wishlist_text"><a href="/pcbuilder">PC BUILDER</a></div>
                                   <div class="wishlist_count"></div>
                               </div>
                           </div>
@@ -83,13 +89,13 @@
                           <!-- Cart -->
                           <div class="cart">
                               <div class="cart_container d-flex flex-row align-items-center justify-content-end">
-                                  <div class="cart_icon">
-                                      <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918704/cart.png" alt="">
-                                      <div class="cart_count"><span>count</span></div>
-                                  </div>
+                                <div class="cart_icon">
+                                    <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918704/cart.png" alt="">
+                                    
+                                </div>
                                   <div class="cart_content">
-                                      <div class="cart_text"><a href="#">Cart</a></div>
-                                      <div class="cart_price">price</div>
+                                      <div class="cart_text"><a href="/cart/viewcart">Cart</a></div>
+                                      
                                   </div>
                               </div>
                           </div>
@@ -97,7 +103,7 @@
                               <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                   
                                   <div class="cart_content">
-                                      <div class="cart_text"><a href="#">ADMIN</a></div>
+                                      <div class="cart_text"><a href="/admin">ADMIN</a></div>
                                       <div class="cart_price">Admin name</div>
                                   </div>
                               </div>
@@ -130,7 +136,7 @@
                                       <a href="/productlist/laptop">Laptop<i class="fas fa-chevron-down"></i></a>
                                       <ul>
                                           
-                                          <li><a href="#">ALL brands of laptop<i class="fas fa-chevron-down"></i></a></li>
+                                          <li><a href="#"><i class="fas fa-chevron-down"></i></a></li>
                                           
                                       </ul>
                                   </li>
