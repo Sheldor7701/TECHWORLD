@@ -40,6 +40,42 @@ async function getUserBuild(userid){
      };
 
 }
+async function getCompatibles(TYPE,MOTHERBOARDID){
+
+    let sql= `
+            SELECT * 
+            FROM PC_BUILDER
+            WHERE USERID=${userid} 
+
+    `
+     let ALL_ID=(await database.execute(sql, [], database.options)).rows[0];
+     console.log(ALL_ID);
+    //  console.log(ALL_ID.MOTHERBOARDID);
+      let  MOTHERBOARD= ALL_ID.MOTHERBOARDID==null? null:await DB_product.getProductByID((ALL_ID.MOTHERBOARDID));
+      let  PROCESSOR = ALL_ID.PROCESSORID==null? null:await DB_product.getProductByID((ALL_ID.PROCESSORID));
+      let  GRAPHICS_CARD = ALL_ID.GRAPHICS_CARDID==null? null:await DB_product.getProductByID((ALL_ID.GRAPHICS_CARDID));
+      let  RAM1 = ALL_ID.RAM1ID==null? null:await DB_product.getProductByID((ALL_ID.RAM1ID));
+      let RAM2 = ALL_ID.RAM2ID==null? null:await DB_product.getProductByID((ALL_ID.RAM2ID));
+      let SSD = ALL_ID.SSDID==null? null:await DB_product.getProductByID((ALL_ID.SSDID));
+      let HDD = ALL_ID.HDDID==null? null:await DB_product.getProductByID((ALL_ID.HDDID));
+      let POWER_SUPPLY = ALL_ID.POWER_SUPPLYID==null? null:await DB_product.getProductByID((ALL_ID.POWER_SUPPLYID));
+
+     //console.log(ppp);
+     return {
+                     
+            MOTHERBOARD , 
+            PROCESSOR , 
+            GRAPHICS_CARD , 
+            RAM1 , 
+            RAM2 , 
+            SSD , 
+            HDD , 
+            POWER_SUPPLY 
+
+     };
+
+}
+
 
 async function cartIncreament(userid, productid) {
     let sql = `

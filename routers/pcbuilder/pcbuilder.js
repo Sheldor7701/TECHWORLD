@@ -26,6 +26,51 @@ router.get('/', async (req, res) => {
 
     //res.redirect('/user');
 });
+router.get('/motherboard', async (req, res) => {
+    
+    const products= await DB_product.getProductByType('MOTHERBOARD');
+
+   const data = {
+       pageTitle:"ALL PRODUCTS",
+       isAuth: req.session.isAuth,
+       userid: req.session.userid,
+       username: req.session.username,
+       isAdmin: req.session.isAdmin,
+       cart: req.session.cart,
+       products
+   };
+   res.render('pc_builder_productlist',data)
+   //database query
+
+  // await DB_admin.updateUserInfo(userid,username, email,password, address);
+
+
+   //res.redirect('/user');
+});
+
+router.get('/:type/:motherboardid', async (req, res) => {
+    const TYPE= (req.params.type).toUpperCase().trim();
+    const MOTHERBOARDID= req.params.motherboardid;
+    const products= await DB_pcbuilder.getCompatibles(TYPE,MOTHERBOARDID);
+
+   const data = {
+       pageTitle:"ALL PRODUCTS",
+       isAuth: req.session.isAuth,
+       userid: req.session.userid,
+       username: req.session.username,
+       isAdmin: req.session.isAdmin,
+       cart: req.session.cart,
+       products
+   };
+   res.render('pc_builder_productlist',data)
+   //database query
+
+  // await DB_admin.updateUserInfo(userid,username, email,password, address);
+
+
+   //res.redirect('/user');
+});
+
 
 router.get('/addProduct/:type', async (req, res) => {
     const type= (req.params.type).toLowerCase().trim();
