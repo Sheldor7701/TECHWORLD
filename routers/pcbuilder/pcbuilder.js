@@ -48,45 +48,29 @@ router.get('/motherboard', async (req, res) => {
    //res.redirect('/user');
 });
 
-router.get('/:type/:motherboardid', async (req, res) => {
-    const TYPE= (req.params.type).toUpperCase().trim();
-    const MOTHERBOARDID= req.params.motherboardid;
-    console.log(TYPE,MOTHERBOARDID);
-    const products= await DB_pcbuilder.getCompatibles(TYPE,MOTHERBOARDID);
+// router.get('/:type/:motherboardid', async (req, res) => {
+//     const TYPE= (req.params.type).toUpperCase().trim();
+//     const MOTHERBOARDID= req.params.motherboardid;
+//    // console.log(TYPE,MOTHERBOARDID);
+//     const products= await DB_pcbuilder.getCompatibles(TYPE,MOTHERBOARDID);
     
+//    res.redirect('/pcbuilder');
+//    //database query
 
-   const data = {
-       pageTitle:"ALL PRODUCTS",
-       isAuth: req.session.isAuth,
-       userid: req.session.userid,
-       username: req.session.username,
-       isAdmin: req.session.isAdmin,
-       cart: req.session.cart,
-       products
-   };
-   res.render('pc_builder_productlist',data)
-   //database query
-
-  // await DB_admin.updateUserInfo(userid,username, email,password, address);
+//   // await DB_admin.updateUserInfo(userid,username, email,password, address);
 
 
-   //res.redirect('/user');
-});
-router.get('/chosen/motherboard/:motherboardid', async (req, res) => {
+//    //res.redirect('/user');
+// });
+router.get('/chosen/:type/:productid', async (req, res) => {
     const userid= req.session.userid;
-    const MOTHERBOARDID= req.params.motherboardid;
-    await DB_pcbuilder.makeRecord(userid,MOTHERBOARDID);
+    const PRODUCTID= req.params.productdid;
+    const TYPE= (req.params.type).toUpperCase().trim();
+    console.log(TYPE,MOTHERBOARDID);
+    await DB_pcbuilder.updateRecord(userid,TYPE,PRODUCTID);
 
-   const data = {
-       pageTitle:"ALL PRODUCTS",
-       isAuth: req.session.isAuth,
-       userid: req.session.userid,
-       username: req.session.username,
-       isAdmin: req.session.isAdmin,
-       cart: req.session.cart,
-       products
-   };
-   res.render('pc_builder_productlist',data)
+    res.redirect('/pcbuilder');
+
    //database query
 
   // await DB_admin.updateUserInfo(userid,username, email,password, address);
@@ -106,6 +90,7 @@ router.get('/:type/:motherboardid', async (req, res) => {
        username: req.session.username,
        isAdmin: req.session.isAdmin,
        cart: req.session.cart,
+       TYPE,
        products
    };
    res.render('pc_builder_productlist',data)
