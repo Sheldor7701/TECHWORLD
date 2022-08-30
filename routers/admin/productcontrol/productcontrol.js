@@ -124,7 +124,29 @@ router.get('/setcompatibility/:productid', async (req, res) => {
         motherboards,
         PRODUCTID
     };
-    res.render('update'+TYPE.toLowerCase().trim(), data);
+    res.render('Set_compatibility', data);
+});
+router.post('/setcompatibility/:productid', async (req, res) => {
+        
+    //database query
+    const PRODUCTID= req.params.productid;
+    //console.log(PRODUCTID+"IDDDDDDDDD");
+    //const motherboards=await DB_product.getProductByType('MOTHERBOARD');
+    console.log(req.body);
+
+    // const TYPE=product.TYPE;
+    // const data = {
+    //     pageTitle: type+'S',
+    //     isAuth: req.session.isAuth,
+    //     userid: req.session.userid,
+    //     username: req.session.username,
+    //     isAdmin: req.session.isAdmin,
+    //     cart: req.session.cart,
+    //     motherboards,
+    //     PRODUCTID
+    // };
+    // res.render('update'+TYPE.toLowerCase().trim(), data);
+    res.redirect('/admin/product');
 });
 
 module.exports = router
