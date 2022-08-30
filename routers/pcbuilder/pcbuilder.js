@@ -3,17 +3,20 @@ const { redirect, type } = require('express/lib/response');
 const DB_product = require('../../DB_codes/DB_product')
 const DB_user = require('../../DB_codes/DB_user')
 const DB_admin = require('../../DB_codes/DB_admin')
+const DB_pcbuilder = require('../../DB_codes/DB_pcbuilder')
 const router = express.Router({ mergeParams: true });
 router.get('/', async (req, res) => {
-   // const products = await DB_pcbuil.allProduct();
+     const userid= req.session.userid;
+     const products= await DB_pcbuilder.getUserBuild(userid);
+
     const data = {
         pageTitle:"ALL PRODUCTS",
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
         isAdmin: req.session.isAdmin,
-        cart: req.session.cart
-        //products
+        cart: req.session.cart,
+        products
     };
     res.render('pc_builder',data)
     //database query

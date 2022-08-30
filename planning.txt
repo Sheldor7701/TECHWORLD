@@ -12,7 +12,7 @@ ja ja kora baki:
 5. review rating
 6. pc builder
 7. discount, advertise type
-
+//product update er por cart
 
 GRAPHICS_CARD
 PROCESSOR 
