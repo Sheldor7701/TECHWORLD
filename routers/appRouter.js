@@ -23,7 +23,21 @@ router.get('/', async (req, res) => {
     const userid = req.session.userid;
     const newlyReleased = await DB_homepage.getNewlyReleasedProduct();
     const topProducts = await DB_homepage.getTopProducts();
-    
+        let GRAPHICS_CARDBrands = await DB_homepage.getBrandsByProductType('GRAPHICS_CARD');
+    let LAPTOPBrands = await DB_homepage.getBrandsByProductType('LAPTOP');
+    let PROCESSORBrands = await DB_homepage.getBrandsByProductType('PROCESSOR');
+    let RAMBrands = await DB_homepage.getBrandsByProductType('RAM');
+    let HDDBrands = await DB_homepage.getBrandsByProductType('HDD');
+    let MONITORBrands = await DB_homepage.getBrandsByProductType('MONITOR');
+    let SSDBrands = await DB_homepage.getBrandsByProductType('SSD');
+    let MOTHERBOARDBrands = await DB_homepage.getBrandsByProductType('MOTHERBOARD');
+    let POWER_SUPPLYBrands = await DB_homepage.getBrandsByProductType('POWER_SUPPLY');
+    let HEADPHONEBrands = await DB_homepage.getBrandsByProductType('HEADPHONE');
+    let KEYBOARDBrands = await DB_homepage.getBrandsByProductType('KEYBOARD');
+    let MOUSEBrands = await DB_homepage.getBrandsByProductType('MOUSE');
+    let SPEAKERBrands = await DB_homepage.getBrandsByProductType('SPEAKER');
+    let UPSBrands = await DB_homepage.getBrandsByProductType('UPS');
+    let WEBCAMBrands = await DB_homepage.getBrandsByProductType('WEBCAM');
     //const cart= await DB_user.getCart(userid);
     const data = {
         pageTitle: 'TechWorld',
@@ -35,7 +49,22 @@ router.get('/', async (req, res) => {
         message: 'This is the Home Page',
 
         newlyReleased,
-        topProducts
+        topProducts,
+        GRAPHICS_CARDBrands ,
+        LAPTOPBrands ,
+        PROCESSORBrands ,
+        RAMBrands ,
+        HDDBrands ,
+        MONITORBrands ,
+        SSDBrands ,
+        MOTHERBOARDBrands ,
+        POWER_SUPPLYBrands ,
+        HEADPHONEBrands ,
+        KEYBOARDBrands ,
+        MOUSEBrands ,
+        SPEAKERBrands ,
+        UPSBrands ,
+        WEBCAMBrands
         
         // recommendation
     }
