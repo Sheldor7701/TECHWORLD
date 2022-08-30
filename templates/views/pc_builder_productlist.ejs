@@ -70,7 +70,7 @@
 <img class="img" src="<%= product.IMAGE %>">
 <div class="txt"><%= product.PRODUCT_NAME %></div>
 <div class="price"><%= product.PRICE %></div>
-<a href="/pcbuilder/" ><button type="button" class="btn-outline-info pc-builder-btn">ADD</button></a>
+<a href=<%="/pcbuilder/chosen/" +TYPE+ "/" + product.PRODUCTID %>  ><button type="button" class="btn-outline-info pc-builder-btn">ADD</button></a>
 </div>
 </div>
 
