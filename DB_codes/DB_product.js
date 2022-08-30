@@ -61,7 +61,13 @@ async function getProductByType(type) {
       WHERE TYPE= :TYPE `
     return (await database.execute(sql, [type], database.options)).rows
 }
-
+async function getProductByBrandAndType(type,brandname) {
+    let sql = `
+    SELECT *
+     FROM PRODUCTS NATURAL JOIN BRANDS
+      WHERE TYPE= :TYPE  AND BRANDNAME= :BRANDNAME `
+    return (await database.execute(sql, [type,brandname], database.options)).rows
+}
 async function addProduct(PRODUCT) {
     let FUNC = 'ADD_' + PRODUCT.TYPE;
 
@@ -937,6 +943,7 @@ module.exports = {
     getProductByID,
     getProductBySearch,
     getProductByType,
+    getProductByBrandAndType,
     addProduct,
     updateProduct,
     getCompatibleMotherboards,

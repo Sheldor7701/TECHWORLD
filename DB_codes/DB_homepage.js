@@ -33,7 +33,7 @@ async function getBrandsByProductType(TYPE) {
     let sql = `
         SELECT DISTINCT BRANDNAME
         FROM BRANDS NATURAL JOIN PRODUCTS
-        WHERE TYPE=${TYPE}
+        WHERE TYPE='${TYPE}'
         ORDER BY BRANDNAME 
     
     `;
