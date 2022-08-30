@@ -55,7 +55,18 @@ async function getCompatibles(TYPE,MOTHERBOARDID){
      return (await database.execute(sql, [], database.options)).rows;
      
 }
+async function makeRecord(USERID,MOTHERBOARDID){
 
+    let sql= `
+        BEGIN
+        ADD_PC_BUILDER_RECORD(${USERID},${MOTHERBOARDID});
+        END;
+    
+
+    `;
+     return (await database.execute(sql, [], database.options)).rows;
+     
+}
 
 async function cartIncreament(userid, productid) {
     let sql = `
@@ -149,6 +160,7 @@ async function previouslyChosen(userid){
 module.exports = {
     getUserBuild,
     getCompatibles,
+    makeRecord,
     cartIncreament,
     cartDecreament,
     addToCart,
