@@ -16,14 +16,14 @@ async function getUserBuild(userid){
      let ALL_ID=(await database.execute(sql, [], database.options)).rows[0];
     //  console.log(ALL_ID);
     //  console.log(ALL_ID.MOTHERBOARDID);
-      let  MOTHERBOARD= await DB_product.getProductByID(getInt(ALL_ID.MOTHERBOARDID));
-      let  PROCESSOR = await DB_product.getProductByID(getInt(ALL_ID.PROCESSORID));
-      let  GRAPHICS_CARD = await DB_product.getProductByID(getInt(ALL_ID.GRAPHICS_CARDID));
-      let  RAM1 = await DB_product.getProductByID(getInt(ALL_ID.RAM1ID));
-      let RAM2 = await DB_product.getProductByID(getInt(ALL_ID.RAM2ID));
-      let SSD = await DB_product.getProductByID(getInt(ALL_ID.SSDID));
-      let HDD = await DB_product.getProductByID(getInt(ALL_ID.HDDID));
-      let POWER_SUPPLY = await DB_product.getProductByID(getInt(ALL_ID.POWER_SUPPLYID));
+      let  MOTHERBOARD= await DB_product.getProductByID((ALL_ID.MOTHERBOARDID));
+      let  PROCESSOR = await DB_product.getProductByID((ALL_ID.PROCESSORID));
+      let  GRAPHICS_CARD = await DB_product.getProductByID((ALL_ID.GRAPHICS_CARDID));
+      let  RAM1 = await DB_product.getProductByID((ALL_ID.RAM1ID));
+      let RAM2 = await DB_product.getProductByID((ALL_ID.RAM2ID));
+      let SSD = await DB_product.getProductByID((ALL_ID.SSDID));
+      let HDD = await DB_product.getProductByID((ALL_ID.HDDID));
+      let POWER_SUPPLY = await DB_product.getProductByID((ALL_ID.POWER_SUPPLYID));
 
      //console.log(ppp);
      return {
