@@ -71,7 +71,7 @@ async function updateRecord(USERID, TYPE,PRODUCTID){
     TYPE+='ID';
     let sql= `
     UPDATE PC_BUILDER
-    SET ${TID}= ${PRODUCTID}
+    SET ${TYPE}= ${PRODUCTID}
     WHERE USERID=${USERID}
     
 
