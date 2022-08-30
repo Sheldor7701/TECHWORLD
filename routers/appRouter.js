@@ -15,6 +15,7 @@ const searchResultsRouter = require('./searchresults/searchresults')
 const userRouter = require('./user/user')
 const cartRouter = require('./cart/cart')
 const adminRouter= require('./admin/admin')
+const pcbuilderRouter= require('./pcbuilder/pcbuilder')
 
 
 //!HOME PAGE
@@ -55,6 +56,7 @@ router.use('/searchresults', searchResultsRouter)
 router.use('/user', userRouter)
 router.use('/cart',cartRouter)
 router.use('/admin', adminRouter);
+router.use('/pcbuilder', pcbuilderRouter);
 
 //!ERRORS
 
