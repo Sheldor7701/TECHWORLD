@@ -111,9 +111,9 @@ router.get('/setcompatibility/:productid', async (req, res) => {
     const PRODUCTID= req.params.productid;
     //console.log(PRODUCTID+"IDDDDDDDDD");
     const motherboards=await DB_product.getProductByType('MOTHERBOARD');
-    console.log(product);
+    //console.log(product);
 
-    const TYPE=product.TYPE;
+    //const TYPE=product.TYPE;
     const data = {
         pageTitle: type+'S',
         isAuth: req.session.isAuth,
