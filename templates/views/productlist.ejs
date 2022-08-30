@@ -87,7 +87,7 @@ clear: both;
              }
              axios.post(' http://localhost:3000/cart/cartAdd',data).then((da)=>{
                  console.log("-------------done-------------");
-    
+                 document.getElementById("total_price").innerHTML ='$'+da.data.price;
                 if(da.data.exists>0){
                     Increament(productID);
                     return;

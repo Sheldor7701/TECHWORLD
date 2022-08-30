@@ -7,7 +7,7 @@ const DB_user = require('../../DB_codes/DB_user')
 const router = express.Router({ mergeParams: true });
 router.post('/cartprice', async (req, res) => {
    
-    let price= DB_cart.getCartPrice(user.session.userid);
+    let price=await DB_cart.getCartPrice(req.session.userid);
     const da={
         price
     }
@@ -27,8 +27,11 @@ router.post('/cartIncreament',async (req,res)=>{
     await DB_cart.cartIncreament(uid,pid);
     req.session.cart= await DB_cart.getCart(uid);
     //console.log("doneeeee");
+    let price=await DB_cart.getCartPrice(req.session.userid);
+
     let da = {
-        id:"hello"
+        id:"hello",
+        price
     }
     
     res.send(da);
@@ -41,8 +44,11 @@ router.post('/cartDecreament',async (req,res)=>{
     await DB_cart.cartDecreament(uid,pid);
     req.session.cart= await DB_cart.getCart(uid);
     //console.log("doneeeee");
+    let price=await DB_cart.getCartPrice(req.session.userid);
+
     let da = {
-        id:"hello"
+        id:"hello",
+        price
     }
     
     res.send(da);
@@ -58,10 +64,12 @@ router.post('/cartAdd',async (req,res)=>{
      req.session.cart= await DB_cart.getCart(uid);
 
      let product= await DB_product.getProductByID(pid);
-     
+     let price=await DB_cart.getCartPrice(req.session.userid);
+
      const da={
         exists,
-        product
+        product,
+        price
      };
      //console.log(da);
      res.send(da);
@@ -69,6 +77,7 @@ router.post('/cartAdd',async (req,res)=>{
     // res.send(product);
 })
 router.get('/viewcart', async (req, res) => {
+    let price=await DB_cart.getCartPrice(req.session.userid);
     const data = {
         pageTitle: 'VIEW CART',
         isAuth: req.session.isAuth,
@@ -76,11 +85,14 @@ router.get('/viewcart', async (req, res) => {
         username: req.session.username,
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
+        price
     }
     return res.render('viewcart',data);
 })
 router.get('/checkout', async (req, res) => {
     const user= await DB_user.getUserInfoByUserId(req.session.userid);
+    let price=await DB_cart.getCartPrice(req.session.userid);
+
     const data = {
         pageTitle: 'CHECKOUT',
         isAuth: req.session.isAuth,
@@ -88,17 +100,21 @@ router.get('/checkout', async (req, res) => {
         username: req.session.username,
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
-        user
+        user,
+        price
     }
     return res.render('checkout',data);
 })
 router.post('/payment', async (req, res) => {
+    let price=await DB_cart.getCartPrice(req.session.userid);
+
     const data = {
         pageTitle: 'PAYMENT',
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
-        isAdmin: req.session.isAdmin
+        isAdmin: req.session.isAdmin,
+        price
         
     }
     return res.render('payment',data);
