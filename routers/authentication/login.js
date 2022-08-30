@@ -36,6 +36,8 @@ router.post('/', async (req, res) => {
     req.session.isAuth = true;
     req.session.isAdmin= user[0].IS_ADMIN;
     req.session.cart= await DB_cart.getCart(user[0].USERID);
+   // req.session.cartPrice= await DB_cart.getCartPrice(user[0].USERID);
+
     res.redirect('/');
 })
 

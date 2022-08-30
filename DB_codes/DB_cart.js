@@ -14,6 +14,17 @@ async function getCart(userid){
      return ppp;
 
 }
+async function getCartPrice(userid){
+    let sql= `
+    SELECT SUM(PRICE) "TOTAL_PRICE"
+    FROM CART NATURAL JOIN PRODUCTS
+    WHERE USERID= :USERID 
+
+    `;
+   return (await database.execute(sql, [userid], database.options)).rows[0].TOTAL_PRICE;
+
+
+}
 
 async function cartIncreament(userid, productid) {
     let sql = `
@@ -112,5 +123,6 @@ module.exports = {
     checkCart,
     buyAll,
     orderHistory,
-    previouslyChosen
+    previouslyChosen,
+    getCartPrice
 }

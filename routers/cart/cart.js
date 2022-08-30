@@ -5,6 +5,14 @@ const DB_cart = require('../../DB_codes/DB_cart');
 const DB_product = require('../../DB_codes/DB_product')
 const DB_user = require('../../DB_codes/DB_user')
 const router = express.Router({ mergeParams: true });
+router.get('/cartprice', async (req, res) => {
+   
+    let price= DB_cart.getCartPrice(user.session.userid);
+    const da={
+        price
+    }
+    res.send(da);
+})
 
 router.get('/update', async (req, res) => {
    

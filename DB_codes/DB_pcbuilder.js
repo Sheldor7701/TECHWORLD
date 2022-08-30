@@ -79,12 +79,25 @@ async function updateRecord(USERID, TYPE,PRODUCTID){
      return (await database.execute(sql, [], database.options));
      
 }
+async function pcBuildConfirm(USERID){
+
+    let sql= `
+        BEGIN 
+        PC_BUILD_CONFIRM(${USERID});
+        END;
+    
+
+    `;
+     return (await database.execute(sql, [], database.options));
+     
+}
 
 
 module.exports = {
     getUserBuild,
     getCompatibles,
     makeRecord,
-    updateRecord
+    updateRecord,
+    pcBuildConfirm
 
 }
