@@ -3,6 +3,7 @@ const { redirect, type } = require('express/lib/response');
 const DB_product = require('../../DB_codes/DB_product')
 const DB_user = require('../../DB_codes/DB_user')
 const DB_admin = require('../../DB_codes/DB_admin')
+const DB_cart = require('../../DB_codes/DB_cart')
 const DB_pcbuilder = require('../../DB_codes/DB_pcbuilder')
 const router = express.Router({ mergeParams: true });
 router.get('/', async (req, res) => {
@@ -25,6 +26,29 @@ router.get('/', async (req, res) => {
 
 
     //res.redirect('/user');
+});
+router.get('/addtocart', async (req, res) => {
+    
+    const user= await DB_user.getUserInfoByUserId(req.session.userid);
+    await DB_pcbuilder.pcBuildConfirm(req.session.userid);
+    req.session.cart= DB_cart.getCart(req.session.userid);
+    const data = {
+        pageTitle: 'VIEW CART',
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+        user
+    }
+    return res.render('viewcart',data);
+
+   //database query
+
+  // await DB_admin.updateUserInfo(userid,username, email,password, address);
+
+
+   //res.redirect('/user');
 });
 router.get('/motherboard', async (req, res) => {
     
