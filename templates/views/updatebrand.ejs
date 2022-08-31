@@ -11,22 +11,22 @@
 </style>
 
 
-<form class="add-form-svk" action="/admin/brand/newBrand" method="post">
+<form class="add-form-svk" action=<%="/admin/brand/updateBrand/" + brand.BRANDID %> method="post">
   
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Brand Name</label>
-      <input  type="text" class="form-control" name="name" id="name"   placeholder="Enter product name">
+      <input  type="text" class="form-control" name="name" id="name"   value="<%= brand.BRAND_NAME %>">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Logo</label>
-      <input  type="text" class="form-control" name="logo" id="logo"   placeholder="Enter brand ID">
+      <input  type="text" class="form-control" name="logo" id="logo"   value="<%= brand.LOGO %>">
     </div>
     
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Country</label>
-      <input  type="text" class="form-control" name="country" id="country"   placeholder="Enter country">
+      <input  type="text" class="form-control" name="country" id="country"   value="<%= brand.COUNTRY %>">
     </div>  
 
 
