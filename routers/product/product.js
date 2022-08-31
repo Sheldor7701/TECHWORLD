@@ -17,6 +17,21 @@ router.get('/:productid', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         product
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     }
  
     {

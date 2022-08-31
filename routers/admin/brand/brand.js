@@ -42,6 +42,21 @@ router.get('/newBrand',async (req,res)=>{
         userid: req.session.userid,
         username: req.session.username,
         isAdmin: req.session.isAdmin
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     }
  res.render('Addbrand',data);
 
@@ -52,7 +67,37 @@ router.post('/newBrand',async (req,res)=>{
     return res.redirect('/admin/brand');
 
 })
+router.get('/updateBrand/:brandid',async (req,res)=>{
+    const brandid= req.params.brandid;
+    const brand=await DB_brand.brandInfo(brandid);
+    const brandProducts= await DB_brand.getAllFromBrand(brandid);
+    const data={
+        brandid,
+        brand,
+        brandProducts,
+    isAuth: req.session.isAuth,
+    userid: req.session.userid,
+    username: req.session.username,
+    isAdmin: req.session.isAdmin
+    ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
 
+}
+res.render('updatebrand',data);
+
+})
 router.post('/updateBrand/:brandid',async (req,res)=>{
     
     await DB_brand.updateBrand(req.params.brandid,req.body.name,req.body.logo, req.body.country);
