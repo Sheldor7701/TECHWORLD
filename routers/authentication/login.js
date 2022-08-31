@@ -52,7 +52,9 @@ req.session.MOUSEBrands = await DB_homepage.getBrandsByProductType('MOUSE');
 req.session.SPEAKERBrands = await DB_homepage.getBrandsByProductType('SPEAKER');
 req.session.UPSBrands = await DB_homepage.getBrandsByProductType('UPS');
 req.session.WEBCAMBrands = await DB_homepage.getBrandsByProductType('WEBCAM');
-   // req.session.cartPrice= await DB_cart.getCartPrice(user[0].USERID);
+req.session.LAPTOPBrands = await DB_homepage.getBrandsByProductType('LAPTOP');
+req.session.MONITORBrands = await DB_homepage.getBrandsByProductType('MONITOR');
+// req.session.cartPrice= await DB_cart.getCartPrice(user[0].USERID);
 
     res.redirect('/');
 })
