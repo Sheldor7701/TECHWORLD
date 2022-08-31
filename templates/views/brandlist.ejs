@@ -64,8 +64,8 @@
     </style>
     
     <body>
-        <div><button class="add-btn"><div class="plus">+</div> ADD BRAND</button></div>
-    <% for (let brand of brands){ %>
+        <a href="/admin/brand/newBrand"><div><button class="add-btn"><div class="plus">+</div> ADD BRAND</button></div></a>
+        <% for (let brand of brands){ %>
         <a href=<%="/admin/brand/brandinfo/" + brand.BRANDID %>><div class="card">
             <img class="img" src="<%= brand.LOGO %>">
             <div class="txt"><%= brand.BRANDNAME %><br><%= brand.COUNTRY %></div>
