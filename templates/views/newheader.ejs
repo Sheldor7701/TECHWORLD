@@ -91,7 +91,7 @@
                           <div class="cart">
                               <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
-                                    <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918704/cart.png" alt="">
+                                    <img src="https://static.thenounproject.com/png/1074958-200.png" alt="">
                                     
                                 </div>
                                   <div class="cart_content">
@@ -100,15 +100,17 @@
                                   </div>
                               </div>
                           </div>
+                          <% if(isAdmin) { %>
                           <div class="cart">
                               <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                   
                                   <div class="cart_content">
                                       <div class="cart_text"><a href="/admin">ADMIN</a></div>
-                                      <div class="cart_price">Admin name</div>
+                                      <div class="cart_price"><%= username %></div>
                                   </div>
                               </div>
                           </div>
+                          <% } %>
                       </div>
                   </div>
               </div>
@@ -292,11 +294,10 @@
                                   <li class="hassubs">
                                       <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
                                       <ul>
-                                          <li>
-                                              <a href="#">All Brands<i class="fas fa-chevron-down"></i></a>
-                                              
-                                          </li>
-                                      </ul>
+                                        <% for (let brand of allBrands){ %> 
+                                        <li><a href=<%="/productlist/WEBCAM/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                        <% } %>
+                                        </ul>
                                   </li>
                               </ul>
                           </div>

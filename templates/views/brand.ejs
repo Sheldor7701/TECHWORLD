@@ -56,10 +56,9 @@
 <div class="brand-info-svk">
 <img src="<%= brand.LOGO %>" class="img-fluid" alt="Responsive image">
 
-<h1><%= brand.BRANDNAME %></h1>
-<h2><%= brand.COUNTRY %></h2>
+
 <h3>
-  <small class="text-muted"><%= brand.TOTAL_PRODUCTS %></small>
+    Number of total products: <small class="text-muted"><%= brand.TOTAL_PRODUCTS %></small>
 </h3>
 </div>
 
@@ -69,7 +68,32 @@
     <div class="card1">
         <img class="img" src="<%= product.IMAGE %>">
         <div class="txt"><%= product.PRODUCT_NAME %></div>
-        <button class="bttn">REMOVE</button>
-        <button class="bttn">UPDATE</button>
+
+        <% if(product.TYPE=="SSD" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="PROCESSOR" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="GRAPHICS_CARD" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="HDD" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="RAM" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+        <% if(product.TYPE=="POWER_SUPPLY" ) { %>
+            <a href=<%="/admin/product/setcompatibility/" + product.PRODUCTID %> ><button class="bttn">SET
+                    COMPATIBILITY</button></a>
+            <% } %>
+
+        <a href=<%="/admin/product/updateproduct/" + product.PRODUCTID %> ><button class="bttn">UPDATE</button></a>
     </div></a>
 <% } %>
