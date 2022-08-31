@@ -109,6 +109,7 @@
         }
         axios.post(' http://localhost:3000/cart/cartIncreament',data).then((da)=>{
             console.log("-------------done-------------");
+           // document.getElementById("total_price").innerHTML ='$'+da.data.price;
 
            console.log(productID);
            // let x=quantity+1;
@@ -126,6 +127,7 @@
         }
         axios.post('http://localhost:3000/cart/cartDecreament',data).then((da)=>{
             console.log("-------------done-------------");
+            //document.getElementById("total_price").innerHTML ='$'+da.data.price;
 
            console.log(productID);
            // let x=quantity+1;
