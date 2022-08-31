@@ -12,7 +12,7 @@ int main(){
     } 
     cout<<endl<<endl<<endl;
     for(int i=0;i<vec.size();i++){
-        cout<<vec[i]<<"Brands ,\n";
+        cout<<","<<vec[i]<<"Brands:"<<"req.session."<<vec[i]<<"Brands\n";
     }
     cout<<endl<<endl<<endl;
     // for(int i=0;i<vec.size();i++){
