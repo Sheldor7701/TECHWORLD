@@ -65,6 +65,21 @@ router.get('/motherboard', async (req, res) => {
        cart: req.session.cart,
        products,
        TYPE
+       ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
    };
    res.render('pc_builder_productlist',data)
    //database query
@@ -121,6 +136,21 @@ router.get('/:type/:motherboardid', async (req, res) => {
        cart: req.session.cart,
        TYPE,
        products
+       ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
    };
    res.render('pc_builder_productlist',data)
    //database query

@@ -29,8 +29,22 @@ router.get('/', async (req, res) => {
         isAuth: req.session.isAuth,
         userid: req.session.userid,
         username: req.session.username,
-        cart: req.session.cart,
-        
+        cart: req.session.cart
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     }
        res.render('admin', data);
         }

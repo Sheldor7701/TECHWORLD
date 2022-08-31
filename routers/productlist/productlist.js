@@ -13,6 +13,21 @@ router.get('/new', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         productlist
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     }
  
     {
@@ -32,6 +47,21 @@ router.get('/top', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         productlist
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     }
  
     {
@@ -51,6 +81,20 @@ router.get('/:type', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         productlist
+        ,allBrands:req.session.allBrands
+        ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+        ,PROCESSORBrands:req.session.PROCESSORBrands
+        ,RAMBrands:req.session.RAMBrands
+        ,HDDBrands:req.session.HDDBrands
+        ,SSDBrands:req.session.SSDBrands
+        ,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+        ,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+        ,HEADPHONEBrands:req.session.HEADPHONEBrands
+        ,KEYBOARDBrands:req.session.KEYBOARDBrands
+        ,MOUSEBrands:req.session.MOUSEBrands
+        ,SPEAKERBrands:req.session.SPEAKERBrands
+        ,UPSBrands:req.session.UPSBrands
+        ,WEBCAMBrands:req.session.WEBCAMBrands
     }
  
     {
@@ -72,6 +116,20 @@ router.get('/:type/:brandname', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         productlist
+        ,allBrands:req.session.allBrands
+        ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+        ,PROCESSORBrands:req.session.PROCESSORBrands
+        ,RAMBrands:req.session.RAMBrands
+        ,HDDBrands:req.session.HDDBrands
+        ,SSDBrands:req.session.SSDBrands
+        ,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+        ,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+        ,HEADPHONEBrands:req.session.HEADPHONEBrands
+        ,KEYBOARDBrands:req.session.KEYBOARDBrands
+        ,MOUSEBrands:req.session.MOUSEBrands
+        ,SPEAKERBrands:req.session.SPEAKERBrands
+        ,UPSBrands:req.session.UPSBrands
+        ,WEBCAMBrands:req.session.WEBCAMBrands
     }
     res.render('productlist', data)
 })
