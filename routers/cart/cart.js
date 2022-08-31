@@ -87,19 +87,22 @@ router.get('/viewcart', async (req, res) => {
         cart: req.session.cart,
         price
         ,allBrands:req.session.allBrands
-,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
-,PROCESSORBrands:req.session.PROCESSORBrands
-,RAMBrands:req.session.RAMBrands
-,HDDBrands:req.session.HDDBrands
-,SSDBrands:req.session.SSDBrands
-,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
-,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
-,HEADPHONEBrands:req.session.HEADPHONEBrands
-,KEYBOARDBrands:req.session.KEYBOARDBrands
-,MOUSEBrands:req.session.MOUSEBrands
-,SPEAKERBrands:req.session.SPEAKERBrands
-,UPSBrands:req.session.UPSBrands
-,WEBCAMBrands:req.session.WEBCAMBrands
+ ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+ ,PROCESSORBrands:req.session.PROCESSORBrands
+ ,RAMBrands:req.session.RAMBrands
+ ,HDDBrands:req.session.HDDBrands
+ ,SSDBrands:req.session.SSDBrands
+ ,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+ ,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+ ,HEADPHONEBrands:req.session.HEADPHONEBrands
+ ,KEYBOARDBrands:req.session.KEYBOARDBrands
+ ,MOUSEBrands:req.session.MOUSEBrands
+ ,SPEAKERBrands:req.session.SPEAKERBrands
+ ,UPSBrands:req.session.UPSBrands
+ ,WEBCAMBrands:req.session.WEBCAMBrands
+ ,LAPTOPBrands:req.session.LAPTOPBrands
+ ,MONITORBrands:req.session.MONITORBrands
+ 
 
     }
     return res.render('viewcart',data);
@@ -118,20 +121,22 @@ router.get('/checkout', async (req, res) => {
         user,
         price
         ,allBrands:req.session.allBrands
-,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
-,PROCESSORBrands:req.session.PROCESSORBrands
-,RAMBrands:req.session.RAMBrands
-,HDDBrands:req.session.HDDBrands
-,SSDBrands:req.session.SSDBrands
-,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
-,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
-,HEADPHONEBrands:req.session.HEADPHONEBrands
-,KEYBOARDBrands:req.session.KEYBOARDBrands
-,MOUSEBrands:req.session.MOUSEBrands
-,SPEAKERBrands:req.session.SPEAKERBrands
-,UPSBrands:req.session.UPSBrands
-,WEBCAMBrands:req.session.WEBCAMBrands
-
+ ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+ ,PROCESSORBrands:req.session.PROCESSORBrands
+ ,RAMBrands:req.session.RAMBrands
+ ,HDDBrands:req.session.HDDBrands
+ ,SSDBrands:req.session.SSDBrands
+ ,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+ ,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+ ,HEADPHONEBrands:req.session.HEADPHONEBrands
+ ,KEYBOARDBrands:req.session.KEYBOARDBrands
+ ,MOUSEBrands:req.session.MOUSEBrands
+ ,SPEAKERBrands:req.session.SPEAKERBrands
+ ,UPSBrands:req.session.UPSBrands
+ ,WEBCAMBrands:req.session.WEBCAMBrands
+ ,LAPTOPBrands:req.session.LAPTOPBrands
+ ,MONITORBrands:req.session.MONITORBrands
+ 
     }
     return res.render('checkout',data);
 })
@@ -146,51 +151,22 @@ router.post('/payment', async (req, res) => {
         isAdmin: req.session.isAdmin,
         price
         ,allBrands:req.session.allBrands
-,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
-,PROCESSORBrands:req.session.PROCESSORBrands
-,RAMBrands:req.session.RAMBrands
-,HDDBrands:req.session.HDDBrands
-,SSDBrands:req.session.SSDBrands
-,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
-,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
-,HEADPHONEBrands:req.session.HEADPHONEBrands
-,KEYBOARDBrands:req.session.KEYBOARDBrands
-,MOUSEBrands:req.session.MOUSEBrands
-,SPEAKERBrands:req.session.SPEAKERBrands
-,UPSBrands:req.session.UPSBrands
-,WEBCAMBrands:req.session.WEBCAMBrands
-
-        
-    }
-    return res.render('payment',data);
-})
-
-router.post('/done', async (req, res) => {
-
-    await DB_cart.buyAll(req.session.userid);
-    req.session.cart= [];
-
-    const data = {
-        pageTitle: 'THANK YOU',
-        isAuth: req.session.isAuth,
-        userid: req.session.userid,
-        username: req.session.username,
-        isAdmin: req.session.isAdmin,
-        cart: req.session.cart
-        ,allBrands:req.session.allBrands
-,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
-,PROCESSORBrands:req.session.PROCESSORBrands
-,RAMBrands:req.session.RAMBrands
-,HDDBrands:req.session.HDDBrands
-,SSDBrands:req.session.SSDBrands
-,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
-,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
-,HEADPHONEBrands:req.session.HEADPHONEBrands
-,KEYBOARDBrands:req.session.KEYBOARDBrands
-,MOUSEBrands:req.session.MOUSEBrands
-,SPEAKERBrands:req.session.SPEAKERBrands
-,UPSBrands:req.session.UPSBrands
-,WEBCAMBrands:req.session.WEBCAMBrands
+ ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+ ,PROCESSORBrands:req.session.PROCESSORBrands
+ ,RAMBrands:req.session.RAMBrands
+ ,HDDBrands:req.session.HDDBrands
+ ,SSDBrands:req.session.SSDBrands
+ ,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+ ,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+ ,HEADPHONEBrands:req.session.HEADPHONEBrands
+ ,KEYBOARDBrands:req.session.KEYBOARDBrands
+ ,MOUSEBrands:req.session.MOUSEBrands
+ ,SPEAKERBrands:req.session.SPEAKERBrands
+ ,UPSBrands:req.session.UPSBrands
+ ,WEBCAMBrands:req.session.WEBCAMBrands
+ ,LAPTOPBrands:req.session.LAPTOPBrands
+ ,MONITORBrands:req.session.MONITORBrands
+ 
 
     }
 

@@ -18,6 +18,23 @@ router.get('/', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         products
+        ,allBrands:req.session.allBrands
+ ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+ ,PROCESSORBrands:req.session.PROCESSORBrands
+ ,RAMBrands:req.session.RAMBrands
+ ,HDDBrands:req.session.HDDBrands
+ ,SSDBrands:req.session.SSDBrands
+ ,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+ ,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+ ,HEADPHONEBrands:req.session.HEADPHONEBrands
+ ,KEYBOARDBrands:req.session.KEYBOARDBrands
+ ,MOUSEBrands:req.session.MOUSEBrands
+ ,SPEAKERBrands:req.session.SPEAKERBrands
+ ,UPSBrands:req.session.UPSBrands
+ ,WEBCAMBrands:req.session.WEBCAMBrands
+ ,LAPTOPBrands:req.session.LAPTOPBrands
+ ,MONITORBrands:req.session.MONITORBrands
+ 
     };
     res.render('pc_builder',data)
     //database query
@@ -42,6 +59,23 @@ router.get('/addtocart', async (req, res) => {
         cart: req.session.cart,
         user,
         price
+        ,allBrands:req.session.allBrands
+ ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+ ,PROCESSORBrands:req.session.PROCESSORBrands
+ ,RAMBrands:req.session.RAMBrands
+ ,HDDBrands:req.session.HDDBrands
+ ,SSDBrands:req.session.SSDBrands
+ ,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+ ,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+ ,HEADPHONEBrands:req.session.HEADPHONEBrands
+ ,KEYBOARDBrands:req.session.KEYBOARDBrands
+ ,MOUSEBrands:req.session.MOUSEBrands
+ ,SPEAKERBrands:req.session.SPEAKERBrands
+ ,UPSBrands:req.session.UPSBrands
+ ,WEBCAMBrands:req.session.WEBCAMBrands
+ ,LAPTOPBrands:req.session.LAPTOPBrands
+ ,MONITORBrands:req.session.MONITORBrands
+ 
     }
     return res.render('viewcart',data);
 
@@ -79,6 +113,8 @@ router.get('/motherboard', async (req, res) => {
 ,SPEAKERBrands:req.session.SPEAKERBrands
 ,UPSBrands:req.session.UPSBrands
 ,WEBCAMBrands:req.session.WEBCAMBrands
+,LAPTOPBrands:req.session.LAPTOPBrands
+,MONITORBrands:req.session.MONITORBrands
 
    };
    res.render('pc_builder_productlist',data)
@@ -150,6 +186,8 @@ router.get('/:type/:motherboardid', async (req, res) => {
 ,SPEAKERBrands:req.session.SPEAKERBrands
 ,UPSBrands:req.session.UPSBrands
 ,WEBCAMBrands:req.session.WEBCAMBrands
+,LAPTOPBrands:req.session.LAPTOPBrands
+,MONITORBrands:req.session.MONITORBrands
 
    };
    res.render('pc_builder_productlist',data)
