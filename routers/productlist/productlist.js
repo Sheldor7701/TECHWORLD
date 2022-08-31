@@ -60,6 +60,22 @@ router.get('/:type', async (req, res) => {
     res.render('productlist', data)
 })
 
+router.get('/:type/:brandname', async (req, res) => {
+    const type= (req.params.type).toUpperCase().trim();
+    const brandname= (req.params.brandname).toUpperCase().trim();
+    const productlist= await DB_product.getProductByBrandAndType(type,brandname);
+    const data = {
+        pageTitle: type,
+        isAuth: req.session.isAuth,
+        userid: req.session.userid,
+        username: req.session.username,
+        isAdmin: req.session.isAdmin,
+        cart: req.session.cart,
+        productlist
+    }
+    res.render('productlist', data)
+})
+
 // router.get('/monitor', async (req, res) => {
     
 //     const productlist= await DB_product.getProductByType('MONITOR');

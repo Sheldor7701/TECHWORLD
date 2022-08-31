@@ -6,7 +6,21 @@ function getInt(chars){
     return parseInt(chars);
 }
 async function getUserBuild(userid){
+    let sql1=`
+    SELECT COUNT(*) "COUNT" 
+    FROM PC_BUILDER
+    WHERE USERID=${userid} 
 
+`;
+let exists= (await database.execute(sql1, [], database.options)).rows[0].COUNT;
+if(exists==0){
+    let sql2=`
+    INSERT INTO PC_BUILDER(USERID)
+    VALUES (${userid})
+
+`;
+(await database.execute(sql2, [], database.options));
+}
     let sql= `
             SELECT * 
             FROM PC_BUILDER
@@ -15,6 +29,7 @@ async function getUserBuild(userid){
     `
      let ALL_ID=(await database.execute(sql, [], database.options)).rows[0];
      console.log(ALL_ID);
+     
     //  console.log(ALL_ID.MOTHERBOARDID);
       let  MOTHERBOARD= ALL_ID.MOTHERBOARDID==null? null:await DB_product.getProductByID((ALL_ID.MOTHERBOARDID));
       let  PROCESSOR = ALL_ID.PROCESSORID==null? null:await DB_product.getProductByID((ALL_ID.PROCESSORID));
