@@ -15,7 +15,7 @@ async function getTopProducts() {
     let sql = `
         SELECT *
         FROM PRODUCTS
-        ORDER BY RATING DESC
+        ORDER BY PRODUCTID
         FETCH NEXT 4 ROWS ONLY
     `
     return (await database.execute(sql, [], database.options)).rows
