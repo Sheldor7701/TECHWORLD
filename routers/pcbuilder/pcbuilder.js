@@ -31,7 +31,7 @@ router.get('/addtocart', async (req, res) => {
     
     const user= await DB_user.getUserInfoByUserId(req.session.userid);
     await DB_pcbuilder.pcBuildConfirm(req.session.userid);
-    req.session.cart= DB_cart.getCart(req.session.userid);
+    req.session.cart=await DB_cart.getCart(req.session.userid);
     const data = {
         pageTitle: 'VIEW CART',
         isAuth: req.session.isAuth,
