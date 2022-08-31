@@ -14,6 +14,21 @@ router.get('/', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         products
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     };
     res.render('Adminproductlist',data)
     //database query
@@ -32,7 +47,22 @@ router.get('/addProduct/:type', async (req, res) => {
         userid: req.session.userid,
         username: req.session.username,
         isAdmin: req.session.isAdmin,
-        cart: req.session.cart,
+        cart: req.session.cart
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     };
     res.render('Add'+type,data)
 
@@ -64,6 +94,21 @@ router.get('/updateproduct/:productid', async (req, res) => {
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
         product
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     };
     res.render('update'+TYPE.toLowerCase().trim(), data);
 });
@@ -125,6 +170,21 @@ router.get('/setcompatibility/:productid', async (req, res) => {
         cart: req.session.cart,
         motherboards,
         PRODUCTID
+        ,allBrands:req.session.allBrands
+,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
+,PROCESSORBrands:req.session.PROCESSORBrands
+,RAMBrands:req.session.RAMBrands
+,HDDBrands:req.session.HDDBrands
+,SSDBrands:req.session.SSDBrands
+,MOTHERBOARDBrands:req.session.MOTHERBOARDBrands
+,POWER_SUPPLYBrands:req.session.POWER_SUPPLYBrands
+,HEADPHONEBrands:req.session.HEADPHONEBrands
+,KEYBOARDBrands:req.session.KEYBOARDBrands
+,MOUSEBrands:req.session.MOUSEBrands
+,SPEAKERBrands:req.session.SPEAKERBrands
+,UPSBrands:req.session.UPSBrands
+,WEBCAMBrands:req.session.WEBCAMBrands
+
     };
     res.render('Set_compatibility', data);
 });

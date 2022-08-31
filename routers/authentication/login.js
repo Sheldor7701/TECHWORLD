@@ -4,6 +4,8 @@ const DB_auth = require('../../DB_codes/DB_auth')
 const router = express.Router({ mergeParams: true })
 const DB_user = require('../../DB_codes/DB_user');
 const DB_cart = require('../../DB_codes/DB_cart');
+const DB_homepage = require('../../DB_codes/DB_homepage');
+
 
 
 router.get('/', async (req, res) => {
