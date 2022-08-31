@@ -32,6 +32,7 @@ router.get('/addtocart', async (req, res) => {
     const user= await DB_user.getUserInfoByUserId(req.session.userid);
     await DB_pcbuilder.pcBuildConfirm(req.session.userid);
     req.session.cart=await DB_cart.getCart(req.session.userid);
+    let price= await DB_cart.getCartPrice(req.session.userid);
     const data = {
         pageTitle: 'VIEW CART',
         isAuth: req.session.isAuth,
@@ -39,7 +40,8 @@ router.get('/addtocart', async (req, res) => {
         username: req.session.username,
         isAdmin: req.session.isAdmin,
         cart: req.session.cart,
-        user
+        user,
+        price
     }
     return res.render('viewcart',data);
 

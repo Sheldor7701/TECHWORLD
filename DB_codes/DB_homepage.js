@@ -16,7 +16,7 @@ async function getTopProducts() {
         SELECT *
         FROM PRODUCTS
         ORDER BY RATING DESC
-        FETCH NEXT 12 ROWS ONLY
+        FETCH NEXT 4 ROWS ONLY
     `
     return (await database.execute(sql, [], database.options)).rows
 }
