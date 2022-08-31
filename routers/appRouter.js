@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
     const userid = req.session.userid;
     const newlyReleased = await DB_homepage.getNewlyReleasedProduct();
     const topProducts = await DB_homepage.getTopProducts();
+    let allBrands= await DB_homepage.getAllBrands()
         let GRAPHICS_CARDBrands = await DB_homepage.getBrandsByProductType('GRAPHICS_CARD');
     let LAPTOPBrands = await DB_homepage.getBrandsByProductType('LAPTOP');
     let PROCESSORBrands = await DB_homepage.getBrandsByProductType('PROCESSOR');
@@ -50,6 +51,7 @@ router.get('/', async (req, res) => {
 
         newlyReleased,
         topProducts,
+        allBrands,
         GRAPHICS_CARDBrands ,
         LAPTOPBrands ,
         PROCESSORBrands ,
