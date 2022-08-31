@@ -32,6 +32,9 @@ router.get('/', async (req, res) => {
 ,SPEAKERBrands:req.session.SPEAKERBrands
 ,UPSBrands:req.session.UPSBrands
 ,WEBCAMBrands:req.session.WEBCAMBrands
+,LAPTOPBrands:req.session.LAPTOPBrands
+,MONITORBrands:req.session.MONITORBrands
+
 
     };
     res.render('brandlist', data);
@@ -56,6 +59,9 @@ router.get('/newBrand',async (req,res)=>{
 ,SPEAKERBrands:req.session.SPEAKERBrands
 ,UPSBrands:req.session.UPSBrands
 ,WEBCAMBrands:req.session.WEBCAMBrands
+,LAPTOPBrands:req.session.LAPTOPBrands
+,MONITORBrands:req.session.MONITORBrands
+
 
     }
  res.render('Addbrand',data);
@@ -93,6 +99,9 @@ router.get('/updateBrand/:brandid',async (req,res)=>{
 ,SPEAKERBrands:req.session.SPEAKERBrands
 ,UPSBrands:req.session.UPSBrands
 ,WEBCAMBrands:req.session.WEBCAMBrands
+,LAPTOPBrands:req.session.LAPTOPBrands
+,MONITORBrands:req.session.MONITORBrands
+
 
 }
 res.render('updatebrand',data);
@@ -134,6 +143,9 @@ router.get('/brandinfo/:brandid', async (req, res) => {
 ,SPEAKERBrands:req.session.SPEAKERBrands
 ,UPSBrands:req.session.UPSBrands
 ,WEBCAMBrands:req.session.WEBCAMBrands
+,LAPTOPBrands:req.session.LAPTOPBrands
+,MONITORBrands:req.session.MONITORBrands
+
 
     };
     res.render('brand', data);

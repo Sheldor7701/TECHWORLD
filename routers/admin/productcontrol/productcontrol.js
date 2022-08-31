@@ -185,6 +185,9 @@ router.get('/setcompatibility/:productid', async (req, res) => {
 ,SPEAKERBrands:req.session.SPEAKERBrands
 ,UPSBrands:req.session.UPSBrands
 ,WEBCAMBrands:req.session.WEBCAMBrands
+,LAPTOPBrands:req.session.LAPTOPBrands
+,MONITORBrands:req.session.MONITORBrands
+
 
     };
     res.render('Set_compatibility', data);
