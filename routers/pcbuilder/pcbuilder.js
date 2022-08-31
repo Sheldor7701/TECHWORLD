@@ -31,7 +31,7 @@ router.get('/addtocart', async (req, res) => {
     
     const user= await DB_user.getUserInfoByUserId(req.session.userid);
     await DB_pcbuilder.pcBuildConfirm(req.session.userid);
-    req.session.cart= DB_cart.getCart(req.session.userid);
+    req.session.cart=await DB_cart.getCart(req.session.userid);
     const data = {
         pageTitle: 'VIEW CART',
         isAuth: req.session.isAuth,
@@ -53,7 +53,7 @@ router.get('/addtocart', async (req, res) => {
 router.get('/motherboard', async (req, res) => {
     
     const products= await DB_product.getProductByType('MOTHERBOARD');
-
+        const TYPE='MOTHERBOARD';
    const data = {
        pageTitle:"ALL PRODUCTS",
        isAuth: req.session.isAuth,
@@ -61,7 +61,8 @@ router.get('/motherboard', async (req, res) => {
        username: req.session.username,
        isAdmin: req.session.isAdmin,
        cart: req.session.cart,
-       products
+       products,
+       TYPE
    };
    res.render('pc_builder_productlist',data)
    //database query
