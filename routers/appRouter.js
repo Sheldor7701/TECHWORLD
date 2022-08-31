@@ -114,6 +114,8 @@ router.get('*', (req, res) => {
         ,SPEAKERBrands:req.session.SPEAKERBrands
         ,UPSBrands:req.session.UPSBrands
         ,WEBCAMBrands:req.session.WEBCAMBrands
+        ,LAPTOPBrands:req.session.LAPTOPBrands
+        ,MONITORBrands:req.session.MONITORBrands
     }
     res.status(400).render('error', data)
 })
@@ -142,6 +144,8 @@ router.get('/error', (req, res) => {
         ,SPEAKERBrands:req.session.SPEAKERBrands
         ,UPSBrands:req.session.UPSBrands
         ,WEBCAMBrands:req.session.WEBCAMBrands
+        ,LAPTOPBrands:req.session.LAPTOPBrands
+        ,MONITORBrands:req.session.MONITORBrands
     }
     res.status(400).render('error', data)
 })
