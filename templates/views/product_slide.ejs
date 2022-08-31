@@ -197,8 +197,7 @@ $(document).ready(function(){
 			<div class="carousel-inner">
 				<div class="item carousel-item active">
 					<div class="row">
-					    
-					    
+
                         <% for (let product of topProducts){ %>    
 						<div class="col-sm-3">
 							<div class="thumb-wrapper">
@@ -213,13 +212,34 @@ $(document).ready(function(){
 								</div>						
 							</div>
 						</div>
-                        <% } %>	
-						
-						
-						
+                        <% } %>		
 						
 					</div>
 				</div>
+
+                <div class="item carousel-item active">
+					<div class="row">
+
+                        <% for (let product of newlyReleased){ %>    
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<div class="img-box">
+									<img src="<%= product.IMAGE %>" class="img-fluid" alt="">									
+								</div>
+								<div class="thumb-content">
+									<a href=<%="/product/" + product.PRODUCTID %> ><h4><%= product.PRODUCT_NAME %></h4>	</a>								
+									
+									<p class="item-price"><b>$<%= product.PRICE %></b></p>
+									<a href="#" class="btn-slide btn-slide-primary">Add to Cart</a>
+								</div>						
+							</div>
+						</div>
+                        <% } %>		
+						
+					</div>
+				</div>
+
+
 			</div>
 			<!-- Carousel controls -->
 			<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
