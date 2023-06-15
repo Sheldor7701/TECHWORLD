@@ -137,56 +137,92 @@
                                   <li><a href="/login">Home<i class="fas fa-chevron-down"></i></a></li>
                                   <li class="hassubs">
                                       <a href="/productlist/laptop">Laptop<i class="fas fa-chevron-down"></i></a>
-                                      
+                                      <ul>
+                                        <% for (let brand of LAPTOPBrands){ %> 
+                                          <li><a href=<%="/productlist/laptop/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                          <% } %>
+                                      </ul>
                                   </li>
                                   <li class="hassubs">
                                       <a href="#">PC components<i class="fas fa-chevron-down"></i></a>
                                       <ul>
                                         <li>
                                             <a href="/productlist/GRAPHICS_CARD/">GRAPHICS_CARD<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of GRAPHICS_CARDBrands){ %> 
+                                            <li><a href=<%="/productlist/GRAPHICS_CARD/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                             
                                             
                                             <li>
                                             <a href="/productlist/PROCESSOR/">PROCESSOR<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of PROCESSORBrands){ %> 
+                                            <li><a href=<%="/productlist/PROCESSOR/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                             
                                             
                                             <li>
                                             <a href="/productlist/RAM/">RAM<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of RAMBrands){ %> 
+                                            <li><a href=<%="/productlist/RAM/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                             
                                             
                                             <li>
                                             <a href="/productlist/HDD/">HDD<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of HDDBrands){ %> 
+                                            <li><a href=<%="/productlist/HDD/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                             
                                             
                                             <li>
                                             <a href="/productlist/MONITOR/">MONITOR<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of MONITORBrands){ %> 
+                                            <li><a href=<%="/productlist/MONITOR/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                             
                                             
                                             <li>
                                             <a href="/productlist/SSD/">SSD<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of SSDBrands){ %> 
+                                            <li><a href=<%="/productlist/SSD/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                             
                                             
                                             <li>
                                             <a href="/productlist/MOTHERBOARD/">MOTHERBOARD<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of MOTHERBOARDBrands){ %> 
+                                            <li><a href=<%="/productlist/MOTHERBOARD/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                             
                                             
                                             <li>
                                             <a href="/productlist/POWER_SUPPLY/">POWER_SUPPLY<i class="fas fa-chevron-down"></i></a>
-                                            
+                                            <ul>
+                                            <% for (let brand of POWER_SUPPLYBrands){ %> 
+                                            <li><a href=<%="/productlist/POWER_SUPPLY/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                            <% } %>
+                                            </ul>
                                             </li>
                                       </ul>
                                   </li>
@@ -196,39 +232,74 @@
                                                 
 <li>
     <a href="/productlist/HEADPHONE/">HEADPHONE<i class="fas fa-chevron-down"></i></a>
-   
+    <ul>
+    <% for (let brand of HEADPHONEBrands){ %> 
+    <li><a href=<%="/productlist/HEADPHONE/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+    <% } %>
+    </ul>
     </li>
     
     
     <li>
     <a href="/productlist/KEYBOARD/">KEYBOARD<i class="fas fa-chevron-down"></i></a>
-   
+    <ul>
+    <% for (let brand of KEYBOARDBrands){ %> 
+    <li><a href=<%="/productlist/KEYBOARD/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+    <% } %>
+    </ul>
     </li>
     
     
     <li>
     <a href="/productlist/MOUSE/">MOUSE<i class="fas fa-chevron-down"></i></a>
-   
+    <ul>
+    <% for (let brand of MOUSEBrands){ %> 
+    <li><a href=<%="/productlist/MOUSE/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+    <% } %>
+    </ul>
     </li>
     
     
     <li>
     <a href="/productlist/SPEAKER/">SPEAKER<i class="fas fa-chevron-down"></i></a>
-   
+    <ul>
+    <% for (let brand of SPEAKERBrands){ %> 
+    <li><a href=<%="/productlist/SPEAKER/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+    <% } %>
+    </ul>
     </li>
     
     
     <li>
     <a href="/productlist/UPS/">UPS<i class="fas fa-chevron-down"></i></a>
-    
+    <ul>
+    <% for (let brand of UPSBrands){ %> 
+    <li><a href=<%="/productlist/UPS/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+    <% } %>
+    </ul>
     </li>
     
     
     <li>
     <a href="/productlist/WEBCAM/">WEBCAM<i class="fas fa-chevron-down"></i></a>
+    <ul>
+    <% for (let brand of WEBCAMBrands){ %> 
+    <li><a href=<%="/productlist/WEBCAM/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+    <% } %>
+    </ul>
     </li>
     
-                        </ul>
+                                      </ul>
+                                  </li>
+                                  <li class="hassubs">
+                                      <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
+                                      <ul>
+                                        <% for (let brand of allBrands){ %> 
+                                        <li><a href=<%="/productlist/WEBCAM/" + brand.BRANDNAME %> ><%= brand.BRANDNAME %><i class="fas fa-chevron-down"></i></a></li>
+                                        <% } %>
+                                        </ul>
+                                  </li>
+                              </ul>
                           </div>
 
                           <!-- Menu Trigger -->

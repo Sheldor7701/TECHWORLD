@@ -39,138 +39,695 @@
 
 </body>
 
-<% if (product.TYPE=="LAPTOP"){ %>
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<h3><b>DESCRIPTION</b></h3>
-<table class="tg">
-<tbody>
-<tr>
-  <td class="tg-0lax">Processor</td>
-  <td class="tg-0lax"><%= product.PROCESSOR %></td>
-</tr>
-<tr>
-  <td class="tg-0lax">Display</td>
-  <td class="tg-0lax"><%= product.DISPLAY %></td>
-</tr>
-<tr>
-  <td class="tg-0lax">Generation</td>
-  <td class="tg-0lax"><%= product.GENERATION %></td>
-</tr>
-<tr>
-  <td class="tg-0lax">Storage</td>
-  <td class="tg-0lax"><%= product.STORAGE %></td>
-</tr>
-<tr>
-  <td class="tg-0lax">Memory</td>
-  <td class="tg-0lax"><%= product.MEMORY %></td>
-</tr>
-</tbody>
-</table>
-<% } %>
-<% if (product.TYPE=="MONITOR"){ %>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<h3><b>DESCRIPTION</b></h3>
-<table class="tg">
-<tbody>
-<tr>
-  <td class="tg-0lax">SCREEN SIZE</td>
-  <td class="tg-0lax"><%= product.SCREEN_SIZE %></td>
-</tr>
-<tr>
-  <td class="tg-0lax">REFRESH RATE</td>
-  <td class="tg-0lax"><%= product.REFRESH_RATE %></td>
-</tr>
-<tr>
-  <td class="tg-0lax">DISPLAY TYPE</td>
-  <td class="tg-0lax"><%= product.MTYPE %></td>
-</tr>
-<tr>
-  <td class="tg-0lax">RESOLUTION</td>
-  <td class="tg-0lax"><%= product.RESOLUTION %></td>
-</tr>
-</tbody>
-</table>
-<% } %>
+  .tg  {border-collapse:collapse;border-spacing:0;}
+  .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+  .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+  .tg .tg-0lax{text-align:left;vertical-align:top}
+  </style>
 
 <% if (product.TYPE=="MOTHERBOARD"){ %>
-
-  <style type="text/css">
-    .tg  {border-collapse:collapse;border-spacing:0;}
-    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    overflow:hidden;padding:10px 5px;word-break:normal;}
-    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-    .tg .tg-0lax{text-align:left;vertical-align:top}
-    </style>
-    <h3><b>DESCRIPTION</b></h3>
-    <table class="tg">
-    <tbody>
-    <tr>
-      <td class="tg-0lax">CHIPSET</td>
-      <td class="tg-0lax"><%= product.CHIPSET %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">FORM_FACTOR</td>
-      <td class="tg-0lax"><%= product.FORM_FACTOR %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">AUDIO</td>
-      <td class="tg-0lax"><%= product.AUDIO %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">PCI</td>
-      <td class="tg-0lax"><%= product.PCI %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">SUPPORTED_SOFTWARE</td>
-      <td class="tg-0lax"><%= product.SUPPORTED_SOFTWARE %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">SUPPORTED_MEMORY</td>
-      <td class="tg-0lax"><%= product.SUPPORTED_MEMORY %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">SLOTS</td>
-      <td class="tg-0lax"><%= product.SLOTS %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">MAXIMUM_MEMORY</td>
-      <td class="tg-0lax"><%= product.MAXIMUM_MEMORY %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">GRAPHICS</td>
-      <td class="tg-0lax"><%= product.GRAPHICS %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">HDMI</td>
-      <td class="tg-0lax"><%= product.HDMI %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">USB_TYPE</td>
-      <td class="tg-0lax"><%= product.USB_TYPE %></td>
-    </tr>
-    <tr>
-      <td class="tg-0lax">LAN_PORTS</td>
-      <td class="tg-0lax"><%= product.LAN_PORTS %></td>
-    </tr>
-    </tbody>
-    </table>
-
-<% } %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">GTYPE</td>
+  <td class="tg-0lax"><%= product.GTYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">GSIZE</td>
+  <td class="tg-0lax"><%= product.GSIZE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">RESOLUTION</td>
+  <td class="tg-0lax"><%= product.RESOLUTION%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">BOOST_CLOCK</td>
+  <td class="tg-0lax"><%= product.BOOST_CLOCK%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">GAME_CLOCK</td>
+  <td class="tg-0lax"><%= product.GAME_CLOCK%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CLOCK_INFO</td>
+  <td class="tg-0lax"><%= product.CLOCK_INFO%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MEMORY_CLOCK</td>
+  <td class="tg-0lax"><%= product.MEMORY_CLOCK%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MEMORY_INTERFACE</td>
+  <td class="tg-0lax"><%= product.MEMORY_INTERFACE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">STREAM_PROCESSORS</td>
+  <td class="tg-0lax"><%= product.STREAM_PROCESSORS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DISPALY_PORT</td>
+  <td class="tg-0lax"><%= product.DISPALY_PORT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">HDMI</td>
+  <td class="tg-0lax"><%= product.HDMI%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CONNECTORS</td>
+  <td class="tg-0lax"><%= product.CONNECTORS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">RECOMMENDED_PSU</td>
+  <td class="tg-0lax"><%= product.RECOMMENDED_PSU%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CONSUMPTION</td>
+  <td class="tg-0lax"><%= product.CONSUMPTION%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MULTI_DISPLAY</td>
+  <td class="tg-0lax"><%= product.MULTI_DISPLAY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DITERCTX</td>
+  <td class="tg-0lax"><%= product.DITERCTX%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DIMENSION1</td>
+  <td class="tg-0lax"><%= product.DIMENSION1%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DIMENSION2</td>
+  <td class="tg-0lax"><%= product.DIMENSION2%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DIMENSION3</td>
+  <td class="tg-0lax"><%= product.DIMENSION3%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">OTHERS1</td>
+  <td class="tg-0lax"><%= product.OTHERS1%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">OTHERS2</td>
+  <td class="tg-0lax"><%= product.OTHERS2%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">OTHERS3</td>
+  <td class="tg-0lax"><%= product.OTHERS3%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">INTERFACE_TYPE</td>
+  <td class="tg-0lax"><%= product.INTERFACE_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CAPACITY</td>
+  <td class="tg-0lax"><%= product.CAPACITY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">RPM</td>
+  <td class="tg-0lax"><%= product.RPM%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">HEADPHONE_TYPE</td>
+  <td class="tg-0lax"><%= product.HEADPHONE_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">FREQUENCY</td>
+  <td class="tg-0lax"><%= product.FREQUENCY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">WEIGHT</td>
+  <td class="tg-0lax"><%= product.WEIGHT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">COLOR</td>
+  <td class="tg-0lax"><%= product.COLOR%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">USB_TYPE</td>
+  <td class="tg-0lax"><%= product.USB_TYPE%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">KEYBOARD_TYPE</td>
+  <td class="tg-0lax"><%= product.KEYBOARD_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">LIGHT</td>
+  <td class="tg-0lax"><%= product.LIGHT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">KEYS</td>
+  <td class="tg-0lax"><%= product.KEYS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DIMENTION</td>
+  <td class="tg-0lax"><%= product.DIMENTION%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">COLOR</td>
+  <td class="tg-0lax"><%= product.COLOR%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">DISPLAY</td>
+  <td class="tg-0lax"><%= product.DISPLAY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">GRAPHICS</td>
+  <td class="tg-0lax"><%= product.GRAPHICS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">STORAGE</td>
+  <td class="tg-0lax"><%= product.STORAGE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MEMORY</td>
+  <td class="tg-0lax"><%= product.MEMORY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PROCESSOR</td>
+  <td class="tg-0lax"><%= product.PROCESSOR%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">ADAPTER</td>
+  <td class="tg-0lax"><%= product.ADAPTER%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">BATTERY</td>
+  <td class="tg-0lax"><%= product.BATTERY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">OPERATING_SYSTEM</td>
+  <td class="tg-0lax"><%= product.OPERATING_SYSTEM%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">NETWORKING</td>
+  <td class="tg-0lax"><%= product.NETWORKING%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">KEYBOARD</td>
+  <td class="tg-0lax"><%= product.KEYBOARD%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">BLUETOOTH</td>
+  <td class="tg-0lax"><%= product.BLUETOOTH%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">AUDIO</td>
+  <td class="tg-0lax"><%= product.AUDIO%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">WEBCAM</td>
+  <td class="tg-0lax"><%= product.WEBCAM%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PORTS_CONNECTORS</td>
+  <td class="tg-0lax"><%= product.PORTS_CONNECTORS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">COLOR</td>
+  <td class="tg-0lax"><%= product.COLOR%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">WEIGHT</td>
+  <td class="tg-0lax"><%= product.WEIGHT%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">SCREEN_SIZE</td>
+  <td class="tg-0lax"><%= product.SCREEN_SIZE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">REFRESH_RATE</td>
+  <td class="tg-0lax"><%= product.REFRESH_RATE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DISPLAY_TYPE</td>
+  <td class="tg-0lax"><%= product.DISPLAY_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">RESOLUTION</td>
+  <td class="tg-0lax"><%= product.RESOLUTION%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">BRIGHTNESS</td>
+  <td class="tg-0lax"><%= product.BRIGHTNESS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CONTRAST_RATIO</td>
+  <td class="tg-0lax"><%= product.CONTRAST_RATIO%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">ASPECT_RATIO</td>
+  <td class="tg-0lax"><%= product.ASPECT_RATIO%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">COLOR</td>
+  <td class="tg-0lax"><%= product.COLOR%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">I_O_PORTS</td>
+  <td class="tg-0lax"><%= product.I_O_PORTS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">RESPONSE_TIME</td>
+  <td class="tg-0lax"><%= product.RESPONSE_TIME%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">VIEWING_ANGLE</td>
+  <td class="tg-0lax"><%= product.VIEWING_ANGLE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">AUDIO_FEATURES</td>
+  <td class="tg-0lax"><%= product.AUDIO_FEATURES%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">VIDEO_FEATURES</td>
+  <td class="tg-0lax"><%= product.VIDEO_FEATURES%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">POWER</td>
+  <td class="tg-0lax"><%= product.POWER%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">WEIGHT</td>
+  <td class="tg-0lax"><%= product.WEIGHT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DIMENSIONS</td>
+  <td class="tg-0lax"><%= product.DIMENSIONS%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">MOUSE_TYPE</td>
+  <td class="tg-0lax"><%= product.MOUSE_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">BUTTONS</td>
+  <td class="tg-0lax"><%= product.BUTTONS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">WEIGHT</td>
+  <td class="tg-0lax"><%= product.WEIGHT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DPI</td>
+  <td class="tg-0lax"><%= product.DPI%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">CHIPSET</td>
+  <td class="tg-0lax"><%= product.CHIPSET%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">FORM_FACTOR</td>
+  <td class="tg-0lax"><%= product.FORM_FACTOR%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">AUDIO</td>
+  <td class="tg-0lax"><%= product.AUDIO%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PCI</td>
+  <td class="tg-0lax"><%= product.PCI%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">SUPPORTED_SOFTWARE</td>
+  <td class="tg-0lax"><%= product.SUPPORTED_SOFTWARE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">SLOTS</td>
+  <td class="tg-0lax"><%= product.SLOTS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">SUPPORTED_MEMORY</td>
+  <td class="tg-0lax"><%= product.SUPPORTED_MEMORY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MAXIMUM_MEMORY</td>
+  <td class="tg-0lax"><%= product.MAXIMUM_MEMORY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">GRAPHICS</td>
+  <td class="tg-0lax"><%= product.GRAPHICS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">HDMI</td>
+  <td class="tg-0lax"><%= product.HDMI%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">USB_TYPE</td>
+  <td class="tg-0lax"><%= product.USB_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">LAN_PORTS</td>
+  <td class="tg-0lax"><%= product.LAN_PORTS%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">EFFICIENCY</td>
+  <td class="tg-0lax"><%= product.EFFICIENCY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CERTIFICATION</td>
+  <td class="tg-0lax"><%= product.CERTIFICATION%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">FAN_SIZE</td>
+  <td class="tg-0lax"><%= product.FAN_SIZE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MODULAR_TYPE</td>
+  <td class="tg-0lax"><%= product.MODULAR_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">TOTAL_POWER</td>
+  <td class="tg-0lax"><%= product.TOTAL_POWER%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PEAK_POWER</td>
+  <td class="tg-0lax"><%= product.PEAK_POWER%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">AC_INPUT</td>
+  <td class="tg-0lax"><%= product.AC_INPUT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DC_OUTPUT</td>
+  <td class="tg-0lax"><%= product.DC_OUTPUT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MAIN_POWER</td>
+  <td class="tg-0lax"><%= product.MAIN_POWER%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CPU</td>
+  <td class="tg-0lax"><%= product.CPU%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PCI_E</td>
+  <td class="tg-0lax"><%= product.PCI_E%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">SATA</td>
+  <td class="tg-0lax"><%= product.SATA%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MOLEX</td>
+  <td class="tg-0lax"><%= product.MOLEX%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">BASE_FREQUENCY</td>
+  <td class="tg-0lax"><%= product.BASE_FREQUENCY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MAXIMUM_TURBO_FREQUENCY</td>
+  <td class="tg-0lax"><%= product.MAXIMUM_TURBO_FREQUENCY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CACHE</td>
+  <td class="tg-0lax"><%= product.CACHE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CORES</td>
+  <td class="tg-0lax"><%= product.CORES%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">THREADS</td>
+  <td class="tg-0lax"><%= product.THREADS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PROCESSOR_BASE_POWER</td>
+  <td class="tg-0lax"><%= product.PROCESSOR_BASE_POWER%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MAXIMUM_TURBO_POWER</td>
+  <td class="tg-0lax"><%= product.MAXIMUM_TURBO_POWER%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MAXIMUM_SIZE</td>
+  <td class="tg-0lax"><%= product.MAXIMUM_SIZE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">TYPE1</td>
+  <td class="tg-0lax"><%= product.TYPE1%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">TYPE2</td>
+  <td class="tg-0lax"><%= product.TYPE2%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MAX_NUMBER_OF_CHANNELS</td>
+  <td class="tg-0lax"><%= product.MAX_NUMBER_OF_CHANNELS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PROCESSOR_GRAPHICS</td>
+  <td class="tg-0lax"><%= product.PROCESSOR_GRAPHICS%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">RTYPE</td>
+  <td class="tg-0lax"><%= product.RTYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CAPACITY</td>
+  <td class="tg-0lax"><%= product.CAPACITY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">FREQUENCY</td>
+  <td class="tg-0lax"><%= product.FREQUENCY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">OPERATING_VOLTAGE</td>
+  <td class="tg-0lax"><%= product.OPERATING_VOLTAGE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">LATENCY</td>
+  <td class="tg-0lax"><%= product.LATENCY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">HEAT_SINK_COLOR</td>
+  <td class="tg-0lax"><%= product.HEAT_SINK_COLOR%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PIN</td>
+  <td class="tg-0lax"><%= product.PIN%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">SPEAKER_TYPE</td>
+  <td class="tg-0lax"><%= product.SPEAKER_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">FREQUENCY</td>
+  <td class="tg-0lax"><%= product.FREQUENCY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">NOISE</td>
+  <td class="tg-0lax"><%= product.NOISE%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">CAPACITY</td>
+  <td class="tg-0lax"><%= product.CAPACITY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">FORM_FACTOR</td>
+  <td class="tg-0lax"><%= product.FORM_FACTOR%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">FLASH_TYPE</td>
+  <td class="tg-0lax"><%= product.FLASH_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">INTERFACE</td>
+  <td class="tg-0lax"><%= product.INTERFACE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">SEQ_READS</td>
+  <td class="tg-0lax"><%= product.SEQ_READS%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">SEQ_WRITES</td>
+  <td class="tg-0lax"><%= product.SEQ_WRITES%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">DIMENSION</td>
+  <td class="tg-0lax"><%= product.DIMENSION%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">WEIGHT</td>
+  <td class="tg-0lax"><%= product.WEIGHT%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">UPS_TYPE</td>
+  <td class="tg-0lax"><%= product.UPS_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">CAPACITY</td>
+  <td class="tg-0lax"><%= product.CAPACITY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">BATTERY</td>
+  <td class="tg-0lax"><%= product.BATTERY%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">BACKUP_TIME</td>
+  <td class="tg-0lax"><%= product.BACKUP_TIME%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">PORTS</td>
+  <td class="tg-0lax"><%= product.PORTS%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  <% if (product.TYPE==""){ %>
+  <h3><b>DESCRIPTION</b></h3>
+  <table class="tg">
+  <tbody>
+  <tr>
+  <td class="tg-0lax">WEBCAM_TYPE</td>
+  <td class="tg-0lax"><%= product.WEBCAM_TYPE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">RESOLUTION</td>
+  <td class="tg-0lax"><%= product.RESOLUTION%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">WEIGHT</td>
+  <td class="tg-0lax"><%= product.WEIGHT%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">MICROPHONE</td>
+  <td class="tg-0lax"><%= product.MICROPHONE%></td>
+  </tr>
+  <tr>
+  <td class="tg-0lax">ZOOM</td>
+  <td class="tg-0lax"><%= product.ZOOM%></td>
+  </tr>
+  </tbody>
+  </table>
+  <% } %>
+  
+  
+  
 
 <%- include('../partials/footer.ejs') %>
 </main>

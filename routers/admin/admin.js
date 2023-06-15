@@ -30,6 +30,7 @@ router.get('/', async (req, res) => {
         userid: req.session.userid,
         username: req.session.username,
         cart: req.session.cart
+        ,isAdmin: req.session.isAdmin
         ,allBrands:req.session.allBrands
  ,GRAPHICS_CARDBrands:req.session.GRAPHICS_CARDBrands
  ,PROCESSORBrands:req.session.PROCESSORBrands
